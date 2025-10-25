@@ -274,7 +274,7 @@
             pointer-events: none;
             z-index: 25;
             transition: opacity 0.2s ease, color 6s cubic-bezier(0.4, 0, 0.2, 1);
-            margin-top: -40px;
+            margin-top: -42px;
             background: rgba(0, 0, 0, 0.8);
             padding: 5px 8px;
             border-radius: 12px;
@@ -944,7 +944,7 @@
                 font-size: clamp(1.5rem, 8vw, 2.5rem);
                 left: 0;
                 text-align: center;
-                margin-top: -40px;
+                margin-top: -42px;
             }
             
             .subtitle {
@@ -1186,7 +1186,7 @@
                 </div>
                 <button class="nav-btn active" onclick="showHome()">DOMOVSKÁ STRÁNKA</button>
                 <button class="nav-btn" onclick="showAbout()">O MNĚ</button>
-                <button class="nav-btn" onclick="showPortfolio()">PORTFOLIO</button>
+                <button class="nav-btn" onclick="showPortfolio()">MÁ KARIÉRA</button>
             </div>
             <div class="contact-section">
                 <div class="handwritten-note">Hledáte hlas pro svůj projekt?</div>
@@ -1279,7 +1279,7 @@
         <div class="content-overlay" id="portfolioOverlay">
             <button class="close-btn" onclick="closeOverlay()">&times;</button>
             <div class="overlay-content">
-                <h2 class="overlay-title">PORTFOLIO</h2>
+                <h2 class="overlay-title">MÁ KARIÉRA</h2>
                 <div class="portfolio-grid">
                     <div class="project-card">
                         <div class="project-header">
@@ -1422,7 +1422,7 @@
             closeOverlay();
             document.getElementById('portfolioOverlay').classList.add('active');
             document.querySelector('.main-content').classList.add('blurred');
-            updateActiveNav('PORTFOLIO');
+            updateActiveNav('MÁ KARIÉRA');
         }
         
         function closeOverlay() {
@@ -1449,5 +1449,5 @@
             }
         });
     </script>
-<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'994489683637579f',t:'MTc2MTQyNDkwOC4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'994495e30648f974',t:'MTc2MTQyNTQxOC4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
 </html>
