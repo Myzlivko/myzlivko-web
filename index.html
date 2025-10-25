@@ -1,0 +1,901 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jakub Myslivec - Portfolio</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;700&family=Dancing+Script:wght@700&family=Permanent+Marker&family=Architects+Daughter&display=swap" rel="stylesheet">
+    <style>
+        body {
+            box-sizing: border-box;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        html, body {
+            height: 100%;
+            font-family: 'Inter', sans-serif;
+            overflow: hidden;
+        }
+        
+        .container {
+            height: 100%;
+            position: relative;
+            background: linear-gradient(45deg, #1a1a1a 0%, #2d2d2d 50%, #1a1a1a 100%);
+            background-size: 400% 400%;
+            animation: subtleGradient 20s ease-in-out infinite;
+        }
+        
+        @keyframes subtleGradient {
+            0%, 100% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+        }
+        
+        .background-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: 
+                radial-gradient(circle at 30% 70%, rgba(255,255,255,0.03) 0%, transparent 50%),
+                radial-gradient(circle at 70% 30%, rgba(255,255,255,0.02) 0%, transparent 50%);
+            z-index: 1;
+        }
+        
+        .decorative-elements {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 2;
+            pointer-events: none;
+        }
+        
+        .grain-effect {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: 
+                repeating-linear-gradient(
+                    0deg,
+                    transparent,
+                    transparent 2px,
+                    rgba(255,255,255,0.01) 2px,
+                    rgba(255,255,255,0.01) 4px
+                );
+            z-index: 3;
+            pointer-events: none;
+        }
+        
+        .nav-top {
+            position: absolute;
+            top: 40px;
+            left: 40px;
+            right: 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 10;
+        }
+        
+        .nav-left {
+            display: flex;
+            gap: 20px;
+        }
+        
+        .nav-btn {
+            padding: 12px 24px;
+            border: 2px solid rgba(255,255,255,0.8);
+            border-radius: 50px;
+            background: transparent;
+            color: white;
+            font-family: 'Inter', sans-serif;
+            font-weight: 400;
+            font-size: 14px;
+            letter-spacing: 0.5px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+        }
+        
+        .nav-btn:hover {
+            background: white;
+            color: #1a1a1a;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(255,255,255,0.2);
+        }
+        
+        .nav-btn.active {
+            background: rgba(255,255,255,0.1);
+            border-color: white;
+        }
+        
+        .contact-section {
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-end;
+        }
+        
+        .handwritten-note {
+            position: absolute;
+            top: 55px;
+            right: 150px;
+            font-family: 'Inter', sans-serif;
+            font-size: 14px;
+            color: #E8E6E4;
+            opacity: 0.85;
+            transform: rotate(0deg);
+            text-shadow: 0 0 6px rgba(0, 0, 0, 0.3);
+            white-space: nowrap;
+            pointer-events: none;
+            z-index: 12;
+            font-weight: 400;
+            width: 250px;
+            text-align: right;
+            line-height: 1.2;
+            letter-spacing: 0.5px;
+        }
+        
+
+        
+
+        
+
+        
+
+        
+        .main-content {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            text-align: center;
+            z-index: 10;
+            width: 90%;
+            max-width: 1200px;
+            transition: filter 0.4s ease;
+        }
+        
+        .main-content.blurred {
+            filter: blur(8px);
+        }
+        
+        .name-section {
+            margin-bottom: 30px;
+        }
+        
+        .name-container {
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 40px;
+        }
+        
+        .first-name {
+            font-size: clamp(3.2rem, 9.6vw, 6.4rem);
+            font-weight: 300;
+            color: white;
+            letter-spacing: 0.1em;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+        
+        .last-name {
+            font-size: clamp(3.2rem, 9.6vw, 6.4rem);
+            font-weight: 300;
+            color: white;
+            letter-spacing: 0.1em;
+            position: relative;
+        }
+        
+        .nickname {
+            font-size: clamp(2.08rem, 6.24vw, 4.16rem);
+            font-weight: 500;
+            font-style: italic;
+            color: #BEBEBE;
+            letter-spacing: 0.18em;
+            margin-top: -15px;
+            text-align: left;
+            opacity: 1;
+            position: relative;
+            left: 15%;
+            transform: translateX(0);
+        }
+        
+        .nickname::after {
+            content: '';
+            position: absolute;
+            bottom: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 70%;
+            height: 1px;
+            background-color: #B8B8B8;
+            opacity: 0.4;
+        }
+        
+
+        
+
+        
+        .subtitle {
+            position: absolute;
+            right: 0;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 14px;
+            color: rgba(255,255,255,0.8);
+            font-weight: 400;
+            letter-spacing: 1px;
+            line-height: 1.6;
+            text-align: right;
+            max-width: 300px;
+        }
+        
+        .socials-section {
+            position: absolute;
+            bottom: 40px;
+            left: 40px;
+            z-index: 10;
+        }
+        
+        .floating-video {
+            position: absolute;
+            bottom: 55px;
+            right: 40px;
+            z-index: 10;
+            transition: all 0.4s ease;
+            display: flex;
+            align-items: flex-end;
+        }
+        
+        .video-preview {
+            width: 120px;
+            height: 80px;
+            background: rgba(0,0,0,0.8);
+            border-radius: 10px;
+            cursor: pointer;
+            overflow: hidden;
+            position: relative;
+            transition: all 0.3s ease;
+        }
+        
+        .video-preview:hover {
+            transform: scale(1.05);
+        }
+        
+        .video-preview.expanded {
+            width: 320px;
+            height: 180px;
+        }
+        
+        .video-placeholder {
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, #333 0%, #555 50%, #333 100%);
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            background-image: url('https://img.youtube.com/vi/PyEV_ulp2q4/maxresdefault.jpg');
+            transition: all 0.3s ease;
+        }
+        
+        .video-placeholder:hover {
+            transform: scale(1.02);
+        }
+        
+        .video-placeholder::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.3);
+            transition: all 0.3s ease;
+        }
+        
+        .video-placeholder:hover::before {
+            background: rgba(0,0,0,0.1);
+        }
+        
+
+        
+        .video-label {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, calc(-50% + 18px));
+            color: #FFFFFF;
+            font-size: 12px;
+            font-weight: 500;
+            text-align: center;
+            letter-spacing: 1px;
+            white-space: nowrap;
+            font-family: 'Inter', sans-serif;
+            text-shadow: 0 0 5px rgba(0, 0, 0, 0.4);
+            z-index: 3;
+            pointer-events: none;
+            transition: all 0.3s ease;
+        }
+        
+        .video-preview.expanded .video-label {
+            font-size: 14px;
+            transform: translate(-50%, calc(-50% + 18px));
+        }
+        
+        .video-overlay-effect {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: 
+                repeating-linear-gradient(
+                    0deg,
+                    transparent,
+                    transparent 2px,
+                    rgba(255,255,255,0.05) 2px,
+                    rgba(255,255,255,0.05) 4px
+                );
+            pointer-events: none;
+        }
+        
+        .socials-toggle {
+            padding: 10px 20px;
+            border: 2px solid rgba(255,255,255,0.6);
+            border-radius: 25px;
+            background: transparent;
+            color: rgba(255,255,255,0.8);
+            font-family: 'Inter', sans-serif;
+            font-size: 12px;
+            letter-spacing: 1px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin-bottom: 15px;
+            height: 44px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .socials-toggle:hover {
+            background: white;
+            color: #1a1a1a;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(255,255,255,0.2);
+        }
+        
+        .socials-links {
+            display: none;
+            flex-direction: column;
+            gap: 10px;
+        }
+        
+        .socials-links.active {
+            display: flex;
+            animation: fadeInUp 0.3s ease;
+        }
+        
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .social-link {
+            color: rgba(255,255,255,0.7);
+            text-decoration: none;
+            font-size: 13px;
+            padding: 8px 0;
+            transition: all 0.3s ease;
+            border-bottom: 1px solid transparent;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .social-link:hover {
+            color: white;
+            border-bottom-color: rgba(255,255,255,0.3);
+            transform: translateX(5px);
+        }
+        
+        .social-link svg {
+            transition: all 0.3s ease;
+        }
+        
+        .social-link:hover svg {
+            transform: scale(1.1);
+        }
+        
+        .content-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.8);
+            z-index: 15;
+            display: none;
+            padding: 100px 40px 40px;
+            overflow-y: auto;
+        }
+        
+        .content-overlay.active {
+            display: block;
+            animation: fadeIn 0.4s ease;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        
+        .overlay-content {
+            max-width: 800px;
+            margin: 0 auto;
+            color: white;
+        }
+        
+        .overlay-title {
+            font-size: 3rem;
+            font-weight: 300;
+            margin-bottom: 30px;
+            letter-spacing: 0.1em;
+        }
+        
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 200px;
+            gap: 40px;
+            align-items: start;
+        }
+        
+        .about-text {
+            font-size: 16px;
+            line-height: 1.8;
+            color: rgba(255,255,255,0.9);
+        }
+        
+        .about-photo {
+            width: 200px;
+            height: 250px;
+            background: linear-gradient(135deg, #333, #555);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: rgba(255,255,255,0.5);
+            font-size: 14px;
+            text-align: center;
+        }
+        
+        .portfolio-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 30px;
+            margin-top: 30px;
+        }
+        
+        .portfolio-grid .project-card:nth-child(5) {
+            grid-column: 1;
+        }
+        
+        .portfolio-grid .project-card:nth-child(6) {
+            grid-column: 2;
+        }
+        
+        .project-card {
+            background: rgba(255,255,255,0.05);
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 10px;
+            padding: 30px;
+            transition: all 0.3s ease;
+            position: relative;
+            min-height: 160px;
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .project-card:hover {
+            background: rgba(255,255,255,0.08);
+            transform: translateY(-5px);
+        }
+        
+        .project-header {
+            display: flex;
+            align-items: flex-start;
+            gap: 15px;
+            margin-bottom: 20px;
+            flex: 1;
+        }
+        
+        .project-info {
+            width: 400px;
+            min-width: 400px;
+            padding-left: 0px;
+        }
+        
+        .project-year {
+            font-size: 14px;
+            color: rgba(255,255,255,0.6);
+            font-weight: 300;
+            margin-top: 8px;
+            letter-spacing: 0.5px;
+            text-align: left;
+            width: 100%;
+            padding-left: 0;
+        }
+        
+        .company-logo {
+            width: 50px;
+            height: 50px;
+            background: rgba(255,255,255,0.1);
+            border: 2px solid rgba(255,255,255,0.2);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 12px;
+            color: rgba(255,255,255,0.6);
+            text-align: center;
+            line-height: 1.2;
+            flex-shrink: 0;
+        }
+        
+        .project-title {
+            font-size: 20px;
+            font-weight: 500;
+            margin: 0;
+            line-height: 1.3;
+            word-wrap: break-word;
+        }
+        
+        .project-description {
+            color: rgba(255,255,255,0.8);
+            line-height: 1.6;
+            padding-left: 0px;
+        }
+        
+        .close-btn {
+            position: absolute;
+            top: 40px;
+            right: 40px;
+            background: none;
+            border: 2px solid rgba(255,255,255,0.6);
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            color: white;
+            font-size: 20px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .close-btn:hover {
+            border-color: white;
+            background: rgba(255,255,255,0.1);
+        }
+        
+        @media (max-width: 768px) {
+            .nav-top {
+                top: 20px;
+                left: 20px;
+                right: 20px;
+                flex-direction: column;
+                gap: 20px;
+            }
+            
+            .nav-left {
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+            
+            .subtitle {
+                position: static;
+                transform: none;
+                text-align: center;
+                margin-top: 30px;
+                max-width: none;
+            }
+            
+            .about-content {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+            
+            .socials-section {
+                bottom: 20px;
+                left: 20px;
+            }
+            
+            .floating-video {
+                bottom: 35px;
+                right: 20px;
+            }
+            
+            .video-preview {
+                width: 100px;
+                height: 65px;
+            }
+            
+            .video-preview.expanded {
+                width: 280px;
+                height: 160px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="background-overlay"></div>
+        
+        <!-- Decorative Elements -->
+        <div class="decorative-elements">
+        </div>
+        
+        <div class="grain-effect"></div>
+        
+        <nav class="nav-top">
+            <div class="nav-left">
+                <button class="nav-btn active" onclick="showHome()">HOME</button>
+                <button class="nav-btn" onclick="showAbout()">ABOUT ME</button>
+                <button class="nav-btn" onclick="showPortfolio()">PORTFOLIO</button>
+            </div>
+            <div class="contact-section">
+                <div class="handwritten-note">Máte projekt, který dává smysl?</div>
+
+                <a href="mailto:Myzlivko@gmail.com" class="nav-btn" onclick="return true;">CONTACT</a>
+            </div>
+        </nav>
+        
+        <main class="main-content">
+            <div class="name-section">
+                <div class="name-container">
+                    <div class="first-name">JAKUB</div>
+                    <div class="last-name">
+                        MYSLIVEC
+                    </div>
+                    <div class="nickname">MYZLIVKO</div>
+                </div>
+            </div>
+            <div class="subtitle">
+                PROJEKTOVÝ SPECIALISTA<br>
+                REKREAČNÍ STREAMER<br>
+                ZAČÍNAJÍCÍ DABÉR
+            </div>
+        </main>
+        
+        <div class="socials-section">
+            <button class="socials-toggle" onclick="toggleSocials()">SOCIALS</button>
+            <div class="socials-links" id="socialsLinks">
+                <a href="#" class="social-link" onclick="openExternal('https://twitch.tv/Myzlivko')">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M11.571 4.714h1.715v5.143H11.57zm4.715 0H18v5.143h-1.714zM6 0L1.714 4.286v15.428h5.143V24l4.286-4.286h3.428L22.286 12V0zm14.571 11.143l-3.428 3.428h-3.429l-3 3v-3H6.857V1.714h13.714Z"/>
+                    </svg>
+                    Twitch
+                </a>
+                <a href="#" class="social-link" onclick="openExternal('https://www.youtube.com/@Myzlivko')">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
+                    </svg>
+                    YouTube
+                </a>
+                <a href="#" class="social-link" onclick="openExternal('https://www.instagram.com/myzlivko')">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+                    </svg>
+                    Instagram
+                </a>
+                <a href="#" class="social-link" onclick="openExternal('https://discord.com/invite/a5RrrWjYYC')">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M20.317 4.3698a19.7913 19.7913 0 00-4.8851-1.5152.0741.0741 0 00-.0785.0371c-.211.3753-.4447.8648-.6083 1.2495-1.8447-.2762-3.68-.2762-5.4868 0-.1636-.3933-.4058-.8742-.6177-1.2495a.077.077 0 00-.0785-.037 19.7363 19.7363 0 00-4.8852 1.515.0699.0699 0 00-.0321.0277C.5334 9.0458-.319 13.5799.0992 18.0578a.0824.0824 0 00.0312.0561c2.0528 1.5076 4.0413 2.4228 5.9929 3.0294a.0777.0777 0 00.0842-.0276c.4616-.6304.8731-1.2952 1.226-1.9942a.076.076 0 00-.0416-.1057c-.6528-.2476-1.2743-.5495-1.8722-.8923a.077.077 0 01-.0076-.1277c.1258-.0943.2517-.1923.3718-.2914a.0743.0743 0 01.0776-.0105c3.9278 1.7933 8.18 1.7933 12.0614 0a.0739.0739 0 01.0785.0095c.1202.099.246.1981.3728.2924a.077.077 0 01-.0066.1276 12.2986 12.2986 0 01-1.873.8914.0766.0766 0 00-.0407.1067c.3604.698.7719 1.3628 1.225 1.9932a.076.076 0 00.0842.0286c1.961-.6067 3.9495-1.5219 6.0023-3.0294a.077.077 0 00.0313-.0552c.5004-5.177-.8382-9.6739-3.5485-13.6604a.061.061 0 00-.0312-.0286zM8.02 15.3312c-1.1825 0-2.1569-1.0857-2.1569-2.419 0-1.3332.9555-2.4189 2.157-2.4189 1.2108 0 2.1757 1.0952 2.1568 2.419-.0002 1.3332-.9555 2.4189-2.1569 2.4189zm7.9748 0c-1.1825 0-2.1569-1.0857-2.1569-2.419 0-1.3332.9554-2.4189 2.1569-2.4189 1.2108 0 2.1757 1.0952 2.1568 2.419 0 1.3332-.9555 2.4189-2.1568 2.4189Z"/>
+                    </svg>
+                    Discord
+                </a>
+            </div>
+        </div>
+        
+        <!-- Floating Video Preview -->
+        <div class="floating-video">
+            <div class="video-preview" id="videoPreview" onclick="toggleVideo()">
+                <div class="video-placeholder">
+                    <div class="video-overlay-effect"></div>
+                </div>
+                <div class="video-label">CHECK THIS OUT</div>
+            </div>
+        </div>
+        
+        <!-- About Me Overlay -->
+        <div class="content-overlay" id="aboutOverlay">
+            <button class="close-btn" onclick="closeOverlay()">&times;</button>
+            <div class="overlay-content">
+                <h2 class="overlay-title">ABOUT ME</h2>
+                <div class="about-content">
+                    <div class="about-text">
+                        <p>Když zrovna nepracuji, nejčastěji trávím čas v posilovně, u vaření nebo na cestách. Věnuji se sbírání starých českých big boxů a dalších herních artefaktů, které vnímám jako součást našeho kulturního dědictví.</p>
+                        
+                        <p>Zajímám se o historii i o osobní příběhy lidí, kteří ji nějak ovlivnili. Baví mě poznávat nové věci a učit se, beru to jako něco, co mi dává smysl a posouvá mě dál. Příležitostně se věnuji amatérskému dabingu.</p>
+                    </div>
+                    <div class="about-photo">
+                        Vaše fotografie<br>
+                        (200×250px)
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Portfolio Overlay -->
+        <div class="content-overlay" id="portfolioOverlay">
+            <button class="close-btn" onclick="closeOverlay()">&times;</button>
+            <div class="overlay-content">
+                <h2 class="overlay-title">PORTFOLIO</h2>
+                <div class="portfolio-grid">
+                    <div class="project-card">
+                        <div class="project-header">
+                            <div class="company-logo">?</div>
+                            <div class="project-info">
+                                <h3 class="project-title">???</h3>
+                                <div class="project-year">2026</div>
+                            </div>
+                        </div>
+                        <p class="project-description">Coming soon...</p>
+                    </div>
+                    <div class="project-card">
+                        <div class="project-header">
+                            <div class="company-logo">FOSTRA</div>
+                            <div class="project-info">
+                                <h3 class="project-title">Gymnázium FOSTRA International s.r.o.</h3>
+                                <div class="project-year">2024-2026</div>
+                            </div>
+                        </div>
+                        <p class="project-description">Projektový specialista</p>
+                    </div>
+                    <div class="project-card">
+                        <div class="project-header">
+                            <div class="company-logo">MEDIA</div>
+                            <div class="project-info">
+                                <h3 class="project-title">MediaRealms s.r.o.</h3>
+                                <div class="project-year">2023-2024</div>
+                            </div>
+                        </div>
+                        <p class="project-description">Moderátor, herní redaktor, video editor</p>
+                    </div>
+                    <div class="project-card">
+                        <div class="project-header">
+                            <div class="company-logo">TWITCH</div>
+                            <div class="project-info">
+                                <h3 class="project-title">Twitch</h3>
+                                <div class="project-year">2021-2024</div>
+                            </div>
+                        </div>
+                        <p class="project-description">Variety streamer</p>
+                    </div>
+                    <div class="project-card">
+                        <div class="project-header">
+                            <div class="company-logo">O2 TV</div>
+                            <div class="project-info">
+                                <h3 class="project-title">O2 TV Sport s.r.o.</h3>
+                                <div class="project-year">2022</div>
+                            </div>
+                        </div>
+                        <p class="project-description">Televizní střihač</p>
+                    </div>
+                    <div class="project-card">
+                        <div class="project-header">
+                            <div class="company-logo">ALZA</div>
+                            <div class="project-info">
+                                <h3 class="project-title">Alza a.s.</h3>
+                                <div class="project-year">2018-2020</div>
+                            </div>
+                        </div>
+                        <p class="project-description">Reklamační technik</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        let socialsOpen = false;
+        let videoExpanded = false;
+        
+        function toggleSocials() {
+            const links = document.getElementById('socialsLinks');
+            socialsOpen = !socialsOpen;
+            
+            if (socialsOpen) {
+                links.classList.add('active');
+            } else {
+                links.classList.remove('active');
+            }
+        }
+        
+        function toggleVideo() {
+            const videoPreview = document.getElementById('videoPreview');
+            videoExpanded = !videoExpanded;
+            
+            if (videoExpanded) {
+                videoPreview.classList.add('expanded');
+                // Simulace načítání videa
+                setTimeout(() => {
+                    // Po kliknutí na rozbalené video přesměruje na YouTube
+                    videoPreview.onclick = function() {
+                        openExternal('https://www.youtube.com/watch?v=PyEV_ulp2q4');
+                    };
+                }, 500);
+            } else {
+                videoPreview.classList.remove('expanded');
+                videoPreview.onclick = toggleVideo;
+            }
+        }
+        
+        function openExternal(url) {
+            window.open(url, '_blank', 'noopener,noreferrer');
+        }
+        
+        function showHome() {
+            closeOverlay();
+            updateActiveNav('HOME');
+        }
+        
+        function showAbout() {
+            closeOverlay();
+            document.getElementById('aboutOverlay').classList.add('active');
+            updateActiveNav('ABOUT ME');
+        }
+        
+        function showPortfolio() {
+            closeOverlay();
+            document.getElementById('portfolioOverlay').classList.add('active');
+            document.querySelector('.main-content').classList.add('blurred');
+            updateActiveNav('PORTFOLIO');
+        }
+        
+        function closeOverlay() {
+            document.getElementById('aboutOverlay').classList.remove('active');
+            document.getElementById('portfolioOverlay').classList.remove('active');
+            document.querySelector('.main-content').classList.remove('blurred');
+            updateActiveNav('HOME');
+        }
+        
+        function updateActiveNav(activeSection) {
+            const buttons = document.querySelectorAll('.nav-btn');
+            buttons.forEach(btn => {
+                btn.classList.remove('active');
+                if (btn.textContent === activeSection) {
+                    btn.classList.add('active');
+                }
+            });
+        }
+        
+        // Keyboard navigation
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') {
+                closeOverlay();
+            }
+        });
+    </script>
+<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'99436b5331e0579f',t:'MTc2MTQxMzE4OS4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+</html>
