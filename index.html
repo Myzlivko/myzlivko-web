@@ -28,7 +28,7 @@
             background: linear-gradient(45deg, #1a1a1a 0%, #2d2d2d 50%, #1a1a1a 100%);
             background-size: 400% 400%;
             animation: subtleGradient 20s ease-in-out infinite;
-            transition: all 1s cubic-bezier(0.4, 0, 0.2, 1);
+            transition: all 6s cubic-bezier(0.25, 0.1, 0.25, 1);
             position: relative;
         }
         
@@ -40,7 +40,7 @@
             width: 100%;
             height: 100%;
             background: rgba(0, 0, 0, 0);
-            transition: background 1s cubic-bezier(0.4, 0, 0.2, 1);
+            transition: background 6s cubic-bezier(0.25, 0.1, 0.25, 1);
             pointer-events: none;
             z-index: 1;
         }
@@ -57,7 +57,7 @@
         .last-name {
             color: #E8E6E4;
             text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
-            transition: all 1s cubic-bezier(0.4, 0, 0.2, 1);
+            transition: all 6s cubic-bezier(0.25, 0.1, 0.25, 1);
         }
         
         .container.light-theme .first-name,
@@ -68,7 +68,7 @@
         
         .nickname {
             color: #BEBEBE;
-            transition: all 1s cubic-bezier(0.4, 0, 0.2, 1);
+            transition: all 6s cubic-bezier(0.25, 0.1, 0.25, 1);
         }
         
         .container.light-theme .nickname {
@@ -77,7 +77,7 @@
         
         .subtitle {
             color: rgba(232, 230, 228, 0.8);
-            transition: all 1s cubic-bezier(0.4, 0, 0.2, 1);
+            transition: all 6s cubic-bezier(0.25, 0.1, 0.25, 1);
         }
         
         .container.light-theme .subtitle {
@@ -87,7 +87,7 @@
         .nav-btn {
             border-color: rgba(255,255,255,0.8);
             color: white;
-            transition: all 0.3s ease, border-color 1s cubic-bezier(0.4, 0, 0.2, 1), color 1s cubic-bezier(0.4, 0, 0.2, 1);
+            transition: all 0.3s ease, border-color 6s cubic-bezier(0.25, 0.1, 0.25, 1), color 6s cubic-bezier(0.25, 0.1, 0.25, 1);
         }
         
         .container.light-theme .nav-btn {
@@ -103,7 +103,7 @@
         .nav-btn.active {
             background: rgba(255,255,255,0.1);
             border-color: white;
-            transition: all 0.3s ease, border-color 1s cubic-bezier(0.4, 0, 0.2, 1), color 1s cubic-bezier(0.4, 0, 0.2, 1), background 1s cubic-bezier(0.4, 0, 0.2, 1);
+            transition: all 0.3s ease, border-color 6s cubic-bezier(0.25, 0.1, 0.25, 1), color 6s cubic-bezier(0.25, 0.1, 0.25, 1), background 6s cubic-bezier(0.25, 0.1, 0.25, 1);
         }
         
         .container.light-theme .nav-btn.active {
@@ -113,7 +113,7 @@
         
         .handwritten-note {
             color: #E8E6E4;
-            transition: all 1s cubic-bezier(0.4, 0, 0.2, 1);
+            transition: all 6s cubic-bezier(0.25, 0.1, 0.25, 1);
         }
         
         .container.light-theme .handwritten-note {
@@ -123,7 +123,7 @@
         .socials-toggle {
             border-color: rgba(255,255,255,0.6);
             color: rgba(255,255,255,0.8);
-            transition: all 0.3s ease, border-color 1s cubic-bezier(0.4, 0, 0.2, 1), color 1s cubic-bezier(0.4, 0, 0.2, 1);
+            transition: all 0.3s ease, border-color 6s cubic-bezier(0.25, 0.1, 0.25, 1), color 6s cubic-bezier(0.25, 0.1, 0.25, 1);
         }
         
         .container.light-theme .socials-toggle {
@@ -138,7 +138,7 @@
         
         .social-link {
             color: rgba(255,255,255,0.7);
-            transition: all 0.3s ease, color 1s cubic-bezier(0.4, 0, 0.2, 1);
+            transition: all 0.3s ease, color 6s cubic-bezier(0.25, 0.1, 0.25, 1);
         }
         
         .container.light-theme .social-link {
@@ -156,7 +156,7 @@
             background: 
                 radial-gradient(circle at 30% 70%, rgba(255,255,255,0.03) 0%, transparent 50%),
                 radial-gradient(circle at 70% 30%, rgba(255,255,255,0.02) 0%, transparent 50%);
-            transition: background 1s cubic-bezier(0.4, 0, 0.2, 1);
+            transition: background 6s cubic-bezier(0.25, 0.1, 0.25, 1);
         }
         
         .container.light-theme .background-overlay {
@@ -174,7 +174,7 @@
                     rgba(255,255,255,0.01) 2px,
                     rgba(255,255,255,0.01) 4px
                 );
-            transition: background 1s cubic-bezier(0.4, 0, 0.2, 1);
+            transition: background 6s cubic-bezier(0.25, 0.1, 0.25, 1);
         }
         
         .container.light-theme .grain-effect {
@@ -243,13 +243,71 @@
             font-weight: 400;
             font-size: 16px;
             cursor: pointer;
-            transition: all 0.3s ease, border-color 1s cubic-bezier(0.4, 0, 0.2, 1), color 1s cubic-bezier(0.4, 0, 0.2, 1);
+            transition: all 0.3s ease, border-color 6s cubic-bezier(0.4, 0, 0.2, 1), color 6s cubic-bezier(0.4, 0, 0.2, 1);
             text-decoration: none;
             display: inline-flex;
             align-items: center;
             justify-content: center;
             min-width: 50px;
             text-align: center;
+            position: relative;
+        }
+        
+        .theme-toggle-container {
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        
+        .coffee-animation-text {
+            position: absolute;
+            left: calc(100% - 40px);
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 9px;
+            color: #E8E6E4;
+            font-family: 'Inter', sans-serif;
+            font-weight: 400;
+            white-space: nowrap;
+            opacity: 0;
+            pointer-events: none;
+            z-index: 25;
+            transition: opacity 0.2s ease, color 6s cubic-bezier(0.4, 0, 0.2, 1);
+            margin-top: -40px;
+            background: rgba(0, 0, 0, 0.8);
+            padding: 5px 8px;
+            border-radius: 12px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        
+        .coffee-animation-text.show {
+            opacity: 1;
+            animation: coffeeTextSimpleFade 3.5s ease-in-out forwards;
+        }
+        
+        .container.light-theme .coffee-animation-text {
+            color: #1a1a1a;
+            background: rgba(255, 255, 255, 0.95);
+            border: 1px solid rgba(0, 0, 0, 0.3);
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        }
+        
+        .container.light-theme .coffee-animation-text.show {
+            opacity: 1;
+            animation: coffeeTextSimpleFade 3.5s ease-in-out forwards;
+        }
+        
+        @keyframes coffeeTextSimpleFade {
+            0% { 
+                opacity: 1; 
+            }
+            90% { 
+                opacity: 1; 
+            }
+            100% { 
+                opacity: 0; 
+            }
         }
         
         .theme-toggle:hover {
@@ -272,24 +330,24 @@
         .coffee-cup {
             width: 20px;
             height: 20px;
-            transition: all 1s cubic-bezier(0.4, 0, 0.2, 1);
+            transition: all 6s cubic-bezier(0.25, 0.1, 0.25, 1);
         }
         
         .coffee-cup .cup-body {
             fill: white;
-            transition: fill 1s cubic-bezier(0.4, 0, 0.2, 1);
+            transition: fill 6s cubic-bezier(0.25, 0.1, 0.25, 1);
         }
         
         .coffee-cup .cup-handle {
             stroke: white;
             fill: none;
             stroke-width: 2;
-            transition: stroke 1s cubic-bezier(0.4, 0, 0.2, 1);
+            transition: stroke 6s cubic-bezier(0.25, 0.1, 0.25, 1);
         }
         
         .coffee-cup .coffee-liquid {
             fill: #8B4513;
-            transition: fill 1s cubic-bezier(0.4, 0, 0.2, 1);
+            transition: fill 6s cubic-bezier(0.25, 0.1, 0.25, 1);
         }
         
         .container.light-theme .coffee-cup .cup-body {
@@ -459,7 +517,7 @@
             font-weight: 300;
             z-index: 10;
             text-align: center;
-            transition: color 1s cubic-bezier(0.4, 0, 0.2, 1);
+            transition: color 6s cubic-bezier(0.25, 0.1, 0.25, 1);
         }
         
         .container.light-theme .copyright-footer {
@@ -886,7 +944,7 @@
                 font-size: clamp(1.5rem, 8vw, 2.5rem);
                 left: 0;
                 text-align: center;
-                margin-top: -10px;
+                margin-top: -40px;
             }
             
             .subtitle {
@@ -1115,14 +1173,17 @@
         
         <nav class="nav-top">
             <div class="nav-left">
-                <button class="theme-toggle" id="themeToggle" onclick="toggleTheme()">
-                    <svg class="coffee-cup" viewBox="0 0 24 24">
-                        <path class="cup-body" d="M4 7v10c0 2.21 1.79 4 4 4h8c2.21 0 4-1.79 4-4V7H4z"/>
-                        <path class="coffee-liquid" d="M5 8v9c0 1.66 1.34 3 3 3h8c1.66 0 3-1.34 3-3V8H5z"/>
-                        <path class="cup-handle" d="M20 10v4c0 1.1.9 2 2 2s2-.9 2-2v-4c0-1.1-.9-2-2-2s-2 .9-2 2z"/>
-                        <rect class="cup-body" x="4" y="5" width="16" height="2" rx="1"/>
-                    </svg>
-                </button>
+                <div class="theme-toggle-container">
+                    <button class="theme-toggle" id="themeToggle" onclick="toggleTheme()">
+                        <svg class="coffee-cup" viewBox="0 0 24 24">
+                            <path class="cup-body" d="M4 7v10c0 2.21 1.79 4 4 4h8c2.21 0 4-1.79 4-4V7H4z"/>
+                            <path class="coffee-liquid" d="M5 8v9c0 1.66 1.34 3 3 3h8c1.66 0 3-1.34 3-3V8H5z"/>
+                            <path class="cup-handle" d="M20 10v4c0 1.1.9 2 2 2s2-.9 2-2v-4c0-1.1-.9-2-2-2s-2 .9-2 2z"/>
+                            <rect class="cup-body" x="4" y="5" width="16" height="2" rx="1"/>
+                        </svg>
+                    </button>
+                    <div class="coffee-animation-text" id="coffeeText">Přelévám do jiného hrníčku…</div>
+                </div>
                 <button class="nav-btn active" onclick="showHome()">DOMOVSKÁ STRÁNKA</button>
                 <button class="nav-btn" onclick="showAbout()">O MNĚ</button>
                 <button class="nav-btn" onclick="showPortfolio()">PORTFOLIO</button>
@@ -1326,6 +1387,15 @@
         
         function toggleTheme() {
             const container = document.querySelector('.container');
+            const coffeeText = document.getElementById('coffeeText');
+            
+            // Show coffee animation text
+            coffeeText.classList.add('show');
+            
+            // Remove the animation class after animation completes
+            setTimeout(() => {
+                coffeeText.classList.remove('show');
+            }, 3500);
             
             isLightTheme = !isLightTheme;
             
@@ -1379,5 +1449,5 @@
             }
         });
     </script>
-<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9944680785cb579f',t:'MTc2MTQyMzU0MC4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'994489683637579f',t:'MTc2MTQyNDkwOC4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
 </html>
