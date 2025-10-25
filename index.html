@@ -149,10 +149,19 @@
             color: #333333;
             border-bottom-color: rgba(51,51,51,0.3);
         }
-        
 
+        @keyframes subtleGradient {
+            0%, 100% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+        }
         
         .background-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
             background: 
                 radial-gradient(circle at 30% 70%, rgba(255,255,255,0.03) 0%, transparent 50%),
                 radial-gradient(circle at 70% 30%, rgba(255,255,255,0.02) 0%, transparent 50%);
@@ -166,6 +175,13 @@
         }
         
         .grain-effect {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 3;
+            pointer-events: none;
             background: 
                 repeating-linear-gradient(
                     0deg,
@@ -188,20 +204,6 @@
                 );
         }
         
-        @keyframes subtleGradient {
-            0%, 100% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-        }
-        
-        .background-overlay {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: 1;
-        }
-        
         .decorative-elements {
             position: absolute;
             top: 0;
@@ -209,16 +211,6 @@
             width: 100%;
             height: 100%;
             z-index: 2;
-            pointer-events: none;
-        }
-        
-        .grain-effect {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: 3;
             pointer-events: none;
         }
         
@@ -805,14 +797,6 @@
             margin-right: auto;
         }
         
-        .portfolio-grid .project-card:nth-child(5) {
-            grid-column: 1;
-        }
-        
-        .portfolio-grid .project-card:nth-child(6) {
-            grid-column: 2;
-        }
-        
         .project-card {
             background: rgba(255,255,255,0.05);
             border: 1px solid rgba(255,255,255,0.1);
@@ -1005,7 +989,7 @@
                 font-size: clamp(1.3rem, 7vw, 2.2rem);
                 left: 0;
                 text-align: center;
-                margin-top: -10px;
+                margin-top: 5px;
             }
             
             .subtitle {
@@ -1120,7 +1104,7 @@
             }
             
             .floating-video {
-                bottom: 44px;
+                bottom: 34px;
                 right: 12px;
             }
             
@@ -1285,7 +1269,7 @@
             }
             
             .floating-video {
-                bottom: 36px;
+                bottom: 26px;
                 right: 8px;
             }
             
@@ -1320,9 +1304,7 @@
         </div>
         
         <div class="grain-effect"></div>
-        
 
-        
         <nav class="nav-top">
             <div class="nav-left">
                 <div class="theme-toggle-container">
@@ -1436,8 +1418,8 @@
                     <div class="project-card">
                         <div class="project-header">
                             <div class="company-logo-container">
-                                <div class="company-logo" style="background: #D6001C; color: white; border-color: #D6001C; font-size: 32px; font-weight: bold;">
-                                    ?
+                                <div class="company-logo" style="background: #D6001C; color: white; border-color: #D6001C;">
+                                    <span style="font-size: 24px; font-weight: bold;">?</span>
                                 </div>
                                 <div class="project-year">2026</div>
                             </div>
@@ -1643,5 +1625,5 @@
             }
         });
     </script>
-<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9945400ab6d9579f',t:'MTc2MTQzMjM4OC4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'994550949458579f',t:'MTc2MTQzMzA2NS4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
 </html>
