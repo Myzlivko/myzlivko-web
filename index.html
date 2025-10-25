@@ -595,49 +595,256 @@
         
         @media (max-width: 768px) {
             .nav-top {
-                top: 20px;
-                left: 20px;
-                right: 20px;
+                top: 15px;
+                left: 15px;
+                right: 15px;
                 flex-direction: column;
-                gap: 20px;
+                gap: 15px;
             }
             
             .nav-left {
                 flex-wrap: wrap;
                 justify-content: center;
+                gap: 10px;
+            }
+            
+            .nav-btn {
+                padding: 10px 18px;
+                font-size: 12px;
+                min-width: 80px;
+            }
+            
+            .contact-section {
+                align-items: center;
+            }
+            
+            .handwritten-note {
+                position: static;
+                font-size: 12px;
+                margin-bottom: 10px;
+                text-align: center;
+                width: auto;
+                transform: none;
+            }
+            
+            .main-content {
+                width: 95%;
+                padding: 0 10px;
+            }
+            
+            .name-container {
+                gap: 25px;
+            }
+            
+            .first-name, .last-name {
+                font-size: clamp(2.5rem, 12vw, 4rem);
+            }
+            
+            .nickname {
+                font-size: clamp(1.5rem, 8vw, 2.5rem);
+                left: 0;
+                text-align: center;
+                margin-top: -10px;
             }
             
             .subtitle {
                 position: static;
                 transform: none;
                 text-align: center;
-                margin-top: 30px;
+                margin-top: 25px;
                 max-width: none;
+                font-size: 12px;
+                line-height: 1.4;
+            }
+            
+            .content-overlay {
+                padding: 80px 20px 20px;
+            }
+            
+            .overlay-title {
+                font-size: 2rem;
+                margin-bottom: 20px;
             }
             
             .about-content {
                 grid-template-columns: 1fr;
+                gap: 25px;
                 text-align: center;
             }
             
+            .about-text {
+                font-size: 14px;
+                line-height: 1.6;
+            }
+            
+            .about-photo {
+                width: 150px;
+                height: 190px;
+                margin: 0 auto;
+            }
+            
+            .portfolio-grid {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+            
+            .project-card {
+                padding: 20px;
+                min-height: 120px;
+            }
+            
+            .project-header {
+                gap: 12px;
+                margin-bottom: 15px;
+            }
+            
+            .company-logo {
+                width: 40px;
+                height: 40px;
+                font-size: 10px;
+            }
+            
+            .project-info {
+                width: auto;
+                min-width: auto;
+            }
+            
+            .project-title {
+                font-size: 16px;
+            }
+            
+            .project-year {
+                font-size: 12px;
+            }
+            
+            .project-description {
+                font-size: 14px;
+            }
+            
+            .close-btn {
+                top: 20px;
+                right: 20px;
+                width: 40px;
+                height: 40px;
+                font-size: 18px;
+            }
+            
             .socials-section {
-                bottom: 20px;
-                left: 20px;
+                bottom: 15px;
+                left: 15px;
+            }
+            
+            .socials-toggle {
+                padding: 8px 16px;
+                font-size: 11px;
+                height: 36px;
+            }
+            
+            .social-link {
+                font-size: 12px;
+                padding: 6px 0;
             }
             
             .floating-video {
-                bottom: 35px;
-                right: 20px;
+                bottom: 15px;
+                right: 15px;
             }
             
             .video-preview {
-                width: 100px;
-                height: 65px;
+                width: 80px;
+                height: 50px;
             }
             
             .video-preview.expanded {
-                width: 280px;
-                height: 160px;
+                width: 200px;
+                height: 112px;
+            }
+            
+            .video-label {
+                font-size: 10px;
+                transform: translate(-50%, calc(-50% + 12px));
+            }
+            
+            .video-preview.expanded .video-label {
+                font-size: 11px;
+                transform: translate(-50%, calc(-50% + 15px));
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .nav-top {
+                top: 10px;
+                left: 10px;
+                right: 10px;
+                gap: 12px;
+            }
+            
+            .nav-btn {
+                padding: 8px 14px;
+                font-size: 11px;
+                min-width: 70px;
+            }
+            
+            .handwritten-note {
+                font-size: 11px;
+            }
+            
+            .first-name, .last-name {
+                font-size: clamp(2rem, 15vw, 3.5rem);
+            }
+            
+            .nickname {
+                font-size: clamp(1.2rem, 10vw, 2rem);
+            }
+            
+            .subtitle {
+                font-size: 11px;
+                margin-top: 20px;
+            }
+            
+            .content-overlay {
+                padding: 70px 15px 15px;
+            }
+            
+            .overlay-title {
+                font-size: 1.8rem;
+            }
+            
+            .about-text {
+                font-size: 13px;
+            }
+            
+            .about-photo {
+                width: 120px;
+                height: 150px;
+            }
+            
+            .project-card {
+                padding: 15px;
+            }
+            
+            .project-title {
+                font-size: 14px;
+            }
+            
+            .socials-section {
+                bottom: 10px;
+                left: 10px;
+            }
+            
+            .floating-video {
+                bottom: 10px;
+                right: 10px;
+            }
+            
+            .video-preview {
+                width: 70px;
+                height: 45px;
+            }
+            
+            .video-preview.expanded {
+                width: 180px;
+                height: 100px;
             }
         }
     </style>
@@ -891,5 +1098,5 @@
             }
         });
     </script>
-<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9943b69a0192579f',t:'MTc2MTQxNjI3My4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9944124b330b579f',t:'MTc2MTQyMDAyOC4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
 </html>
