@@ -128,8 +128,8 @@
         
         .handwritten-note {
             position: absolute;
-            top: 55px;
-            right: 150px;
+            top: 65px;
+            right: 50px;
             font-family: 'Inter', sans-serif;
             font-size: 14px;
             color: #E8E6E4;
@@ -861,14 +861,14 @@
         
         <nav class="nav-top">
             <div class="nav-left">
-                <button class="nav-btn active" onclick="showHome()">HOME</button>
-                <button class="nav-btn" onclick="showAbout()">ABOUT ME</button>
+                <button class="nav-btn active" onclick="showHome()">DOMOVSKÁ STRÁNKA</button>
+                <button class="nav-btn" onclick="showAbout()">O MNĚ</button>
                 <button class="nav-btn" onclick="showPortfolio()">PORTFOLIO</button>
             </div>
             <div class="contact-section">
-                <div class="handwritten-note">Máte projekt, který dává smysl?</div>
+                <div class="handwritten-note">Hledáte hlas pro svůj projekt?</div>
 
-                <a href="mailto:Myzlivko@gmail.com" class="nav-btn" onclick="return true;">CONTACT</a>
+                <a href="mailto:Myzlivko@gmail.com" class="nav-btn" onclick="return true;">NAPIŠTE MI</a>
             </div>
         </nav>
         
@@ -925,7 +925,7 @@
                 <div class="video-placeholder">
                     <div class="video-overlay-effect"></div>
                 </div>
-                <div class="video-label">CHECK THIS OUT</div>
+                <div class="video-label">NOVÉ VIDEO</div>
             </div>
         </div>
         
@@ -933,7 +933,7 @@
         <div class="content-overlay" id="aboutOverlay">
             <button class="close-btn" onclick="closeOverlay()">&times;</button>
             <div class="overlay-content">
-                <h2 class="overlay-title">ABOUT ME</h2>
+                <h2 class="overlay-title">O MNĚ</h2>
                 <div class="about-content">
                     <div class="about-text">
                         <p>Když zrovna nepracuji, nejčastěji trávím čas v posilovně, u vaření nebo na cestách. Věnuji se sbírání starých českých big boxů a dalších herních artefaktů, které vnímám jako součást našeho kulturního dědictví.</p>
@@ -1058,13 +1058,14 @@
         
         function showHome() {
             closeOverlay();
-            updateActiveNav('HOME');
+            updateActiveNav('DOMOVSKÁ STRÁNKA');
         }
         
         function showAbout() {
             closeOverlay();
             document.getElementById('aboutOverlay').classList.add('active');
-            updateActiveNav('ABOUT ME');
+            document.querySelector('.main-content').classList.add('blurred');
+            updateActiveNav('O MNĚ');
         }
         
         function showPortfolio() {
@@ -1078,7 +1079,7 @@
             document.getElementById('aboutOverlay').classList.remove('active');
             document.getElementById('portfolioOverlay').classList.remove('active');
             document.querySelector('.main-content').classList.remove('blurred');
-            updateActiveNav('HOME');
+            updateActiveNav('DOMOVSKÁ STRÁNKA');
         }
         
         function updateActiveNav(activeSection) {
@@ -1098,5 +1099,5 @@
             }
         });
     </script>
-<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9944124b330b579f',t:'MTc2MTQyMDAyOC4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9944217df7c3579f',t:'MTc2MTQyMDY1MS4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
 </html>
