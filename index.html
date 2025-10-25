@@ -938,200 +938,33 @@
         
         @media (max-width: 768px) {
             .nav-top {
-                top: 15px;
-                left: 15px;
-                right: 15px;
+                top: 10px;
+                left: 10px;
+                right: 10px;
                 flex-direction: column;
-                gap: 15px;
+                gap: 12px;
+                align-items: center;
             }
             
             .theme-toggle {
-                padding: 10px 14px;
-                font-size: 14px;
-                min-width: 44px;
+                padding: 8px 12px;
+                font-size: 13px;
+                min-width: 40px;
+            }
+            
+            .coffee-animation-text {
+                font-size: 8px;
+                padding: 4px 6px;
+                margin-top: -35px;
+                left: calc(100% - 30px);
+                display: block;
             }
             
             .nav-left {
                 flex-wrap: wrap;
                 justify-content: center;
-                gap: 10px;
-            }
-            
-            .nav-btn {
-                padding: 10px 18px;
-                font-size: 12px;
-                min-width: 80px;
-            }
-            
-            .contact-section {
-                align-items: center;
-            }
-            
-            .handwritten-note {
-                position: static;
-                font-size: 12px;
-                margin-bottom: 10px;
-                text-align: center;
-                width: auto;
-                transform: none;
-            }
-            
-            .main-content {
-                width: 95%;
-                padding: 0 10px;
-            }
-            
-            .name-container {
-                gap: 25px;
-            }
-            
-            .first-name, .last-name {
-                font-size: clamp(2.5rem, 12vw, 4rem);
-            }
-            
-            .nickname {
-                font-size: clamp(1.5rem, 8vw, 2.5rem);
-                left: 0;
-                text-align: center;
-                margin-top: -42px;
-            }
-            
-            .subtitle {
-                position: static;
-                transform: none;
-                text-align: center;
-                margin-top: 25px;
-                max-width: none;
-                font-size: 12px;
-                line-height: 1.4;
-            }
-            
-            .content-overlay {
-                padding: 80px 20px 20px;
-            }
-            
-            .overlay-title {
-                font-size: 2rem;
-                margin-bottom: 20px;
-            }
-            
-            .about-content {
-                grid-template-columns: 1fr;
-                gap: 25px;
-                text-align: center;
-            }
-            
-            .about-text {
-                font-size: 14px;
-                line-height: 1.6;
-            }
-            
-            .about-photo {
-                width: 150px;
-                height: 190px;
-                margin: 0 auto;
-            }
-            
-            .portfolio-grid {
-                gap: 20px;
-                max-width: 95%;
-            }
-            
-            .project-card {
-                padding: 20px;
-                min-height: 70px;
-                flex-direction: column;
-                align-items: flex-start;
-                gap: 15px;
-            }
-            
-            .company-logo {
-                width: 40px;
-                height: 40px;
-                font-size: 10px;
-            }
-            
-            .project-title {
-                font-size: 16px;
-                min-width: auto;
-            }
-            
-            .project-position {
-                font-size: 14px;
-                min-width: auto;
-            }
-            
-            .project-year {
-                font-size: 12px;
-                min-width: auto;
-                padding: 4px 8px;
-            }
-            
-            .project-description {
-                font-size: 13px;
-            }
-            
-            .close-btn {
-                top: 20px;
-                right: 20px;
-                width: 40px;
-                height: 40px;
-                font-size: 18px;
-            }
-            
-            .copyright-footer {
-                bottom: 25px;
-                font-size: 11px;
-            }
-            
-            .socials-section {
-                bottom: 15px;
-                left: 15px;
-            }
-            
-            .socials-toggle {
-                padding: 8px 16px;
-                font-size: 11px;
-                height: 36px;
-            }
-            
-            .social-link {
-                font-size: 12px;
-                padding: 6px 0;
-            }
-            
-            .floating-video {
-                bottom: 15px;
-                right: 15px;
-            }
-            
-            .video-preview {
-                width: 80px;
-                height: 50px;
-            }
-            
-            .video-preview.expanded {
-                width: 200px;
-                height: 112px;
-            }
-            
-            .video-label {
-                font-size: 10px;
-                transform: translate(-50%, calc(-50% + 12px));
-            }
-            
-            .video-preview.expanded .video-label {
-                font-size: 11px;
-                transform: translate(-50%, calc(-50% + 15px));
-            }
-        }
-        
-        @media (max-width: 480px) {
-            .nav-top {
-                top: 10px;
-                left: 10px;
-                right: 10px;
-                gap: 12px;
+                gap: 8px;
+                order: 2;
             }
             
             .nav-btn {
@@ -1140,51 +973,129 @@
                 min-width: 70px;
             }
             
+            .contact-section {
+                align-items: center;
+                order: 1;
+            }
+            
             .handwritten-note {
+                position: static;
                 font-size: 11px;
+                margin-bottom: 8px;
+                text-align: center;
+                width: auto;
+                transform: none;
+            }
+            
+            .main-content {
+                width: 95%;
+                padding: 0 10px;
+                top: 55%;
+            }
+            
+            .name-container {
+                gap: 15px;
             }
             
             .first-name, .last-name {
-                font-size: clamp(2rem, 15vw, 3.5rem);
+                font-size: clamp(2.2rem, 11vw, 3.5rem);
             }
             
             .nickname {
-                font-size: clamp(1.2rem, 10vw, 2rem);
+                font-size: clamp(1.3rem, 7vw, 2.2rem);
+                left: 0;
+                text-align: center;
+                margin-top: -10px;
             }
             
             .subtitle {
-                font-size: 11px;
+                position: static;
+                transform: none;
+                text-align: center;
                 margin-top: 20px;
+                max-width: none;
+                font-size: 11px;
+                line-height: 1.3;
             }
             
             .content-overlay {
-                padding: 70px 15px 15px;
+                padding: 60px 15px 15px;
             }
             
             .overlay-title {
                 font-size: 1.8rem;
+                margin-bottom: 15px;
+            }
+            
+            .about-content {
+                grid-template-columns: 1fr;
+                gap: 20px;
+                text-align: center;
             }
             
             .about-text {
                 font-size: 13px;
+                line-height: 1.5;
             }
             
             .about-photo {
-                width: 120px;
-                height: 150px;
+                width: 130px;
+                height: 165px;
+                margin: 0 auto;
+            }
+            
+            .portfolio-grid {
+                grid-template-columns: 1fr;
+                gap: 15px;
+                max-width: 100%;
+                margin-top: 20px;
             }
             
             .project-card {
                 padding: 15px;
+                min-height: auto;
+            }
+            
+            .project-header {
                 gap: 12px;
+                margin-bottom: 15px;
+            }
+            
+            .company-logo {
+                width: 35px;
+                height: 35px;
+                font-size: 18px;
             }
             
             .project-title {
                 font-size: 14px;
+                white-space: normal;
+                overflow: visible;
+                text-overflow: unset;
             }
             
             .project-position {
-                font-size: 13px;
+                font-size: 12px;
+                white-space: normal;
+                overflow: visible;
+                text-overflow: unset;
+            }
+            
+            .project-year {
+                font-size: 10px;
+            }
+            
+            .project-description {
+                font-size: 12px;
+                line-height: 1.3;
+            }
+            
+            .close-btn {
+                top: 15px;
+                right: 15px;
+                width: 35px;
+                height: 35px;
+                font-size: 16px;
             }
             
             .copyright-footer {
@@ -1193,13 +1104,24 @@
             }
             
             .socials-section {
-                bottom: 10px;
-                left: 10px;
+                bottom: 12px;
+                left: 12px;
+            }
+            
+            .socials-toggle {
+                padding: 6px 12px;
+                font-size: 10px;
+                height: 32px;
+            }
+            
+            .social-link {
+                font-size: 11px;
+                padding: 5px 0;
             }
             
             .floating-video {
-                bottom: 10px;
-                right: 10px;
+                bottom: 44px;
+                right: 12px;
             }
             
             .video-preview {
@@ -1210,6 +1132,181 @@
             .video-preview.expanded {
                 width: 180px;
                 height: 100px;
+            }
+            
+            .video-label {
+                font-size: 9px;
+                transform: translate(-50%, calc(-50% + 10px));
+            }
+            
+            .video-preview.expanded .video-label {
+                font-size: 10px;
+                transform: translate(-50%, calc(-50% + 12px));
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .nav-top {
+                top: 8px;
+                left: 8px;
+                right: 8px;
+                gap: 10px;
+            }
+            
+            .theme-toggle {
+                padding: 6px 10px;
+                font-size: 12px;
+                min-width: 36px;
+            }
+            
+            .coffee-animation-text {
+                font-size: 7px;
+                padding: 3px 5px;
+                margin-top: -30px;
+                left: calc(100% - 25px);
+                display: block;
+            }
+            
+            .nav-btn {
+                padding: 6px 12px;
+                font-size: 10px;
+                min-width: 65px;
+            }
+            
+            .handwritten-note {
+                font-size: 10px;
+                margin-bottom: 6px;
+            }
+            
+            .main-content {
+                top: 58%;
+            }
+            
+            .first-name, .last-name {
+                font-size: clamp(1.8rem, 13vw, 3rem);
+            }
+            
+            .nickname {
+                font-size: clamp(1.1rem, 8vw, 1.8rem);
+                margin-top: -20px;
+            }
+            
+            .subtitle {
+                font-size: 10px;
+                margin-top: 15px;
+                line-height: 1.2;
+            }
+            
+            .content-overlay {
+                padding: 50px 12px 12px;
+            }
+            
+            .overlay-title {
+                font-size: 1.5rem;
+                margin-bottom: 12px;
+            }
+            
+            .about-text {
+                font-size: 12px;
+                line-height: 1.4;
+            }
+            
+            .about-photo {
+                width: 110px;
+                height: 140px;
+            }
+            
+            .portfolio-grid {
+                gap: 12px;
+                margin-top: 15px;
+            }
+            
+            .project-card {
+                padding: 12px;
+            }
+            
+            .project-header {
+                gap: 10px;
+                margin-bottom: 12px;
+            }
+            
+            .company-logo {
+                width: 30px;
+                height: 30px;
+                font-size: 16px;
+            }
+            
+            .project-title {
+                font-size: 13px;
+                line-height: 1.2;
+            }
+            
+            .project-position {
+                font-size: 11px;
+                line-height: 1.2;
+            }
+            
+            .project-year {
+                font-size: 9px;
+            }
+            
+            .project-description {
+                font-size: 11px;
+                line-height: 1.2;
+            }
+            
+            .close-btn {
+                top: 12px;
+                right: 12px;
+                width: 30px;
+                height: 30px;
+                font-size: 14px;
+            }
+            
+            .copyright-footer {
+                bottom: 15px;
+                font-size: 9px;
+            }
+            
+            .socials-section {
+                bottom: 8px;
+                left: 8px;
+            }
+            
+            .socials-toggle {
+                padding: 5px 10px;
+                font-size: 9px;
+                height: 28px;
+            }
+            
+            .social-link {
+                font-size: 10px;
+                padding: 4px 0;
+            }
+            
+            .floating-video {
+                bottom: 36px;
+                right: 8px;
+            }
+            
+            .video-preview {
+                width: 60px;
+                height: 38px;
+            }
+            
+            .video-preview.expanded {
+                width: 160px;
+                height: 90px;
+            }
+            
+            .video-label {
+                font-size: 8px;
+                transform: translate(-50%, calc(-50% + 8px));
+            }
+            
+            .video-preview.expanded .video-label {
+                font-size: 9px;
+                transform: translate(-50%, calc(-50% + 10px));
             }
         }
     </style>
@@ -1546,5 +1643,5 @@
             }
         });
     </script>
-<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'994510634053579f',t:'MTc2MTQzMDQzNi4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9945400ab6d9579f',t:'MTc2MTQzMjM4OC4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
 </html>
