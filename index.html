@@ -798,8 +798,11 @@
         .portfolio-grid {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
-            gap: 30px;
+            gap: 40px;
             margin-top: 30px;
+            max-width: 1000px;
+            margin-left: auto;
+            margin-right: auto;
         }
         
         .portfolio-grid .project-card:nth-child(5) {
@@ -837,20 +840,8 @@
         }
         
         .project-info {
-            width: 400px;
-            min-width: 400px;
+            flex: 1;
             padding-left: 0px;
-        }
-        
-        .project-year {
-            font-size: 14px;
-            color: rgba(255,255,255,0.6);
-            font-weight: 300;
-            margin-top: 8px;
-            letter-spacing: 0.5px;
-            text-align: left;
-            width: 100%;
-            padding-left: 0;
         }
         
         .company-logo {
@@ -867,20 +858,62 @@
             text-align: center;
             line-height: 1.2;
             flex-shrink: 0;
+            transition: all 0.3s ease;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+        
+        .company-logo:hover {
+            box-shadow: 0 4px 16px rgba(255,255,255,0.1);
+            transform: translateY(-2px);
+        }
+        
+        .company-logo-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 6px;
         }
         
         .project-title {
             font-size: 20px;
             font-weight: 500;
-            margin: 0;
+            margin: 0 0 2px 0;
             line-height: 1.3;
-            word-wrap: break-word;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+        
+        .project-position {
+            font-size: 16px;
+            color: rgba(255,255,255,0.9);
+            font-weight: 400;
+            margin: 0 0 12px 0;
+            line-height: 1.3;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+        
+        .project-year {
+            font-size: 11px;
+            color: rgba(255,255,255,0.5);
+            font-weight: 300;
+            margin-top: 6px;
+            letter-spacing: 0.5px;
+            text-align: center;
+            width: 100%;
+            padding-left: 0;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
         }
         
         .project-description {
-            color: rgba(255,255,255,0.8);
-            line-height: 1.6;
-            padding-left: 0px;
+            color: rgba(255,255,255,0.7);
+            line-height: 1.4;
+            font-size: 14px;
+            margin: 0;
         }
         
         .close-btn {
@@ -1000,18 +1033,16 @@
             }
             
             .portfolio-grid {
-                grid-template-columns: 1fr;
                 gap: 20px;
+                max-width: 95%;
             }
             
             .project-card {
                 padding: 20px;
-                min-height: 120px;
-            }
-            
-            .project-header {
-                gap: 12px;
-                margin-bottom: 15px;
+                min-height: 70px;
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 15px;
             }
             
             .company-logo {
@@ -1020,21 +1051,24 @@
                 font-size: 10px;
             }
             
-            .project-info {
-                width: auto;
+            .project-title {
+                font-size: 16px;
                 min-width: auto;
             }
             
-            .project-title {
-                font-size: 16px;
+            .project-position {
+                font-size: 14px;
+                min-width: auto;
             }
             
             .project-year {
                 font-size: 12px;
+                min-width: auto;
+                padding: 4px 8px;
             }
             
             .project-description {
-                font-size: 14px;
+                font-size: 13px;
             }
             
             .close-btn {
@@ -1142,10 +1176,15 @@
             
             .project-card {
                 padding: 15px;
+                gap: 12px;
             }
             
             .project-title {
                 font-size: 14px;
+            }
+            
+            .project-position {
+                font-size: 13px;
             }
             
             .copyright-footer {
@@ -1299,73 +1338,91 @@
                 <div class="portfolio-grid">
                     <div class="project-card">
                         <div class="project-header">
-                            <div class="company-logo">?</div>
-                            <div class="project-info">
-                                <h3 class="project-title">???</h3>
+                            <div class="company-logo-container">
+                                <div class="company-logo">?</div>
                                 <div class="project-year">2026</div>
                             </div>
+                            <div class="project-info">
+                                <h3 class="project-title">???</h3>
+                                <div class="project-position">Coming soon...</div>
+                                <p class="project-description">Nové příležitosti na obzoru</p>
+                            </div>
                         </div>
-                        <p class="project-description">Coming soon...</p>
                     </div>
                     <div class="project-card">
                         <div class="project-header">
-                            <div class="company-logo">
-                                <img src="https://raw.githubusercontent.com/Myzlivko/myzlivko-web/refs/heads/main/cdn/Fostra.png" alt="Fostra" style="width: 100%; height: 100%; object-fit: contain;" onerror="this.style.display='none'; this.parentElement.innerHTML='FOSTRA';">
+                            <div class="company-logo-container">
+                                <div class="company-logo">
+                                    <img src="https://raw.githubusercontent.com/Myzlivko/myzlivko-web/refs/heads/main/cdn/Fostra.png" alt="Fostra" style="width: 100%; height: 100%; object-fit: contain;" onerror="this.style.display='none'; this.parentElement.innerHTML='FOSTRA';">
+                                </div>
+                                <div class="project-year">2024-2026</div>
                             </div>
                             <div class="project-info">
                                 <h3 class="project-title">Gymnázium FOSTRA International s.r.o.</h3>
-                                <div class="project-year">2024-2026</div>
+                                <div class="project-position">Projektový specialista</div>
+                                <p class="project-description">Koordinace projektů a digitalizace procesů napříč školou. Vedení více než 60 pedagogů a 10členného týmu během přijímacího řízení, tvorba SharePoint struktury a automatizovaných Excel nástrojů. Vyjednávání s externími partnery, správa dokumentace a organizace školních akcí a projektů.</p>
                             </div>
                         </div>
-                        <p class="project-description">Projektový specialista</p>
                     </div>
                     <div class="project-card">
                         <div class="project-header">
-                            <div class="company-logo">
-                                <img src="https://github.com/Myzlivko/myzlivko-web/blob/main/cdn/MediaRealms.png?raw=true" alt="MediaRealms" style="width: 100%; height: 100%; object-fit: contain;" onerror="this.style.display='none'; this.parentElement.innerHTML='MEDIA';">
+                            <div class="company-logo-container">
+                                <div class="company-logo">
+                                    <img src="https://github.com/Myzlivko/myzlivko-web/blob/main/cdn/MediaRealms.png?raw=true" alt="MediaRealms" style="width: 100%; height: 100%; object-fit: contain;" onerror="this.style.display='none'; this.parentElement.innerHTML='MEDIA';">
+                                </div>
+                                <div class="project-year">2023-2024</div>
                             </div>
                             <div class="project-info">
                                 <h3 class="project-title">MediaRealms s.r.o.</h3>
-                                <div class="project-year">2023-2024</div>
+                                <div class="project-position">Moderátor, herní redaktor, video editor</div>
+                                <p class="project-description">Tvorba reportáží, recenzí a rozhovorů s vývojáři, psaní scénářů a moderování pořadů SHOWTIME a 90 VTEŘIN. Komplexní práce s obrazem, zvukem a střihem, řízení tvorby obsahu od přípravy po publikaci.</p>
                             </div>
                         </div>
-                        <p class="project-description">Moderátor, herní redaktor, video editor</p>
                     </div>
                     <div class="project-card">
                         <div class="project-header">
-                            <div class="company-logo">
-                                <img src="https://raw.githubusercontent.com/Myzlivko/myzlivko-web/refs/heads/main/cdn/Twitch.png" alt="Twitch" style="width: 100%; height: 100%; object-fit: contain;" onerror="this.style.display='none'; this.parentElement.innerHTML='TWITCH';">
+                            <div class="company-logo-container">
+                                <div class="company-logo">
+                                    <img src="https://raw.githubusercontent.com/Myzlivko/myzlivko-web/refs/heads/main/cdn/Twitch.png" alt="Twitch" style="width: 100%; height: 100%; object-fit: contain;" onerror="this.style.display='none'; this.parentElement.innerHTML='TWITCH';">
+                                </div>
+                                <div class="project-year">2021-2024</div>
                             </div>
                             <div class="project-info">
                                 <h3 class="project-title">Twitch</h3>
-                                <div class="project-year">2021-2024</div>
+                                <div class="project-position">Variety streamer</div>
+                                <p class="project-description">Bude doplněno...</p>
                             </div>
                         </div>
-                        <p class="project-description">Variety streamer</p>
                     </div>
                     <div class="project-card">
                         <div class="project-header">
-                            <div class="company-logo">
-                                <img src="https://raw.githubusercontent.com/Myzlivko/myzlivko-web/refs/heads/main/cdn/O2%20TV%20Sport.png" alt="O2 TV Sport" style="width: 100%; height: 100%; object-fit: contain;" onerror="this.style.display='none'; this.parentElement.innerHTML='O2 TV';">
+                            <div class="company-logo-container">
+                                <div class="company-logo">
+                                    <img src="https://raw.githubusercontent.com/Myzlivko/myzlivko-web/refs/heads/main/cdn/O2%20TV%20Sport.png" alt="O2 TV Sport" style="width: 100%; height: 100%; object-fit: contain;" onerror="this.style.display='none'; this.parentElement.innerHTML='O2 TV';">
+                                </div>
+                                <div class="project-year">2022</div>
                             </div>
                             <div class="project-info">
                                 <h3 class="project-title">O2 TV Sport s.r.o.</h3>
-                                <div class="project-year">2022</div>
+                                <div class="project-position">Televizní střihač</div>
+                                <p class="project-description">Bude doplněno...</p>
                             </div>
                         </div>
-                        <p class="project-description">Televizní střihač</p>
                     </div>
                     <div class="project-card">
                         <div class="project-header">
-                            <div class="company-logo">
-                                <img src="https://raw.githubusercontent.com/Myzlivko/myzlivko-web/refs/heads/main/cdn/Alza.png" alt="Alza" style="width: 100%; height: 100%; object-fit: contain;" onerror="this.style.display='none'; this.parentElement.innerHTML='ALZA';">
+                            <div class="company-logo-container">
+                                <div class="company-logo">
+                                    <img src="https://raw.githubusercontent.com/Myzlivko/myzlivko-web/refs/heads/main/cdn/Alza.png" alt="Alza" style="width: 100%; height: 100%; object-fit: contain;" onerror="this.style.display='none'; this.parentElement.innerHTML='ALZA';">
+                                </div>
+                                <div class="project-year">2018-2020</div>
                             </div>
                             <div class="project-info">
                                 <h3 class="project-title">Alza a.s.</h3>
-                                <div class="project-year">2018-2020</div>
+                                <div class="project-position">Reklamační technik</div>
+                                <p class="project-description">Bude doplněno...</p>
                             </div>
                         </div>
-                        <p class="project-description">Reklamační technik</p>
                     </div>
                 </div>
             </div>
@@ -1487,5 +1544,5 @@
             }
         });
     </script>
-<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9944d2bde6ac579f',t:'MTc2MTQyNzkxMS4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9944fbcf515d579f',t:'MTc2MTQyOTU5My4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
 </html>
