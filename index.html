@@ -844,6 +844,10 @@
             flex-shrink: 0;
             transition: all 0.3s ease;
             box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            overflow: hidden;
+            -webkit-backface-visibility: hidden;
+            backface-visibility: hidden;
+            transform: translateZ(0);
         }
         
         .company-logo:hover {
@@ -978,7 +982,7 @@
             }
             
             .name-container {
-                gap: 15px;
+                gap: 3px;
             }
             
             .first-name, .last-name {
@@ -1049,6 +1053,7 @@
                 width: 35px;
                 height: 35px;
                 font-size: 18px;
+                overflow: hidden;
             }
             
             .project-title {
@@ -1109,13 +1114,13 @@
             }
             
             .video-preview {
-                width: 70px;
-                height: 45px;
+                width: 35px;
+                height: 23px;
             }
             
             .video-preview.expanded {
-                width: 180px;
-                height: 100px;
+                width: 90px;
+                height: 50px;
             }
             
             .video-label {
@@ -1218,6 +1223,7 @@
                 width: 30px;
                 height: 30px;
                 font-size: 16px;
+                overflow: hidden;
             }
             
             .project-title {
@@ -1274,13 +1280,13 @@
             }
             
             .video-preview {
-                width: 60px;
-                height: 38px;
+                width: 30px;
+                height: 19px;
             }
             
             .video-preview.expanded {
-                width: 160px;
-                height: 90px;
+                width: 80px;
+                height: 45px;
             }
             
             .video-label {
@@ -1625,5 +1631,5 @@
             }
         });
     </script>
-<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9945586b02d6579f',t:'MTc2MTQzMzM4Ni4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'99455dd71630579f',t:'MTc2MTQzMzYwOS4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
 </html>
