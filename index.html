@@ -448,6 +448,24 @@
             max-width: 300px;
         }
         
+        .copyright-footer {
+            position: absolute;
+            bottom: 50px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 13px;
+            color: rgba(255,255,255,0.6);
+            font-family: 'Inter', sans-serif;
+            font-weight: 300;
+            z-index: 10;
+            text-align: center;
+            transition: color 1s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
+        .container.light-theme .copyright-footer {
+            color: rgba(0,0,0,0.6);
+        }
+        
         .socials-section {
             position: absolute;
             bottom: 40px;
@@ -953,6 +971,11 @@
                 font-size: 18px;
             }
             
+            .copyright-footer {
+                bottom: 25px;
+                font-size: 11px;
+            }
+            
             .socials-section {
                 bottom: 15px;
                 left: 15px;
@@ -1049,6 +1072,11 @@
             
             .project-title {
                 font-size: 14px;
+            }
+            
+            .copyright-footer {
+                bottom: 20px;
+                font-size: 10px;
             }
             
             .socials-section {
@@ -1151,6 +1179,11 @@
                     Discord
                 </a>
             </div>
+        </div>
+        
+        <!-- Copyright Footer -->
+        <div class="copyright-footer">
+            © 2025 Jakub Myslivec
         </div>
         
         <!-- Floating Video Preview -->
@@ -1346,5 +1379,5 @@
             }
         });
     </script>
-<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'99446436e39e579f',t:'MTc2MTQyMzM4NC4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9944680785cb579f',t:'MTc2MTQyMzU0MC4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
 </html>
