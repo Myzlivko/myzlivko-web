@@ -711,35 +711,34 @@
             opacity: 0;
         }
         
-        .video-play-button {
+        .video-close-btn {
             position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, calc(-50% - 15px));
-            width: 50px;
-            height: 50px;
-            background: rgba(255,255,255,0.9);
+            top: 10px;
+            right: 10px;
+            background: rgba(0,0,0,0.7);
+            border: 2px solid rgba(255,255,255,0.6);
             border-radius: 50%;
-            display: flex;
+            width: 30px;
+            height: 30px;
+            color: white;
+            font-size: 16px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            z-index: 20;
+            display: none;
             align-items: center;
             justify-content: center;
-            z-index: 4;
-            pointer-events: none;
-            transition: all 0.3s ease;
-            box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+            font-family: 'Inter', sans-serif;
         }
         
-        .video-preview:hover .video-play-button {
-            background: rgba(255,255,255,1);
-            transform: translate(-50%, calc(-50% - 15px)) scale(1.1);
-            box-shadow: 0 6px 30px rgba(0,0,0,0.4);
+        .video-close-btn:hover {
+            border-color: white;
+            background: rgba(0,0,0,0.9);
+            transform: scale(1.05);
         }
         
-        .video-play-button svg {
-            width: 20px;
-            height: 20px;
-            fill: #333;
-            margin-left: 2px;
+        .video-preview.expanded .video-close-btn {
+            display: flex;
         }
         
         .video-overlay-effect {
@@ -1838,15 +1837,11 @@
             <div class="video-preview" id="videoPreview">
                 <div class="video-placeholder" id="videoPlaceholder">
                     <div class="video-overlay-effect"></div>
-                    <div class="video-play-button">
-                        <svg viewBox="0 0 24 24">
-                            <path d="M8 5v14l11-7z"/>
-                        </svg>
-                    </div>
                 </div>
                 <div class="video-player" id="videoPlayer" style="display: none;">
                     <iframe src="" id="videoIframe" allowfullscreen></iframe>
                 </div>
+                <div class="video-close-btn" id="videoCloseBtn" onclick="resetVideo()">&times;</div>
                 <div class="video-label">NOVÉ VIDEO</div>
             </div>
         </div>
@@ -2179,7 +2174,7 @@
                                     
                                     <div class="production-item">
                                         <div class="production-video">
-                                            <iframe src="https://www.youtube.com/embed/ABmSUR75Jfk" allowfullscreen></iframe>
+                                            <iframe src="https://www.youtube.com/embed/ABmSUR75Jfk?enablejsapi=1" allowfullscreen></iframe>
                                         </div>
                                         <div class="production-info">
                                             <h4 class="production-title">TECHFEED Video 3</h4>
@@ -2484,17 +2479,22 @@
         
         // Video functions
         let videoHoverTimeout;
-        let isVideoPlaying = false;
+        let isVideoExpanded = false;
         let videoPreloaded = false;
-        let videoStarted = false;
         
-        function preloadVideo() {
-            if (!videoPreloaded) {
-                const videoIframe = document.getElementById('videoIframe');
-                // Preload the iframe in background
-                videoIframe.src = 'https://www.youtube.com/embed/PyEV_ulp2q4?enablejsapi=1&mute=1';
-                videoPreloaded = true;
-            }
+        function resetVideo() {
+            const videoPreview = document.getElementById('videoPreview');
+            const videoPlaceholder = document.getElementById('videoPlaceholder');
+            const videoPlayer = document.getElementById('videoPlayer');
+            const videoIframe = document.getElementById('videoIframe');
+            
+            // Reset to initial state
+            videoPreview.classList.remove('expanded');
+            videoPlaceholder.style.display = 'block';
+            videoPlayer.style.display = 'none';
+            videoIframe.src = '';
+            isVideoExpanded = false;
+            videoPreloaded = false;
         }
         
         function initVideoHover() {
@@ -2503,31 +2503,25 @@
             const videoPlayer = document.getElementById('videoPlayer');
             const videoIframe = document.getElementById('videoIframe');
             
-            // Preload video on first hover
             videoPreview.addEventListener('mouseenter', () => {
-                preloadVideo();
-                clearTimeout(videoHoverTimeout);
-                videoHoverTimeout = setTimeout(() => {
-                    if (!isVideoPlaying) {
-                        videoPlaceholder.style.display = 'none';
-                        videoPlayer.style.display = 'block';
-                        // Start playing immediately since it's preloaded
-                        videoIframe.src = 'https://www.youtube.com/embed/PyEV_ulp2q4?autoplay=1&mute=1&enablejsapi=1';
-                        isVideoPlaying = true;
-                        videoStarted = true;
-                    }
-                }, 100);
+                if (!isVideoExpanded) {
+                    clearTimeout(videoHoverTimeout);
+                    videoHoverTimeout = setTimeout(() => {
+                        if (!isVideoExpanded) {
+                            // Expand video and start playing with sound
+                            videoPreview.classList.add('expanded');
+                            videoPlaceholder.style.display = 'none';
+                            videoPlayer.style.display = 'block';
+                            videoIframe.src = 'https://www.youtube.com/embed/PyEV_ulp2q4?autoplay=1&enablejsapi=1';
+                            isVideoExpanded = true;
+                        }
+                    }, 300);
+                }
             });
             
             videoPreview.addEventListener('mouseleave', () => {
-                clearTimeout(videoHoverTimeout);
-                // If video was started, keep it playing but minimize
-                if (videoStarted && isVideoPlaying) {
-                    // Don't stop the video, just hide the player and show placeholder
-                    videoPlaceholder.style.display = 'block';
-                    videoPlayer.style.display = 'none';
-                    // Keep the video playing in background
-                    isVideoPlaying = true;
+                if (!isVideoExpanded) {
+                    clearTimeout(videoHoverTimeout);
                 }
             });
         }
@@ -2621,5 +2615,5 @@
             initVideoHover();
         });
     </script>
-<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'994aafb2912c579f',t:'MTc2MTQ4OTM5MC4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'994ab6a023f7579f',t:'MTc2MTQ4OTY3NC4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
 </html>
