@@ -954,11 +954,17 @@
             color: rgba(255,255,255,0.95);
         }
         
-        .dabing-content {
+        .dabing-grid {
             display: grid;
-            grid-template-columns: 1fr 400px;
+            grid-template-columns: 1fr 1fr;
             gap: 40px;
             align-items: start;
+        }
+        
+        .dabing-content {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
         }
         
         .audio-tracks {
@@ -1361,7 +1367,7 @@
                 transform: translate(-50%, calc(-50% + 12px));
             }
             
-            .dabing-content {
+            .dabing-grid {
                 grid-template-columns: 1fr;
                 gap: 25px;
             }
@@ -1609,7 +1615,7 @@
                 <button class="nav-btn active" onclick="showHome()">DOMOVSKÁ STRÁNKA</button>
                 <button class="nav-btn" onclick="showAbout()">O MNĚ</button>
                 <button class="nav-btn" onclick="showPortfolio()">MÁ KARIÉRA</button>
-                <button class="nav-btn" onclick="showProjects()">PROJEKTY</button>
+                <button class="nav-btn" onclick="showProjects()">PROJEKTY A REFERENCE</button>
             </div>
             <div class="contact-section">
                 <div class="handwritten-note">Hledáte hlas pro svůj projekt?</div>
@@ -1808,68 +1814,79 @@
         <div class="content-overlay" id="projectsOverlay">
             <button class="close-btn" onclick="closeOverlay()">&times;</button>
             <div class="overlay-content">
-                <h2 class="overlay-title">PROJEKTY</h2>
+                <h2 class="overlay-title">PROJEKTY A REFERENCE</h2>
                 
                 <!-- Dabing & Voice-overy Section -->
                 <div class="projects-section">
                     <h3 class="section-title">DABING & VOICE-OVERY</h3>
-                    <div class="dabing-project">
-                        <h4 class="project-name">1428: Shadows over Silesia</h4>
-                        <div class="dabing-content">
-                            <div class="audio-tracks">
-                                <div class="audio-player">
-                                    <div class="audio-info">
-                                        <span class="audio-title">Ukázka dabingu – Ďábel (hlavní antagonista)</span>
-                                        <span class="audio-duration">0:32</span>
-                                    </div>
-                                    <div class="audio-controls">
-                                        <button class="play-btn" onclick="toggleAudio('audio1')">
-                                            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
-                                                <path d="M8 5v14l11-7z"/>
-                                            </svg>
-                                        </button>
-                                        <div class="audio-progress">
-                                            <div class="progress-bar"></div>
+                    <div class="dabing-grid">
+                        <div class="dabing-project">
+                            <h4 class="project-name">1428: Shadows over Silesia</h4>
+                            <div class="dabing-content">
+                                <div class="audio-tracks">
+                                    <div class="audio-player">
+                                        <div class="audio-info">
+                                            <span class="audio-title">Ukázka dabingu – Ďábel (hlavní antagonista)</span>
+                                            <span class="audio-duration">0:32</span>
                                         </div>
-                                    </div>
-                                    <audio id="audio1" preload="metadata">
-                                        <source src="https://github.com/Myzlivko/myzlivko-web/blob/main/cdn/assets/audio/dabing-1428-shadows-over-silesia-dabel.mp3.mp3?raw=true" type="audio/mpeg">
-                                        Váš prohlížeč nepodporuje přehrávání audia.
-                                    </audio>
-                                </div>
-                                
-                                <div class="audio-player">
-                                    <div class="audio-info">
-                                        <span class="audio-title">Ukázka dabingu - Postava 2</span>
-                                        <span class="audio-duration">1:12</span>
-                                    </div>
-                                    <div class="audio-controls">
-                                        <button class="play-btn" onclick="toggleAudio('audio2')">
-                                            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
-                                                <path d="M8 5v14l11-7z"/>
-                                            </svg>
-                                        </button>
-                                        <div class="audio-progress">
-                                            <div class="progress-bar"></div>
+                                        <div class="audio-controls">
+                                            <button class="play-btn" onclick="toggleAudio('audio1')">
+                                                <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                                                    <path d="M8 5v14l11-7z"/>
+                                                </svg>
+                                            </button>
+                                            <div class="audio-time">0:00</div>
+                                            <div class="audio-progress" onclick="seekAudio(event, 'audio1')">
+                                                <div class="progress-bar"></div>
+                                            </div>
+                                            <div class="audio-time">0:32</div>
                                         </div>
+                                        <audio id="audio1" preload="metadata">
+                                            <source src="https://github.com/Myzlivko/myzlivko-web/blob/main/cdn/assets/audio/dabing-1428-shadows-over-silesia-dabel.mp3.mp3?raw=true" type="audio/mpeg">
+                                            Váš prohlížeč nepodporuje přehrávání audia.
+                                        </audio>
                                     </div>
-                                    <audio id="audio2" preload="metadata">
-                                        <source src="#" type="audio/mpeg">
-                                        Váš prohlížeč nepodporuje přehrávání audia.
-                                    </audio>
+                                    
+                                    <div class="audio-player">
+                                        <div class="audio-info">
+                                            <span class="audio-title">Ukázka dabingu - Postava 2</span>
+                                            <span class="audio-duration">1:12</span>
+                                        </div>
+                                        <div class="audio-controls">
+                                            <button class="play-btn" onclick="toggleAudio('audio2')">
+                                                <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                                                    <path d="M8 5v14l11-7z"/>
+                                                </svg>
+                                            </button>
+                                            <div class="audio-time">0:00</div>
+                                            <div class="audio-progress" onclick="seekAudio(event, 'audio2')">
+                                                <div class="progress-bar"></div>
+                                            </div>
+                                            <div class="audio-time">1:12</div>
+                                        </div>
+                                        <audio id="audio2" preload="metadata">
+                                            <source src="#" type="audio/mpeg">
+                                            Váš prohlížeč nepodporuje přehrávání audia.
+                                        </audio>
+                                    </div>
                                 </div>
                             </div>
-                            
-                            <div class="project-video">
-                                <div class="video-container">
-                                    <iframe 
-                                        src="https://www.youtube.com/embed/nCaCOfyrdvE" 
-                                        frameborder="0" 
-                                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-                                        allowfullscreen>
-                                    </iframe>
+                        </div>
+                        
+                        <div class="dabing-project">
+                            <h4 class="project-name">Gymnázia Fostra</h4>
+                            <div class="dabing-content">
+                                <div class="project-video">
+                                    <div class="video-container">
+                                        <iframe 
+                                            src="https://www.youtube.com/embed/nCaCOfyrdvE" 
+                                            frameborder="0" 
+                                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                                            allowfullscreen>
+                                        </iframe>
+                                    </div>
+                                    <p class="video-description">Gymnázia Fostra</p>
                                 </div>
-                                <p class="video-description">Trailer hry s mým dabingem</p>
                             </div>
                         </div>
                     </div>
@@ -2030,7 +2047,7 @@
             document.querySelector('.socials-section').classList.add('blurred');
             document.querySelector('.copyright-footer').classList.add('blurred');
             document.querySelector('.floating-video').classList.add('blurred');
-            updateActiveNav('PROJEKTY');
+            updateActiveNav('PROJEKTY A REFERENCE');
         }
         
         function closeOverlay() {
@@ -2058,19 +2075,43 @@
         // Audio player functionality
         let currentAudio = null;
         
+        function formatTime(seconds) {
+            const mins = Math.floor(seconds / 60);
+            const secs = Math.floor(seconds % 60);
+            return `${mins}:${secs.toString().padStart(2, '0')}`;
+        }
+        
+        function seekAudio(event, audioId) {
+            const audio = document.getElementById(audioId);
+            const progressContainer = event.currentTarget;
+            const rect = progressContainer.getBoundingClientRect();
+            const clickX = event.clientX - rect.left;
+            const width = rect.width;
+            const percentage = clickX / width;
+            
+            if (audio.duration) {
+                audio.currentTime = percentage * audio.duration;
+            }
+        }
+        
         function toggleAudio(audioId) {
             const audio = document.getElementById(audioId);
             const playBtn = audio.parentElement.querySelector('.play-btn');
             const progressBar = audio.parentElement.querySelector('.progress-bar');
+            const currentTimeDisplay = audio.parentElement.querySelector('.audio-time:first-of-type');
             
             // Stop other audio if playing
             if (currentAudio && currentAudio !== audio) {
                 currentAudio.pause();
-                currentAudio.currentTime = 0;
                 const otherBtn = currentAudio.parentElement.querySelector('.play-btn');
                 const otherProgress = currentAudio.parentElement.querySelector('.progress-bar');
+                const otherTimeDisplay = currentAudio.parentElement.querySelector('.audio-time:first-of-type');
                 otherBtn.innerHTML = '<svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>';
                 otherProgress.style.width = '0%';
+                otherTimeDisplay.textContent = '0:00';
+                // Remove event listeners
+                currentAudio.removeEventListener('timeupdate', currentAudio.timeUpdateHandler);
+                currentAudio.removeEventListener('ended', currentAudio.endedHandler);
             }
             
             if (audio.paused) {
@@ -2078,21 +2119,26 @@
                 currentAudio = audio;
                 playBtn.innerHTML = '<svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M6 4h4v16H6V4zm8 0h4v16h-4V4z"/></svg>';
                 
-                // Update progress bar
-                audio.addEventListener('timeupdate', function() {
+                // Update progress bar and time
+                audio.timeUpdateHandler = function() {
                     const progress = (audio.currentTime / audio.duration) * 100;
                     progressBar.style.width = progress + '%';
-                });
+                    currentTimeDisplay.textContent = formatTime(audio.currentTime);
+                };
+                audio.addEventListener('timeupdate', audio.timeUpdateHandler);
                 
                 // Reset when ended
-                audio.addEventListener('ended', function() {
+                audio.endedHandler = function() {
                     playBtn.innerHTML = '<svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>';
                     progressBar.style.width = '0%';
+                    currentTimeDisplay.textContent = '0:00';
                     currentAudio = null;
-                });
+                };
+                audio.addEventListener('ended', audio.endedHandler);
             } else {
                 audio.pause();
                 playBtn.innerHTML = '<svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>';
+                // Don't reset time when pausing, keep current position
                 currentAudio = null;
             }
         }
@@ -2104,5 +2150,5 @@
             }
         });
     </script>
-<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'994a1f1b976a579f',t:'MTc2MTQ4MzQ2OC4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'994a2d54a069579f',t:'MTc2MTQ4NDA1MC4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
 </html>
