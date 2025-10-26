@@ -2372,83 +2372,52 @@
         }
         
         function seekAudio(event, audioId) {
-            initAudioState(audioId);
+            const audio = document.getElementById(audioId);
+            if (!audio || !audio.duration) return;
+            
             const progressContainer = event.currentTarget;
             const rect = progressContainer.getBoundingClientRect();
             const clickX = event.clientX - rect.left;
             const percentage = clickX / rect.width;
             
-            const state = audioStates[audioId];
-            const newTime = percentage * state.duration;
-            
-            const audio = document.getElementById(audioId);
-            if (audio && audio.src) {
-                audio.currentTime = newTime;
-            } else {
-                state.currentTime = newTime;
-                updateProgressBar(audioId);
-                updateTimeDisplay(audioId);
-            }
+            audio.currentTime = percentage * audio.duration;
         }
         
         function toggleMute(audioId) {
-            initAudioState(audioId);
-            const state = audioStates[audioId];
             const audio = document.getElementById(audioId);
+            if (!audio) return;
             
-            state.isMuted = !state.isMuted;
-            
-            if (audio && audio.src) {
-                audio.muted = state.isMuted;
-            }
-            
+            audio.muted = !audio.muted;
             updateVolumeIcon(audioId);
-            updateVolumeProgress(audioId);
         }
         
         function setVolume(event, audioId) {
-            initAudioState(audioId);
+            const audio = document.getElementById(audioId);
+            if (!audio) return;
+            
             const slider = event.currentTarget;
             const rect = slider.getBoundingClientRect();
             const clickX = event.clientX - rect.left;
             const percentage = Math.max(0, Math.min(1, clickX / rect.width));
             
-            const state = audioStates[audioId];
-            state.volume = percentage;
-            state.isMuted = percentage === 0;
-            
-            const audio = document.getElementById(audioId);
-            if (audio && audio.src) {
-                audio.volume = percentage;
-                audio.muted = state.isMuted;
-            }
+            audio.volume = percentage;
+            audio.muted = percentage === 0;
             
             updateVolumeIcon(audioId);
-            updateVolumeProgress(audioId);
         }
         
         function updateVolumeIcon(audioId) {
-            const state = audioStates[audioId];
+            const audio = document.getElementById(audioId);
             const volumeIcon = document.querySelector(`[onclick="toggleMute('${audioId}')"] .volume-icon path`);
             
-            if (volumeIcon) {
-                if (state.isMuted || state.volume === 0) {
-                    volumeIcon.setAttribute('d', 'M16.5 12c0-1.77-1.02-3.29-2.5-4.03v2.21l2.45 2.45c.03-.2.05-.41.05-.63zm2.5 0c0 .94-.2 1.82-.54 2.64l1.51 1.51C20.63 14.91 21 13.5 21 12c0-4.28-2.99-7.86-7-8.77v2.06c2.89.86 5 3.54 5 6.71zM4.27 3L3 4.27 7.73 9H3v6h4l5 5v-6.73l4.25 4.25c-.67.52-1.42.93-2.25 1.18v2.06c1.38-.31 2.63-.95 3.69-1.81L19.73 21 21 19.73l-9-9L4.27 3zM12 4L9.91 6.09 12 8.18V4z'); // Muted icon
-                } else if (state.volume < 0.5) {
-                    volumeIcon.setAttribute('d', 'M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02z'); // Low volume icon
+            if (volumeIcon && audio) {
+                if (audio.muted || audio.volume === 0) {
+                    volumeIcon.setAttribute('d', 'M16.5 12c0-1.77-1.02-3.29-2.5-4.03v2.21l2.45 2.45c.03-.2.05-.41.05-.63zm2.5 0c0 .94-.2 1.82-.54 2.64l1.51 1.51C20.63 14.91 21 13.5 21 12c0-4.28-2.99-7.86-7-8.77v2.06c2.89.86 5 3.54 5 6.71zM4.27 3L3 4.27 7.73 9H3v6h4l5 5v-6.73l4.25 4.25c-.67.52-1.42.93-2.25 1.18v2.06c1.38-.31 2.63-.95 3.69-1.81L19.73 21 21 19.73l-9-9L4.27 3zM12 4L9.91 6.09 12 8.18V4z');
+                } else if (audio.volume < 0.5) {
+                    volumeIcon.setAttribute('d', 'M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02z');
                 } else {
-                    volumeIcon.setAttribute('d', 'M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z'); // High volume icon
+                    volumeIcon.setAttribute('d', 'M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z');
                 }
-            }
-        }
-        
-        function updateVolumeProgress(audioId) {
-            const state = audioStates[audioId];
-            const volumeProgress = document.querySelector(`[onclick*="${audioId}"] .volume-progress`);
-            
-            if (volumeProgress) {
-                const width = state.isMuted ? 0 : state.volume * 100;
-                volumeProgress.style.width = `${width}%`;
             }
         }
         
@@ -2615,15 +2584,28 @@
         
         // Initialize on page load
         document.addEventListener('DOMContentLoaded', function() {
-            // Initialize volume displays
-            Object.keys(audioStates).forEach(audioId => {
-                updateVolumeIcon(audioId);
-                updateVolumeProgress(audioId);
-            });
-            
             // Initialize video hover functionality
             initVideoHover();
+            
+            // Initialize audio elements
+            ['audio1', 'audio2'].forEach(audioId => {
+                const audio = document.getElementById(audioId);
+                if (audio) {
+                    audio.addEventListener('timeupdate', () => {
+                        updateProgressBar(audioId);
+                        updateTimeDisplay(audioId);
+                    });
+                    
+                    audio.addEventListener('ended', () => {
+                        updatePlayButton(audioId);
+                    });
+                    
+                    audio.addEventListener('loadedmetadata', () => {
+                        updateTimeDisplay(audioId);
+                    });
+                }
+            });
         });
     </script>
-<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'994ac264404af974',t:'MTc2MTQ5MDE1Ni4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'994ac55ac17ef974',t:'MTc2MTQ5MDI3Ny4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
 </html>
