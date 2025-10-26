@@ -1007,50 +1007,6 @@
             transform: scale(1.05);
         }
         
-        .audio-progress {
-            flex: 1;
-            height: 6px;
-            background: rgba(255,255,255,0.2);
-            border-radius: 3px;
-            overflow: hidden;
-            transition: all 0.3s ease;
-        }
-        
-        .progress-bar {
-            height: 100%;
-            background: linear-gradient(90deg, white, rgba(255,255,255,0.9));
-            width: 0%;
-            transition: width 0.1s ease;
-            position: relative;
-            box-shadow: 0 0 8px rgba(255,255,255,0.5);
-        }
-        
-        .progress-handle {
-            position: absolute;
-            top: 50%;
-            right: -6px;
-            transform: translateY(-50%);
-            width: 14px;
-            height: 14px;
-            background: white;
-            border-radius: 50%;
-            box-shadow: 0 0 12px rgba(255,255,255,0.8), 0 0 4px rgba(255,255,255,1);
-            opacity: 0;
-            transition: opacity 0.3s ease;
-            border: 2px solid rgba(255,255,255,0.9);
-        }
-        
-        .audio-progress:hover .progress-handle {
-            opacity: 1;
-        }
-        
-        .audio-time {
-            font-size: 12px;
-            color: rgba(255,255,255,0.6);
-            font-family: monospace;
-            min-width: 35px;
-        }
-        
         .volume-control {
             position: relative;
             display: flex;
@@ -1094,10 +1050,6 @@
             opacity: 1;
         }
         
-        .volume-control:hover .audio-progress {
-            flex: calc(1 - 88px);
-        }
-        
         .volume-slider {
             width: 80px;
             height: 6px;
@@ -1132,6 +1084,50 @@
         }
         
         .volume-control:hover .volume-handle {
+            opacity: 1;
+        }
+        
+        .audio-time {
+            font-size: 12px;
+            color: rgba(255,255,255,0.6);
+            font-family: monospace;
+            min-width: 35px;
+        }
+        
+        .audio-progress {
+            flex: 1;
+            height: 6px;
+            background: rgba(255,255,255,0.2);
+            border-radius: 3px;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+        
+        .progress-bar {
+            height: 100%;
+            background: linear-gradient(90deg, white, rgba(255,255,255,0.9));
+            width: 0%;
+            transition: width 0.1s ease;
+            position: relative;
+            box-shadow: 0 0 8px rgba(255,255,255,0.5);
+        }
+        
+        .progress-handle {
+            position: absolute;
+            top: 50%;
+            right: -6px;
+            transform: translateY(-50%);
+            width: 14px;
+            height: 14px;
+            background: white;
+            border-radius: 50%;
+            box-shadow: 0 0 12px rgba(255,255,255,0.8), 0 0 4px rgba(255,255,255,1);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            border: 2px solid rgba(255,255,255,0.9);
+        }
+        
+        .audio-progress:hover .progress-handle {
             opacity: 1;
         }
         
@@ -1913,13 +1909,6 @@
                                                     <path d="M8 5v14l11-7z"/>
                                                 </svg>
                                             </button>
-                                            <div class="audio-time">0:00</div>
-                                            <div class="audio-progress" onclick="seekAudio(event, 'audio1')">
-                                                <div class="progress-bar">
-                                                    <div class="progress-handle"></div>
-                                                </div>
-                                            </div>
-                                            <div class="audio-time">0:32</div>
                                             <div class="volume-control">
                                                 <button class="volume-btn" onclick="toggleMute('audio1')">
                                                     <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" class="volume-icon">
@@ -1933,10 +1922,16 @@
                                                     </div>
                                                 </div>
                                             </div>
+                                            <div class="audio-time">0:00</div>
+                                            <div class="audio-progress" onclick="seekAudio(event, 'audio1')">
+                                                <div class="progress-bar">
+                                                    <div class="progress-handle"></div>
+                                                </div>
+                                            </div>
+                                            <div class="audio-time">0:32</div>
                                         </div>
                                         <audio id="audio1" preload="metadata">
-                                            <source src="https://www.soundjay.com/misc/sounds/bell-ringing-05.wav" type="audio/wav">
-                                            <source src="https://www.soundjay.com/misc/sounds/bell-ringing-05.mp3" type="audio/mpeg">
+                                            <source src="https://raw.githubusercontent.com/Myzlivko/myzlivko-web/main/cdn/assets/audio/dabing-1428-shadows-over-silesia-dabel.mp3.mp3" type="audio/mpeg">
                                             Váš prohlížeč nepodporuje přehrávání audia.
                                         </audio>
                                     </div>
@@ -1952,13 +1947,6 @@
                                                     <path d="M8 5v14l11-7z"/>
                                                 </svg>
                                             </button>
-                                            <div class="audio-time">0:00</div>
-                                            <div class="audio-progress" onclick="seekAudio(event, 'audio2')">
-                                                <div class="progress-bar">
-                                                    <div class="progress-handle"></div>
-                                                </div>
-                                            </div>
-                                            <div class="audio-time">1:12</div>
                                             <div class="volume-control">
                                                 <button class="volume-btn" onclick="toggleMute('audio2')">
                                                     <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" class="volume-icon">
@@ -1972,6 +1960,13 @@
                                                     </div>
                                                 </div>
                                             </div>
+                                            <div class="audio-time">0:00</div>
+                                            <div class="audio-progress" onclick="seekAudio(event, 'audio2')">
+                                                <div class="progress-bar">
+                                                    <div class="progress-handle"></div>
+                                                </div>
+                                            </div>
+                                            <div class="audio-time">1:12</div>
                                         </div>
                                         <audio id="audio2" preload="metadata">
                                             <source src="https://www.soundjay.com/misc/sounds/bell-ringing-05.wav" type="audio/wav">
@@ -1995,7 +1990,7 @@
                                             allowfullscreen>
                                         </iframe>
                                     </div>
-                                    <p class="video-description">Gymnázia Fostra</p>
+                                    <p class="video-description">Tutoriál k přijímacím zkouškám</p>
                                 </div>
                             </div>
                         </div>
@@ -2004,55 +1999,137 @@
                 
                 <div class="projects-section">
                     <h3 class="section-title">PRODUKCE</h3>
-                    <div class="production-grid">
-                        <div class="production-item">
-                            <div class="production-video">
-                                <div class="video-thumbnail" onclick="openExternal('https://www.youtube.com/watch?v=example1')">
-                                    <img src="https://img.youtube.com/vi/example1/maxresdefault.jpg" alt="Video 1" onerror="this.src='data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMzIwIiBoZWlnaHQ9IjE4MCIgdmlld0JveD0iMCAwIDMyMCAxODAiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjxyZWN0IHdpZHRoPSIzMjAiIGhlaWdodD0iMTgwIiBmaWxsPSIjMzMzIi8+Cjx0ZXh0IHg9IjE2MCIgeT0iOTAiIGZpbGw9IndoaXRlIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBkeT0iLjNlbSIgZm9udC1mYW1pbHk9IkFyaWFsIiBmb250LXNpemU9IjE0Ij5WaWRlbyAxPC90ZXh0Pgo8L3N2Zz4=';">
-                                    <div class="play-overlay">
-                                        <svg width="48" height="48" viewBox="0 0 24 24" fill="white">
-                                            <path d="M8 5v14l11-7z"/>
-                                        </svg>
+                    <div class="dabing-grid">
+                        <div class="dabing-project">
+                            <h4 class="project-name">INDIAN - Pořád o hrách</h4>
+                            <div class="dabing-content">
+                                <div class="production-grid">
+                                    <div class="production-item">
+                                        <div class="production-video">
+                                            <div class="video-thumbnail" onclick="openExternal('https://www.youtube.com/watch?v=Ze2F_qykTmA')">
+                                                <img src="https://img.youtube.com/vi/Ze2F_qykTmA/maxresdefault.jpg" alt="INDIAN Video 1" onerror="this.src='data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMzIwIiBoZWlnaHQ9IjE4MCIgdmlld0JveD0iMCAwIDMyMCAxODAiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjxyZWN0IHdpZHRoPSIzMjAiIGhlaWdodD0iMTgwIiBmaWxsPSIjMzMzIi8+Cjx0ZXh0IHg9IjE2MCIgeT0iOTAiIGZpbGw9IndoaXRlIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBkeT0iLjNlbSIgZm9udC1mYW1pbHk9IkFyaWFsIiBmb250LXNpemU9IjE0Ij5JTkRJQU4gVmlkZW8gMTwvdGV4dD4KPC9zdmc+';">
+                                                <div class="play-overlay">
+                                                    <svg width="48" height="48" viewBox="0 0 24 24" fill="white">
+                                                        <path d="M8 5v14l11-7z"/>
+                                                    </svg>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="production-info">
+                                            <h4 class="production-title">Video 1</h4>
+                                            <p class="production-description">Popis bude doplněn později</p>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="production-item">
+                                        <div class="production-video">
+                                            <div class="video-thumbnail" onclick="openExternal('https://www.youtube.com/watch?v=NaT0LSBPBk4')">
+                                                <img src="https://img.youtube.com/vi/NaT0LSBPBk4/maxresdefault.jpg" alt="INDIAN Video 2" onerror="this.src='data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMzIwIiBoZWlnaHQ9IjE4MCIgdmlld0JveD0iMCAwIDMyMCAxODAiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjxyZWN0IHdpZHRoPSIzMjAiIGhlaWdodD0iMTgwIiBmaWxsPSIjMzMzIi8+Cjx0ZXh0IHg9IjE2MCIgeT0iOTAiIGZpbGw9IndoaXRlIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBkeT0iLjNlbSIgZm9udC1mYW1pbHk9IkFyaWFsIiBmb250LXNpemU9IjE0Ij5JTkRJQU4gVmlkZW8gMjwvdGV4dD4KPC9zdmc+';">
+                                                <div class="play-overlay">
+                                                    <svg width="48" height="48" viewBox="0 0 24 24" fill="white">
+                                                        <path d="M8 5v14l11-7z"/>
+                                                    </svg>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="production-info">
+                                            <h4 class="production-title">Video 2</h4>
+                                            <p class="production-description">Popis bude doplněn později</p>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="production-item">
+                                        <div class="production-video">
+                                            <div class="video-thumbnail" onclick="openExternal('https://www.youtube.com/watch?v=FfouWNjlk2I')">
+                                                <img src="https://img.youtube.com/vi/FfouWNjlk2I/maxresdefault.jpg" alt="INDIAN Video 3" onerror="this.src='data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMzIwIiBoZWlnaHQ9IjE4MCIgdmlld0JveD0iMCAwIDMyMCAxODAiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjxyZWN0IHdpZHRoPSIzMjAiIGhlaWdodD0iMTgwIiBmaWxsPSIjMzMzIi8+Cjx0ZXh0IHg9IjE2MCIgeT0iOTAiIGZpbGw9IndoaXRlIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBkeT0iLjNlbSIgZm9udC1mYW1pbHk9IkFyaWFsIiBmb250LXNpemU9IjE0Ij5JTkRJQU4gVmlkZW8gMzwvdGV4dD4KPC9zdmc+';">
+                                                <div class="play-overlay">
+                                                    <svg width="48" height="48" viewBox="0 0 24 24" fill="white">
+                                                        <path d="M8 5v14l11-7z"/>
+                                                    </svg>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="production-info">
+                                            <h4 class="production-title">Video 3</h4>
+                                            <p class="production-description">Popis bude doplněn později</p>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="production-item">
+                                        <div class="production-video">
+                                            <div class="video-thumbnail" onclick="openExternal('https://www.youtube.com/watch?v=k-Qz86rFcLQ')">
+                                                <img src="https://img.youtube.com/vi/k-Qz86rFcLQ/maxresdefault.jpg" alt="INDIAN Video 4" onerror="this.src='data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMzIwIiBoZWlnaHQ9IjE4MCIgdmlld0JveD0iMCAwIDMyMCAxODAiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjxyZWN0IHdpZHRoPSIzMjAiIGhlaWdodD0iMTgwIiBmaWxsPSIjMzMzIi8+Cjx0ZXh0IHg9IjE2MCIgeT0iOTAiIGZpbGw9IndoaXRlIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBkeT0iLjNlbSIgZm9udC1mYW1pbHk9IkFyaWFsIiBmb250LXNpemU9IjE0Ij5JTkRJQU4gVmlkZW8gNDwvdGV4dD4KPC9zdmc+';">
+                                                <div class="play-overlay">
+                                                    <svg width="48" height="48" viewBox="0 0 24 24" fill="white">
+                                                        <path d="M8 5v14l11-7z"/>
+                                                    </svg>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="production-info">
+                                            <h4 class="production-title">Video 4</h4>
+                                            <p class="production-description">Popis bude doplněn později</p>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="production-item">
+                                        <div class="production-video">
+                                            <div class="video-thumbnail" onclick="openExternal('https://www.youtube.com/watch?v=JWCQAUizUA8')">
+                                                <img src="https://img.youtube.com/vi/JWCQAUizUA8/maxresdefault.jpg" alt="INDIAN Video 5" onerror="this.src='data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMzIwIiBoZWlnaHQ9IjE4MCIgdmlld0JveD0iMCAwIDMyMCAxODAiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjxyZWN0IHdpZHRoPSIzMjAiIGhlaWdodD0iMTgwIiBmaWxsPSIjMzMzIi8+Cjx0ZXh0IHg9IjE2MCIgeT0iOTAiIGZpbGw9IndoaXRlIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBkeT0iLjNlbSIgZm9udC1mYW1pbHk9IkFyaWFsIiBmb250LXNpemU9IjE0Ij5JTkRJQU4gVmlkZW8gNTwvdGV4dD4KPC9zdmc+';">
+                                                <div class="play-overlay">
+                                                    <svg width="48" height="48" viewBox="0 0 24 24" fill="white">
+                                                        <path d="M8 5v14l11-7z"/>
+                                                    </svg>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="production-info">
+                                            <h4 class="production-title">Video 5</h4>
+                                            <p class="production-description">Popis bude doplněn později</p>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="production-item">
+                                        <div class="production-video">
+                                            <div class="video-thumbnail" onclick="openExternal('https://www.youtube.com/watch?v=aIJYKWrAsPQ')">
+                                                <img src="https://img.youtube.com/vi/aIJYKWrAsPQ/maxresdefault.jpg" alt="INDIAN Video 6" onerror="this.src='data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMzIwIiBoZWlnaHQ9IjE4MCIgdmlld0JveD0iMCAwIDMyMCAxODAiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjxyZWN0IHdpZHRoPSIzMjAiIGhlaWdodD0iMTgwIiBmaWxsPSIjMzMzIi8+Cjx0ZXh0IHg9IjE2MCIgeT0iOTAiIGZpbGw9IndoaXRlIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBkeT0iLjNlbSIgZm9udC1mYW1pbHk9IkFyaWFsIiBmb250LXNpemU9IjE0Ij5JTkRJQU4gVmlkZW8gNjwvdGV4dD4KPC9zdmc+';">
+                                                <div class="play-overlay">
+                                                    <svg width="48" height="48" viewBox="0 0 24 24" fill="white">
+                                                        <path d="M8 5v14l11-7z"/>
+                                                    </svg>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="production-info">
+                                            <h4 class="production-title">Video 6</h4>
+                                            <p class="production-description">Popis bude doplněn později</p>
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
-                            <div class="production-info">
-                                <h4 class="production-title">Název projektu 1</h4>
-                                <p class="production-description">Popis mé role v tomto projektu - střih, kamera, režie, atd.</p>
                             </div>
                         </div>
                         
-                        <div class="production-item">
-                            <div class="production-video">
-                                <div class="video-thumbnail" onclick="openExternal('https://www.youtube.com/watch?v=example2')">
-                                    <img src="https://img.youtube.com/vi/example2/maxresdefault.jpg" alt="Video 2" onerror="this.src='data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMzIwIiBoZWlnaHQ9IjE4MCIgdmlld0JveD0iMCAwIDMyMCAxODAiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjxyZWN0IHdpZHRoPSIzMjAiIGhlaWdodD0iMTgwIiBmaWxsPSIjMzMzIi8+Cjx0ZXh0IHg9IjE2MCIgeT0iOTAiIGZpbGw9IndoaXRlIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBkeT0iLjNlbSIgZm9udC1mYW1pbHk9IkFyaWFsIiBmb250LXNpemU9IjE0Ij5WaWRlbyAyPC90ZXh0Pgo8L3N2Zz4=';">
-                                    <div class="play-overlay">
-                                        <svg width="48" height="48" viewBox="0 0 24 24" fill="white">
-                                            <path d="M8 5v14l11-7z"/>
-                                        </svg>
+                        <div class="dabing-project">
+                            <h4 class="project-name">TECHFEED</h4>
+                            <div class="dabing-content">
+                                <div class="production-grid">
+                                    <div class="production-item">
+                                        <div class="production-video">
+                                            <div class="video-thumbnail" onclick="openExternal('https://www.youtube.com/watch?v=TThTlDGUG9Y')">
+                                                <img src="https://img.youtube.com/vi/TThTlDGUG9Y/maxresdefault.jpg" alt="TECHFEED Video" onerror="this.src='data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMzIwIiBoZWlnaHQ9IjE4MCIgdmlld0JveD0iMCAwIDMyMCAxODAiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjxyZWN0IHdpZHRoPSIzMjAiIGhlaWdodD0iMTgwIiBmaWxsPSIjMzMzIi8+Cjx0ZXh0IHg9IjE2MCIgeT0iOTAiIGZpbGw9IndoaXRlIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBkeT0iLjNlbSIgZm9udC1mYW1pbHk9IkFyaWFsIiBmb250LXNpemU9IjE0Ij5URUNIRkVFRCBWaWRlbzwvdGV4dD4KPC9zdmc+';">
+                                                <div class="play-overlay">
+                                                    <svg width="48" height="48" viewBox="0 0 24 24" fill="white">
+                                                        <path d="M8 5v14l11-7z"/>
+                                                    </svg>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="production-info">
+                                            <h4 class="production-title">TECHFEED Video</h4>
+                                            <p class="production-description">Popis bude doplněn později</p>
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
-                            <div class="production-info">
-                                <h4 class="production-title">Název projektu 2</h4>
-                                <p class="production-description">Popis mé role v tomto projektu - střih, kamera, režie, atd.</p>
-                            </div>
-                        </div>
-                        
-                        <div class="production-item">
-                            <div class="production-video">
-                                <div class="video-thumbnail" onclick="openExternal('https://www.youtube.com/watch?v=example3')">
-                                    <img src="https://img.youtube.com/vi/example3/maxresdefault.jpg" alt="Video 3" onerror="this.src='data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMzIwIiBoZWlnaHQ9IjE4MCIgdmlld0JveD0iMCAwIDMyMCAxODAiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjxyZWN0IHdpZHRoPSIzMjAiIGhlaWdodD0iMTgwIiBmaWxsPSIjMzMzIi8+Cjx0ZXh0IHg9IjE2MCIgeT0iOTAiIGZpbGw9IndoaXRlIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBkeT0iLjNlbSIgZm9udC1mYW1pbHk9IkFyaWFsIiBmb250LXNpemU9IjE0Ij5WaWRlbyAzPC90ZXh0Pgo8L3N2Zz4=';">
-                                    <div class="play-overlay">
-                                        <svg width="48" height="48" viewBox="0 0 24 24" fill="white">
-                                            <path d="M8 5v14l11-7z"/>
-                                        </svg>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="production-info">
-                                <h4 class="production-title">Název projektu 3</h4>
-                                <p class="production-description">Popis mé role v tomto projektu - střih, kamera, režie, atd.</p>
                             </div>
                         </div>
                     </div>
@@ -2452,5 +2529,5 @@
             });
         });
     </script>
-<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'994a58856350579f',t:'MTc2MTQ4NTgxOS4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'994a6c6a91b7f974',t:'MTc2MTQ4NjYzNC4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
 </html>
