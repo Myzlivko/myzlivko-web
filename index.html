@@ -932,6 +932,226 @@
             background: rgba(255,255,255,0.1);
         }
         
+        /* Projects Section Styles */
+        .projects-section {
+            margin-bottom: 50px;
+        }
+        
+        .section-title {
+            font-size: 2rem;
+            font-weight: 400;
+            margin-bottom: 30px;
+            color: rgba(255,255,255,0.9);
+            letter-spacing: 0.1em;
+            border-bottom: 2px solid rgba(255,255,255,0.2);
+            padding-bottom: 10px;
+        }
+        
+        .project-name {
+            font-size: 1.5rem;
+            font-weight: 500;
+            margin-bottom: 25px;
+            color: rgba(255,255,255,0.95);
+        }
+        
+        .dabing-content {
+            display: grid;
+            grid-template-columns: 1fr 400px;
+            gap: 40px;
+            align-items: start;
+        }
+        
+        .audio-tracks {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+        
+        .audio-player {
+            background: rgba(255,255,255,0.05);
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 10px;
+            padding: 20px;
+            transition: all 0.3s ease;
+        }
+        
+        .audio-player:hover {
+            background: rgba(255,255,255,0.08);
+            transform: translateY(-2px);
+        }
+        
+        .audio-info {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+        
+        .audio-title {
+            font-size: 16px;
+            font-weight: 500;
+            color: rgba(255,255,255,0.9);
+        }
+        
+        .audio-duration {
+            font-size: 14px;
+            color: rgba(255,255,255,0.6);
+            font-family: monospace;
+        }
+        
+        .audio-controls {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        
+        .play-btn {
+            width: 40px;
+            height: 40px;
+            border: 2px solid rgba(255,255,255,0.6);
+            border-radius: 50%;
+            background: transparent;
+            color: white;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+            flex-shrink: 0;
+        }
+        
+        .play-btn:hover {
+            background: rgba(255,255,255,0.1);
+            border-color: white;
+            transform: scale(1.05);
+        }
+        
+        .audio-progress {
+            flex: 1;
+            height: 6px;
+            background: rgba(255,255,255,0.2);
+            border-radius: 3px;
+            overflow: hidden;
+        }
+        
+        .progress-bar {
+            height: 100%;
+            background: linear-gradient(90deg, #4CAF50, #45a049);
+            width: 0%;
+            transition: width 0.1s ease;
+        }
+        
+        .project-video {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+        
+        .video-container {
+            position: relative;
+            width: 100%;
+            height: 225px;
+            border-radius: 10px;
+            overflow: hidden;
+            background: #000;
+        }
+        
+        .video-container iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+        
+        .video-description {
+            font-size: 14px;
+            color: rgba(255,255,255,0.7);
+            text-align: center;
+            margin: 0;
+        }
+        
+        .production-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        
+        .production-item {
+            background: rgba(255,255,255,0.05);
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 10px;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+        
+        .production-item:hover {
+            background: rgba(255,255,255,0.08);
+            transform: translateY(-5px);
+        }
+        
+        .production-video {
+            position: relative;
+            width: 100%;
+            height: 200px;
+            overflow: hidden;
+        }
+        
+        .video-thumbnail {
+            width: 100%;
+            height: 100%;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .video-thumbnail img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.3s ease;
+        }
+        
+        .video-thumbnail:hover img {
+            transform: scale(1.05);
+        }
+        
+        .play-overlay {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: rgba(0,0,0,0.7);
+            border-radius: 50%;
+            width: 60px;
+            height: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+        }
+        
+        .video-thumbnail:hover .play-overlay {
+            background: rgba(0,0,0,0.9);
+            transform: translate(-50%, -50%) scale(1.1);
+        }
+        
+        .production-info {
+            padding: 20px;
+        }
+        
+        .production-title {
+            font-size: 18px;
+            font-weight: 500;
+            margin-bottom: 10px;
+            color: rgba(255,255,255,0.95);
+        }
+        
+        .production-description {
+            font-size: 14px;
+            color: rgba(255,255,255,0.7);
+            line-height: 1.5;
+            margin: 0;
+        }
+        
         @media (max-width: 768px) {
             .nav-top {
                 top: 10px;
@@ -1140,6 +1360,34 @@
                 font-size: 7px;
                 transform: translate(-50%, calc(-50% + 12px));
             }
+            
+            .dabing-content {
+                grid-template-columns: 1fr;
+                gap: 25px;
+            }
+            
+            .project-video .video-container {
+                height: 180px;
+            }
+            
+            .production-grid {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+            
+            .production-video {
+                height: 160px;
+            }
+            
+            .section-title {
+                font-size: 1.5rem;
+                margin-bottom: 20px;
+            }
+            
+            .project-name {
+                font-size: 1.2rem;
+                margin-bottom: 15px;
+            }
         }
         
         @media (max-width: 480px) {
@@ -1306,6 +1554,32 @@
                 font-size: 6px;
                 transform: translate(-50%, calc(-50% + 10px));
             }
+            
+            .project-video .video-container {
+                height: 150px;
+            }
+            
+            .production-video {
+                height: 140px;
+            }
+            
+            .section-title {
+                font-size: 1.3rem;
+                margin-bottom: 15px;
+            }
+            
+            .project-name {
+                font-size: 1.1rem;
+                margin-bottom: 12px;
+            }
+            
+            .audio-player {
+                padding: 15px;
+            }
+            
+            .production-info {
+                padding: 15px;
+            }
         }
     </style>
 </head>
@@ -1335,6 +1609,7 @@
                 <button class="nav-btn active" onclick="showHome()">DOMOVSKÁ STRÁNKA</button>
                 <button class="nav-btn" onclick="showAbout()">O MNĚ</button>
                 <button class="nav-btn" onclick="showPortfolio()">MÁ KARIÉRA</button>
+                <button class="nav-btn" onclick="showProjects()">PROJEKTY</button>
             </div>
             <div class="contact-section">
                 <div class="handwritten-note">Hledáte hlas pro svůj projekt?</div>
@@ -1363,6 +1638,18 @@
         <div class="socials-section">
             <button class="socials-toggle" onclick="toggleSocials()">SOCIALS</button>
             <div class="socials-links" id="socialsLinks">
+                <a href="#" class="social-link" onclick="openExternal('https://www.instagram.com/myzlivko')">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+                    </svg>
+                    Instagram
+                </a>
+                <a href="#" class="social-link" onclick="openExternal('https://discord.com/invite/a5RrrWjYYC')">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M20.317 4.3698a19.7913 19.7913 0 00-4.8851-1.5152.0741.0741 0 00-.0785.0371c-.211.3753-.4447.8648-.6083 1.2495-1.8447-.2762-3.68-.2762-5.4868 0-.1636-.3933-.4058-.8742-.6177-1.2495a.077.077 0 00-.0785-.037 19.7363 19.7363 0 00-4.8852 1.515.0699.0699 0 00-.0321.0277C.5334 9.0458-.319 13.5799.0992 18.0578a.0824.0824 0 00.0312.0561c2.0528 1.5076 4.0413 2.4228 5.9929 3.0294a.0777.0777 0 00.0842-.0276c.4616-.6304.8731-1.2952 1.226-1.9942a.076.076 0 00-.0416-.1057c-.6528-.2476-1.2743-.5495-1.8722-.8923a.077.077 0 01-.0076-.1277c.1258-.0943.2517-.1923.3718-.2914a.0743.0743 0 01.0776-.0105c3.9278 1.7933 8.18 1.7933 12.0614 0a.0739.0739 0 01.0785.0095c.1202.099.246.1981.3728.2924a.077.077 0 01-.0066.1276 12.2986 12.2986 0 01-1.873.8914.0766.0766 0 00-.0407.1067c.3604.698.7719 1.3628 1.225 1.9932a.076.076 0 00.0842.0286c1.961-.6067 3.9495-1.5219 6.0023-3.0294a.077.077 0 00.0313-.0552c.5004-5.177-.8382-9.6739-3.5485-13.6604a.061.061 0 00-.0312-.0286zM8.02 15.3312c-1.1825 0-2.1569-1.0857-2.1569-2.419 0-1.3332.9555-2.4189 2.157-2.4189 1.2108 0 2.1757 1.0952 2.1568 2.419-.0002 1.3332-.9555 2.4189-2.1569 2.4189zm7.9748 0c-1.1825 0-2.1569-1.0857-2.1569-2.419 0-1.3332.9554-2.4189 2.1569-2.4189 1.2108 0 2.1757 1.0952 2.1568 2.419 0 1.3332-.9555 2.4189-2.1568 2.4189Z"/>
+                    </svg>
+                    Discord
+                </a>
                 <a href="#" class="social-link" onclick="openExternal('https://twitch.tv/Myzlivko')">
                     <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
                         <path d="M11.571 4.714h1.715v5.143H11.57zm4.715 0H18v5.143h-1.714zM6 0L1.714 4.286v15.428h5.143V24l4.286-4.286h3.428L22.286 12V0zm14.571 11.143l-3.428 3.428h-3.429l-3 3v-3H6.857V1.714h13.714Z"/>
@@ -1375,17 +1662,11 @@
                     </svg>
                     YouTube
                 </a>
-                <a href="#" class="social-link" onclick="openExternal('https://www.instagram.com/myzlivko')">
+                <a href="#" class="social-link" onclick="openExternal('https://www.tiktok.com/@myzlivko')">
                     <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
-                        <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+                        <path d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.75-.08 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-1.43.08-2.86-.31-4.08-1.03-2.02-1.19-3.44-3.37-3.65-5.71-.02-.5-.03-1-.01-1.49.18-1.9 1.12-3.72 2.58-4.96 1.66-1.44 3.98-2.13 6.15-1.72.02 1.48-.04 2.96-.04 4.44-.99-.32-2.15-.23-3.02.37-.63.41-1.11 1.04-1.36 1.75-.21.51-.15 1.07-.14 1.61.24 1.64 1.82 3.02 3.5 2.87 1.12-.01 2.19-.66 2.77-1.61.19-.33.4-.67.41-1.06.1-1.79.06-3.57.07-5.36.01-4.03-.01-8.05.02-12.07z"/>
                     </svg>
-                    Instagram
-                </a>
-                <a href="#" class="social-link" onclick="openExternal('https://discord.com/invite/a5RrrWjYYC')">
-                    <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
-                        <path d="M20.317 4.3698a19.7913 19.7913 0 00-4.8851-1.5152.0741.0741 0 00-.0785.0371c-.211.3753-.4447.8648-.6083 1.2495-1.8447-.2762-3.68-.2762-5.4868 0-.1636-.3933-.4058-.8742-.6177-1.2495a.077.077 0 00-.0785-.037 19.7363 19.7363 0 00-4.8852 1.515.0699.0699 0 00-.0321.0277C.5334 9.0458-.319 13.5799.0992 18.0578a.0824.0824 0 00.0312.0561c2.0528 1.5076 4.0413 2.4228 5.9929 3.0294a.0777.0777 0 00.0842-.0276c.4616-.6304.8731-1.2952 1.226-1.9942a.076.076 0 00-.0416-.1057c-.6528-.2476-1.2743-.5495-1.8722-.8923a.077.077 0 01-.0076-.1277c.1258-.0943.2517-.1923.3718-.2914a.0743.0743 0 01.0776-.0105c3.9278 1.7933 8.18 1.7933 12.0614 0a.0739.0739 0 01.0785.0095c.1202.099.246.1981.3728.2924a.077.077 0 01-.0066.1276 12.2986 12.2986 0 01-1.873.8914.0766.0766 0 00-.0407.1067c.3604.698.7719 1.3628 1.225 1.9932a.076.076 0 00.0842.0286c1.961-.6067 3.9495-1.5219 6.0023-3.0294a.077.077 0 00.0313-.0552c.5004-5.177-.8382-9.6739-3.5485-13.6604a.061.061 0 00-.0312-.0286zM8.02 15.3312c-1.1825 0-2.1569-1.0857-2.1569-2.419 0-1.3332.9555-2.4189 2.157-2.4189 1.2108 0 2.1757 1.0952 2.1568 2.419-.0002 1.3332-.9555 2.4189-2.1569 2.4189zm7.9748 0c-1.1825 0-2.1569-1.0857-2.1569-2.419 0-1.3332.9554-2.4189 2.1569-2.4189 1.2108 0 2.1757 1.0952 2.1568 2.419 0 1.3332-.9555 2.4189-2.1568 2.4189Z"/>
-                    </svg>
-                    Discord
+                    TikTok
                 </a>
             </div>
         </div>
@@ -1417,7 +1698,7 @@
                         <p>Zajímám se o historii i o osobní příběhy lidí, kteří ji nějak ovlivnili. Baví mě poznávat nové věci a učit se, beru to jako něco, co mi dává smysl a posouvá mě dál. Příležitostně se věnuji amatérskému dabingu.</p>
                     </div>
                     <div class="about-photo">
-                        <img src="https://cdn.jsdelivr.net/gh/myzlivko/myzlivko-web@main/cdn/Jakub_Myslivec_final.png" alt="Jakub Myslivec" onerror="this.style.display='none'; this.parentElement.innerHTML='<div style=\'display: flex; align-items: center; justify-content: center; height: 100%; color: rgba(255,255,255,0.5); font-size: 14px; text-align: center;\'>Fotka se nepodařila načíst</div>';">
+                        <img src="https://github.com/Myzlivko/myzlivko-web/blob/main/cdn/assets/profile/Jakub_Myslivec.png?raw=true" alt="Jakub Myslivec" onerror="this.style.display='none'; this.parentElement.innerHTML='<div style=\'display: flex; align-items: center; justify-content: center; height: 100%; color: rgba(255,255,255,0.5); font-size: 14px; text-align: center;\'>Fotka se nepodařila načíst</div>';">
                     </div>
                 </div>
             </div>
@@ -1448,7 +1729,7 @@
                         <div class="project-header">
                             <div class="company-logo-container">
                                 <div class="company-logo" style="background: white; color: #333; border-color: white;">
-                                    <img src="https://raw.githubusercontent.com/Myzlivko/myzlivko-web/refs/heads/main/cdn/Fostra.png" alt="Fostra" style="width: 100%; height: 100%; object-fit: contain;" onerror="this.style.display='none'; this.parentElement.innerHTML='FOSTRA'; this.parentElement.style.fontSize='12px';">
+                                    <img src="https://github.com/Myzlivko/myzlivko-web/blob/main/cdn/assets/icons/Fostra.png?raw=true" alt="Fostra" style="width: 100%; height: 100%; object-fit: contain;" onerror="this.style.display='none'; this.parentElement.innerHTML='FOSTRA'; this.parentElement.style.fontSize='12px';">
                                 </div>
                                 <div class="project-year">2024-2026</div>
                             </div>
@@ -1463,7 +1744,7 @@
                         <div class="project-header">
                             <div class="company-logo-container">
                                 <div class="company-logo" style="background: white; color: #333; border-color: white;">
-                                    <img src="https://github.com/Myzlivko/myzlivko-web/blob/main/cdn/MediaRealms.png?raw=true" alt="MediaRealms" style="width: 100%; height: 100%; object-fit: contain;" onerror="this.style.display='none'; this.parentElement.innerHTML='MEDIA'; this.parentElement.style.fontSize='12px';">
+                                    <img src="https://github.com/Myzlivko/myzlivko-web/blob/main/cdn/assets/icons/MediaRealms.png?raw=true" alt="MediaRealms" style="width: 100%; height: 100%; object-fit: contain;" onerror="this.style.display='none'; this.parentElement.innerHTML='MEDIA'; this.parentElement.style.fontSize='12px';">
                                 </div>
                                 <div class="project-year">2023-2024</div>
                             </div>
@@ -1478,7 +1759,7 @@
                         <div class="project-header">
                             <div class="company-logo-container">
                                 <div class="company-logo" style="background: #9146FF; color: white; border-color: #9146FF;">
-                                    <img src="https://raw.githubusercontent.com/Myzlivko/myzlivko-web/refs/heads/main/cdn/Twitch.png" alt="Twitch" style="width: 100%; height: 100%; object-fit: contain;" onerror="this.style.display='none'; this.parentElement.innerHTML='TWITCH'; this.parentElement.style.fontSize='12px';">
+                                    <img src="https://github.com/Myzlivko/myzlivko-web/blob/main/cdn/assets/icons/Twitch.png?raw=true" alt="Twitch" style="width: 100%; height: 100%; object-fit: contain;" onerror="this.style.display='none'; this.parentElement.innerHTML='TWITCH'; this.parentElement.style.fontSize='12px';">
                                 </div>
                                 <div class="project-year">2021-2024</div>
                             </div>
@@ -1493,7 +1774,7 @@
                         <div class="project-header">
                             <div class="company-logo-container">
                                 <div class="company-logo" style="background: white; color: #333; border-color: white;">
-                                    <img src="https://raw.githubusercontent.com/Myzlivko/myzlivko-web/refs/heads/main/cdn/O2%20TV%20Sport.png" alt="O2 TV Sport" style="width: 100%; height: 100%; object-fit: contain;" onerror="this.style.display='none'; this.parentElement.innerHTML='O2 TV'; this.parentElement.style.fontSize='12px';">
+                                    <img src="https://github.com/Myzlivko/myzlivko-web/blob/main/cdn/assets/icons/O2%20TV%20Sport.png?raw=true" alt="O2 TV Sport" style="width: 100%; height: 100%; object-fit: contain;" onerror="this.style.display='none'; this.parentElement.innerHTML='O2 TV'; this.parentElement.style.fontSize='12px';">
                                 </div>
                                 <div class="project-year">2022</div>
                             </div>
@@ -1508,7 +1789,7 @@
                         <div class="project-header">
                             <div class="company-logo-container">
                                 <div class="company-logo" style="background: white; color: #333; border-color: white;">
-                                    <img src="https://raw.githubusercontent.com/Myzlivko/myzlivko-web/refs/heads/main/cdn/Alza.png" alt="Alza" style="width: 100%; height: 100%; object-fit: contain;" onerror="this.style.display='none'; this.parentElement.innerHTML='ALZA'; this.parentElement.style.fontSize='12px';">
+                                    <img src="https://github.com/Myzlivko/myzlivko-web/blob/main/cdn/assets/icons/Alza.png?raw=true" alt="Alza" style="width: 100%; height: 100%; object-fit: contain;" onerror="this.style.display='none'; this.parentElement.innerHTML='ALZA'; this.parentElement.style.fontSize='12px';">
                                 </div>
                                 <div class="project-year">2018-2020</div>
                             </div>
@@ -1516,6 +1797,136 @@
                                 <h3 class="project-title">Alza a.s.</h3>
                                 <div class="project-position">Reklamační technik</div>
                                 <p class="project-description">Komunikace se zákazníky v oblasti reklamací, vrácení zboží, pojištění a pronájmu elektroniky. Kontrola a dokumentace stavu zboží, spolupráce na vývoji samoobslužného systému reklamací (dnes součást AlzaBoxů). Účast v talentovém programu a školení nových kolegů. Rekordní obrat přes 1 mil. Kč za měsíc mimo rámec primární pracovní náplně.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Projects Overlay -->
+        <div class="content-overlay" id="projectsOverlay">
+            <button class="close-btn" onclick="closeOverlay()">&times;</button>
+            <div class="overlay-content">
+                <h2 class="overlay-title">PROJEKTY</h2>
+                
+                <!-- Dabing & Voice-overy Section -->
+                <div class="projects-section">
+                    <h3 class="section-title">DABING & VOICE-OVERY</h3>
+                    <div class="dabing-project">
+                        <h4 class="project-name">1428: Shadows over Silesia</h4>
+                        <div class="dabing-content">
+                            <div class="audio-tracks">
+                                <div class="audio-player">
+                                    <div class="audio-info">
+                                        <span class="audio-title">Ukázka dabingu – Ďábel (hlavní antagonista)</span>
+                                        <span class="audio-duration">0:32</span>
+                                    </div>
+                                    <div class="audio-controls">
+                                        <button class="play-btn" onclick="toggleAudio('audio1')">
+                                            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                                                <path d="M8 5v14l11-7z"/>
+                                            </svg>
+                                        </button>
+                                        <div class="audio-progress">
+                                            <div class="progress-bar"></div>
+                                        </div>
+                                    </div>
+                                    <audio id="audio1" preload="metadata">
+                                        <source src="https://github.com/Myzlivko/myzlivko-web/blob/main/cdn/assets/audio/dabing-1428-shadows-over-silesia-dabel.mp3.mp3?raw=true" type="audio/mpeg">
+                                        Váš prohlížeč nepodporuje přehrávání audia.
+                                    </audio>
+                                </div>
+                                
+                                <div class="audio-player">
+                                    <div class="audio-info">
+                                        <span class="audio-title">Ukázka dabingu - Postava 2</span>
+                                        <span class="audio-duration">1:12</span>
+                                    </div>
+                                    <div class="audio-controls">
+                                        <button class="play-btn" onclick="toggleAudio('audio2')">
+                                            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                                                <path d="M8 5v14l11-7z"/>
+                                            </svg>
+                                        </button>
+                                        <div class="audio-progress">
+                                            <div class="progress-bar"></div>
+                                        </div>
+                                    </div>
+                                    <audio id="audio2" preload="metadata">
+                                        <source src="#" type="audio/mpeg">
+                                        Váš prohlížeč nepodporuje přehrávání audia.
+                                    </audio>
+                                </div>
+                            </div>
+                            
+                            <div class="project-video">
+                                <div class="video-container">
+                                    <iframe 
+                                        src="https://www.youtube.com/embed/nCaCOfyrdvE" 
+                                        frameborder="0" 
+                                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                                        allowfullscreen>
+                                    </iframe>
+                                </div>
+                                <p class="video-description">Trailer hry s mým dabingem</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Produkce Section -->
+                <div class="projects-section">
+                    <h3 class="section-title">PRODUKCE</h3>
+                    <div class="production-grid">
+                        <div class="production-item">
+                            <div class="production-video">
+                                <div class="video-thumbnail" onclick="openExternal('https://www.youtube.com/watch?v=example1')">
+                                    <img src="https://img.youtube.com/vi/example1/maxresdefault.jpg" alt="Video 1" onerror="this.src='data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMzIwIiBoZWlnaHQ9IjE4MCIgdmlld0JveD0iMCAwIDMyMCAxODAiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjxyZWN0IHdpZHRoPSIzMjAiIGhlaWdodD0iMTgwIiBmaWxsPSIjMzMzIi8+Cjx0ZXh0IHg9IjE2MCIgeT0iOTAiIGZpbGw9IndoaXRlIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBkeT0iLjNlbSIgZm9udC1mYW1pbHk9IkFyaWFsIiBmb250LXNpemU9IjE0Ij5WaWRlbyAxPC90ZXh0Pgo8L3N2Zz4=';">
+                                    <div class="play-overlay">
+                                        <svg width="48" height="48" viewBox="0 0 24 24" fill="white">
+                                            <path d="M8 5v14l11-7z"/>
+                                        </svg>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="production-info">
+                                <h4 class="production-title">Název projektu 1</h4>
+                                <p class="production-description">Popis mé role v tomto projektu - střih, kamera, režie, atd.</p>
+                            </div>
+                        </div>
+                        
+                        <div class="production-item">
+                            <div class="production-video">
+                                <div class="video-thumbnail" onclick="openExternal('https://www.youtube.com/watch?v=example2')">
+                                    <img src="https://img.youtube.com/vi/example2/maxresdefault.jpg" alt="Video 2" onerror="this.src='data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMzIwIiBoZWlnaHQ9IjE4MCIgdmlld0JveD0iMCAwIDMyMCAxODAiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjxyZWN0IHdpZHRoPSIzMjAiIGhlaWdodD0iMTgwIiBmaWxsPSIjMzMzIi8+Cjx0ZXh0IHg9IjE2MCIgeT0iOTAiIGZpbGw9IndoaXRlIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBkeT0iLjNlbSIgZm9udC1mYW1pbHk9IkFyaWFsIiBmb250LXNpemU9IjE0Ij5WaWRlbyAyPC90ZXh0Pgo8L3N2Zz4=';">
+                                    <div class="play-overlay">
+                                        <svg width="48" height="48" viewBox="0 0 24 24" fill="white">
+                                            <path d="M8 5v14l11-7z"/>
+                                        </svg>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="production-info">
+                                <h4 class="production-title">Název projektu 2</h4>
+                                <p class="production-description">Popis mé role v tomto projektu - střih, kamera, režie, atd.</p>
+                            </div>
+                        </div>
+                        
+                        <div class="production-item">
+                            <div class="production-video">
+                                <div class="video-thumbnail" onclick="openExternal('https://www.youtube.com/watch?v=example3')">
+                                    <img src="https://img.youtube.com/vi/example3/maxresdefault.jpg" alt="Video 3" onerror="this.src='data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMzIwIiBoZWlnaHQ9IjE4MCIgdmlld0JveD0iMCAwIDMyMCAxODAiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjxyZWN0IHdpZHRoPSIzMjAiIGhlaWdodD0iMTgwIiBmaWxsPSIjMzMzIi8+Cjx0ZXh0IHg9IjE2MCIgeT0iOTAiIGZpbGw9IndoaXRlIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBkeT0iLjNlbSIgZm9udC1mYW1pbHk9IkFyaWFsIiBmb250LXNpemU9IjE0Ij5WaWRlbyAzPC90ZXh0Pgo8L3N2Zz4=';">
+                                    <div class="play-overlay">
+                                        <svg width="48" height="48" viewBox="0 0 24 24" fill="white">
+                                            <path d="M8 5v14l11-7z"/>
+                                        </svg>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="production-info">
+                                <h4 class="production-title">Název projektu 3</h4>
+                                <p class="production-description">Popis mé role v tomto projektu - střih, kamera, režie, atd.</p>
                             </div>
                         </div>
                     </div>
@@ -1611,9 +2022,21 @@
             updateActiveNav('MÁ KARIÉRA');
         }
         
+        function showProjects() {
+            closeOverlay();
+            document.getElementById('projectsOverlay').classList.add('active');
+            document.querySelector('.main-content').classList.add('blurred');
+            document.querySelector('.nav-top').classList.add('blurred');
+            document.querySelector('.socials-section').classList.add('blurred');
+            document.querySelector('.copyright-footer').classList.add('blurred');
+            document.querySelector('.floating-video').classList.add('blurred');
+            updateActiveNav('PROJEKTY');
+        }
+        
         function closeOverlay() {
             document.getElementById('aboutOverlay').classList.remove('active');
             document.getElementById('portfolioOverlay').classList.remove('active');
+            document.getElementById('projectsOverlay').classList.remove('active');
             document.querySelector('.main-content').classList.remove('blurred');
             document.querySelector('.nav-top').classList.remove('blurred');
             document.querySelector('.socials-section').classList.remove('blurred');
@@ -1632,6 +2055,48 @@
             });
         }
         
+        // Audio player functionality
+        let currentAudio = null;
+        
+        function toggleAudio(audioId) {
+            const audio = document.getElementById(audioId);
+            const playBtn = audio.parentElement.querySelector('.play-btn');
+            const progressBar = audio.parentElement.querySelector('.progress-bar');
+            
+            // Stop other audio if playing
+            if (currentAudio && currentAudio !== audio) {
+                currentAudio.pause();
+                currentAudio.currentTime = 0;
+                const otherBtn = currentAudio.parentElement.querySelector('.play-btn');
+                const otherProgress = currentAudio.parentElement.querySelector('.progress-bar');
+                otherBtn.innerHTML = '<svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>';
+                otherProgress.style.width = '0%';
+            }
+            
+            if (audio.paused) {
+                audio.play();
+                currentAudio = audio;
+                playBtn.innerHTML = '<svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M6 4h4v16H6V4zm8 0h4v16h-4V4z"/></svg>';
+                
+                // Update progress bar
+                audio.addEventListener('timeupdate', function() {
+                    const progress = (audio.currentTime / audio.duration) * 100;
+                    progressBar.style.width = progress + '%';
+                });
+                
+                // Reset when ended
+                audio.addEventListener('ended', function() {
+                    playBtn.innerHTML = '<svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>';
+                    progressBar.style.width = '0%';
+                    currentAudio = null;
+                });
+            } else {
+                audio.pause();
+                playBtn.innerHTML = '<svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>';
+                currentAudio = null;
+            }
+        }
+        
         // Keyboard navigation
         document.addEventListener('keydown', function(e) {
             if (e.key === 'Escape') {
@@ -1639,5 +2104,5 @@
             }
         });
     </script>
-<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'994571045516579f',t:'MTc2MTQzNDM5NC4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'994a1f1b976a579f',t:'MTc2MTQ4MzQ2OC4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
 </html>
