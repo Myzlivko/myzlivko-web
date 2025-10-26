@@ -2097,7 +2097,7 @@
                                             <iframe src="https://www.youtube.com/embed/Ze2F_qykTmA" allowfullscreen></iframe>
                                         </div>
                                         <div class="production-info">
-                                            <h4 class="production-title">Video 1</h4>
+                                            <h4 class="production-title">INDIAN Video 1</h4>
                                             <p class="production-description">Popis bude doplněn později</p>
                                         </div>
                                     </div>
@@ -2107,7 +2107,7 @@
                                             <iframe src="https://www.youtube.com/embed/NaT0LSBPBk4" allowfullscreen></iframe>
                                         </div>
                                         <div class="production-info">
-                                            <h4 class="production-title">Video 2</h4>
+                                            <h4 class="production-title">INDIAN Video 2</h4>
                                             <p class="production-description">Popis bude doplněn později</p>
                                         </div>
                                     </div>
@@ -2117,7 +2117,7 @@
                                             <iframe src="https://www.youtube.com/embed/FfouWNjlk2I" allowfullscreen></iframe>
                                         </div>
                                         <div class="production-info">
-                                            <h4 class="production-title">Video 3</h4>
+                                            <h4 class="production-title">INDIAN Video 3</h4>
                                             <p class="production-description">Popis bude doplněn později</p>
                                         </div>
                                     </div>
@@ -2127,7 +2127,7 @@
                                             <iframe src="https://www.youtube.com/embed/k-Qz86rFcLQ" allowfullscreen></iframe>
                                         </div>
                                         <div class="production-info">
-                                            <h4 class="production-title">Video 4</h4>
+                                            <h4 class="production-title">INDIAN Video 4</h4>
                                             <p class="production-description">Popis bude doplněn později</p>
                                         </div>
                                     </div>
@@ -2137,7 +2137,7 @@
                                             <iframe src="https://www.youtube.com/embed/JWCQAUizUA8" allowfullscreen></iframe>
                                         </div>
                                         <div class="production-info">
-                                            <h4 class="production-title">Video 5</h4>
+                                            <h4 class="production-title">INDIAN Video 5</h4>
                                             <p class="production-description">Popis bude doplněn později</p>
                                         </div>
                                     </div>
@@ -2147,7 +2147,7 @@
                                             <iframe src="https://www.youtube.com/embed/aIJYKWrAsPQ" allowfullscreen></iframe>
                                         </div>
                                         <div class="production-info">
-                                            <h4 class="production-title">Video 6</h4>
+                                            <h4 class="production-title">INDIAN Video 6</h4>
                                             <p class="production-description">Popis bude doplněn později</p>
                                         </div>
                                     </div>
@@ -2181,7 +2181,7 @@
                                     
                                     <div class="production-item">
                                         <div class="production-video">
-                                            <iframe src="https://www.youtube.com/embed/ABmSUR75Jfk?enablejsapi=1" allowfullscreen></iframe>
+                                            <iframe src="https://www.youtube.com/embed/ABmSUR75Jfk" allowfullscreen></iframe>
                                         </div>
                                         <div class="production-info">
                                             <h4 class="production-title">TECHFEED Video 3</h4>
@@ -2479,6 +2479,14 @@
             const videoPlayer = document.getElementById('videoPlayer');
             const videoIframe = document.getElementById('videoIframe');
             
+            // Preload video immediately when page loads
+            setTimeout(() => {
+                if (!videoPreloaded) {
+                    videoIframe.src = 'https://www.youtube.com/embed/PyEV_ulp2q4?enablejsapi=1&controls=0&modestbranding=1&rel=0&mute=1';
+                    videoPreloaded = true;
+                }
+            }, 1000);
+            
             videoPreview.addEventListener('mouseenter', () => {
                 if (!isVideoExpanded) {
                     clearTimeout(videoHoverTimeout);
@@ -2488,10 +2496,11 @@
                             videoPreview.classList.add('expanded');
                             videoPlaceholder.style.display = 'none';
                             videoPlayer.style.display = 'block';
+                            // Switch to autoplay version with sound
                             videoIframe.src = 'https://www.youtube.com/embed/PyEV_ulp2q4?autoplay=1&enablejsapi=1&controls=0&modestbranding=1&rel=0';
                             isVideoExpanded = true;
                         }
-                    }, 300);
+                    }, 100);
                 }
             });
             
@@ -2607,5 +2616,5 @@
             });
         });
     </script>
-<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'994ac891a55ff974',t:'MTc2MTQ5MDQwOS4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'994acfb0c5dcf974',t:'MTc2MTQ5MDcwMS4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
 </html>
