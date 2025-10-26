@@ -1166,19 +1166,7 @@
         }
         
         .volume-handle {
-            position: absolute;
-            top: 50%;
-            right: -6px;
-            transform: translateY(-50%);
-            width: 12px;
-            height: 12px;
-            background: white;
-            border-radius: 50%;
-            box-shadow: 0 0 8px rgba(255,255,255,0.5);
-            opacity: 1;
-            transition: opacity 0.3s ease;
-            pointer-events: none;
-            display: block;
+            display: none !important;
         }
         
         .audio-time {
@@ -2067,7 +2055,6 @@
                                     <div class="audio-player">
                                         <div class="audio-info">
                                             <span class="audio-title">Ukázka dabingu – Ďábel (hlavní antagonista)</span>
-                                            <span class="audio-duration">0:32</span>
                                         </div>
                                         <div class="audio-controls">
                                             <button class="play-btn" onclick="togglePlay('audio1')">
@@ -2105,38 +2092,38 @@
                                     <div class="audio-player">
                                         <div class="audio-info">
                                             <span class="audio-title">Ukázka dabingu – Bratr Vojtěch</span>
-                                            <span class="audio-duration">--:--</span>
                                         </div>
                                         <div class="audio-controls">
-                                            <button class="play-btn" onclick="togglePlay('audio2')" style="opacity: 0.5; cursor: not-allowed;" disabled>
+                                            <button class="play-btn" onclick="togglePlay('audio2')">
                                                 <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
                                                     <path d="M8 5v14l11-7z"/>
                                                 </svg>
                                             </button>
-                                            <div class="volume-control" style="opacity: 0.5;">
-                                                <button class="volume-btn" style="cursor: not-allowed;" disabled>
+                                            <div class="volume-control">
+                                                <button class="volume-btn" onclick="toggleMute('audio2')">
                                                     <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" class="volume-icon">
                                                         <path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/>
                                                     </svg>
                                                 </button>
                                                 <div class="volume-slider-container">
-                                                    <div class="volume-slider" style="cursor: not-allowed;">
-                                                        <div class="volume-progress" style="width: 0%;"></div>
+                                                    <div class="volume-slider" onclick="setVolume(event, 'audio2')">
+                                                        <div class="volume-progress"></div>
                                                         <div class="volume-handle"></div>
                                                     </div>
                                                 </div>
                                             </div>
-                                            <div class="audio-time">--:--</div>
-                                            <div class="audio-progress" style="cursor: not-allowed; opacity: 0.5;">
-                                                <div class="progress-bar" style="width: 0%;">
+                                            <div class="audio-time">0:00</div>
+                                            <div class="audio-progress" onclick="seekAudio(event, 'audio2')">
+                                                <div class="progress-bar">
                                                     <div class="progress-handle"></div>
                                                 </div>
                                             </div>
-                                            <div class="audio-time">--:--</div>
+                                            <div class="audio-time">0:28</div>
                                         </div>
-                                        <div style="margin-top: 10px; font-size: 12px; color: rgba(255,255,255,0.5); text-align: center; font-style: italic;">
-                                            Nahrávka bude brzy k dispozici
-                                        </div>
+                                        <audio id="audio2" preload="metadata" crossorigin="anonymous">
+                                            <source src="https://cdn.jsdelivr.net/gh/Myzlivko/myzlivko-web@main/cdn/assets/audio/dabing-1428-shadows-over-silesia-bratr-vojtech.mp3" type="audio/mpeg">
+                                            Váš prohlížeč nepodporuje přehrávání audia.
+                                        </audio>
                                     </div>
 
                                 </div>
@@ -2724,6 +2711,7 @@
             // Initialize audio states when projects overlay opens
             setTimeout(() => {
                 initAudioState('audio1');
+                initAudioState('audio2');
             }, 100);
         }
         
@@ -2803,7 +2791,7 @@
             initVideoHover();
             
             // Initialize audio elements
-            ['audio1'].forEach(audioId => {
+            ['audio1', 'audio2'].forEach(audioId => {
                 const audio = document.getElementById(audioId);
                 if (audio) {
                     audio.addEventListener('timeupdate', () => {
@@ -2827,5 +2815,5 @@
             });
         });
     </script>
-<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'994c179505fdf974',t:'MTc2MTUwNDEzMS4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'994d24c7d682579f',t:'MTc2MTUxNTE1Ny4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
 </html>
