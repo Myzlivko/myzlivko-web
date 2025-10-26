@@ -611,11 +611,13 @@
             cursor: pointer;
             overflow: hidden;
             position: relative;
-            transition: all 0.3s ease;
+            transition: all 0.4s ease;
         }
         
         .video-preview:hover {
-            transform: scale(1.05);
+            width: 320px;
+            height: 180px;
+            transform: none;
         }
         
         .video-preview.expanded {
@@ -1773,9 +1775,12 @@
         </div>
         
         <div class="floating-video">
-            <div class="video-preview" id="videoPreview" onclick="toggleVideo()">
-                <div class="video-placeholder">
+            <div class="video-preview" id="videoPreview">
+                <div class="video-placeholder" id="videoPlaceholder">
                     <div class="video-overlay-effect"></div>
+                </div>
+                <div class="video-player" id="videoPlayer" style="display: none;">
+                    <iframe src="" id="videoIframe" allowfullscreen style="width: 100%; height: 100%; border: none; border-radius: 10px;"></iframe>
                 </div>
                 <div class="video-label">NOVÉ VIDEO</div>
             </div>
@@ -2413,21 +2418,38 @@
         }
         
         // Video functions
-        function toggleVideo() {
+        let videoHoverTimeout;
+        let isVideoPlaying = false;
+        
+        function initVideoHover() {
             const videoPreview = document.getElementById('videoPreview');
-            videoExpanded = !videoExpanded;
+            const videoPlaceholder = document.getElementById('videoPlaceholder');
+            const videoPlayer = document.getElementById('videoPlayer');
+            const videoIframe = document.getElementById('videoIframe');
             
-            if (videoExpanded) {
-                videoPreview.classList.add('expanded');
-                setTimeout(() => {
-                    videoPreview.onclick = function() {
-                        openExternal('https://www.youtube.com/watch?v=PyEV_ulp2q4');
-                    };
+            videoPreview.addEventListener('mouseenter', () => {
+                clearTimeout(videoHoverTimeout);
+                videoHoverTimeout = setTimeout(() => {
+                    if (!isVideoPlaying) {
+                        videoPlaceholder.style.display = 'none';
+                        videoPlayer.style.display = 'block';
+                        videoIframe.src = 'https://www.youtube.com/embed/PyEV_ulp2q4?autoplay=1&mute=1';
+                        isVideoPlaying = true;
+                    }
+                }, 300);
+            });
+            
+            videoPreview.addEventListener('mouseleave', () => {
+                clearTimeout(videoHoverTimeout);
+                videoHoverTimeout = setTimeout(() => {
+                    if (isVideoPlaying) {
+                        videoPlaceholder.style.display = 'block';
+                        videoPlayer.style.display = 'none';
+                        videoIframe.src = '';
+                        isVideoPlaying = false;
+                    }
                 }, 500);
-            } else {
-                videoPreview.classList.remove('expanded');
-                videoPreview.onclick = toggleVideo;
-            }
+            });
         }
         
         // Navigation functions
@@ -2514,7 +2536,10 @@
                 updateVolumeIcon(audioId);
                 updateVolumeProgress(audioId);
             });
+            
+            // Initialize video hover functionality
+            initVideoHover();
         });
     </script>
-<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'994aa7a6331d579f',t:'MTc2MTQ4OTA2MS4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'994aaa304614579f',t:'MTc2MTQ4OTE2NS4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
 </html>
