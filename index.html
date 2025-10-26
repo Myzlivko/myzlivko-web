@@ -1139,6 +1139,8 @@
             width: 100%;
             position: relative;
             box-shadow: 0 0 8px rgba(255,255,255,0.3);
+            transition: width 0.2s ease;
+            max-width: 100%;
         }
         
         .volume-handle {
@@ -1151,12 +1153,10 @@
             background: white;
             border-radius: 50%;
             box-shadow: 0 0 8px rgba(255,255,255,0.5);
-            opacity: 0;
-            transition: opacity 0.3s ease;
-        }
-        
-        .volume-control:hover .volume-handle {
             opacity: 1;
+            transition: opacity 0.3s ease;
+            pointer-events: none;
+            display: block;
         }
         
         .audio-time {
@@ -1173,6 +1173,7 @@
             border-radius: 3px;
             overflow: hidden;
             transition: all 0.3s ease;
+            cursor: pointer;
         }
         
         .progress-bar {
@@ -1187,20 +1188,18 @@
         .progress-handle {
             position: absolute;
             top: 50%;
-            right: -6px;
+            right: -7px;
             transform: translateY(-50%);
             width: 14px;
             height: 14px;
             background: white;
             border-radius: 50%;
             box-shadow: 0 0 12px rgba(255,255,255,0.8), 0 0 4px rgba(255,255,255,1);
-            opacity: 0;
+            opacity: 1;
             transition: opacity 0.3s ease;
             border: 2px solid rgba(255,255,255,0.9);
-        }
-        
-        .audio-progress:hover .progress-handle {
-            opacity: 1;
+            pointer-events: none;
+            display: block;
         }
         
         .project-video {
@@ -2025,41 +2024,41 @@
                                     
                                     <div class="audio-player">
                                         <div class="audio-info">
-                                            <span class="audio-title">Ukázka dabingu - Postava 2</span>
-                                            <span class="audio-duration">1:12</span>
+                                            <span class="audio-title">Ukázka dabingu – Bratr Vojtěch</span>
+                                            <span class="audio-duration">--:--</span>
                                         </div>
                                         <div class="audio-controls">
-                                            <button class="play-btn" onclick="togglePlay('audio2')">
+                                            <button class="play-btn" onclick="togglePlay('audio2')" style="opacity: 0.5; cursor: not-allowed;" disabled>
                                                 <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
                                                     <path d="M8 5v14l11-7z"/>
                                                 </svg>
                                             </button>
-                                            <div class="volume-control">
-                                                <button class="volume-btn" onclick="toggleMute('audio2')">
+                                            <div class="volume-control" style="opacity: 0.5;">
+                                                <button class="volume-btn" style="cursor: not-allowed;" disabled>
                                                     <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" class="volume-icon">
                                                         <path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/>
                                                     </svg>
                                                 </button>
                                                 <div class="volume-slider-container">
-                                                    <div class="volume-slider" onclick="setVolume(event, 'audio2')">
-                                                        <div class="volume-progress"></div>
+                                                    <div class="volume-slider" style="cursor: not-allowed;">
+                                                        <div class="volume-progress" style="width: 0%;"></div>
                                                         <div class="volume-handle"></div>
                                                     </div>
                                                 </div>
                                             </div>
-                                            <div class="audio-time">0:00</div>
-                                            <div class="audio-progress" onclick="seekAudio(event, 'audio2')">
-                                                <div class="progress-bar">
+                                            <div class="audio-time">--:--</div>
+                                            <div class="audio-progress" style="cursor: not-allowed; opacity: 0.5;">
+                                                <div class="progress-bar" style="width: 0%;">
                                                     <div class="progress-handle"></div>
                                                 </div>
                                             </div>
-                                            <div class="audio-time">1:12</div>
+                                            <div class="audio-time">--:--</div>
                                         </div>
-                                        <audio id="audio2" preload="metadata" crossorigin="anonymous">
-                                            <source src="https://cdn.jsdelivr.net/gh/Myzlivko/myzlivko-web@main/cdn/assets/audio/dabing-1428-shadows-over-silesia-dabel.mp3" type="audio/mpeg">
-                                            Váš prohlížeč nepodporuje přehrávání audia.
-                                        </audio>
+                                        <div style="margin-top: 10px; font-size: 12px; color: rgba(255,255,255,0.5); text-align: center; font-style: italic;">
+                                            Nahrávka bude brzy k dispozici
+                                        </div>
                                     </div>
+
                                 </div>
                             </div>
                         </div>
@@ -2219,6 +2218,13 @@
                     // Set volume to 100%
                     audio.volume = 1.0;
                     
+                    // Initialize volume bar visual
+                    const audioPlayer = document.querySelector(`[onclick*="${audioId}"]`).closest('.audio-player');
+                    const volumeProgress = audioPlayer.querySelector('.volume-progress');
+                    if (volumeProgress) {
+                        volumeProgress.style.width = '100%';
+                    }
+                    
                     audio.addEventListener('loadedmetadata', () => {
                         audioStates[audioId].duration = audio.duration;
                         updateTimeDisplay(audioId);
@@ -2314,34 +2320,6 @@
             }
         }
         
-        function startDemoPlayback(audioId) {
-            const state = audioStates[audioId];
-            state.isPlaying = true;
-            currentAudio = audioId;
-            
-            const interval = setInterval(() => {
-                if (!state.isPlaying) {
-                    clearInterval(interval);
-                    return;
-                }
-                
-                state.currentTime += 0.1;
-                if (state.currentTime >= state.duration) {
-                    state.currentTime = state.duration;
-                    state.isPlaying = false;
-                    clearInterval(interval);
-                    updatePlayButton(audioId);
-                }
-                
-                updateProgressBar(audioId);
-                updateTimeDisplay(audioId);
-            }, 100);
-        }
-        
-        function stopDemoPlayback(audioId) {
-            audioStates[audioId].isPlaying = false;
-        }
-        
         function updatePlayButton(audioId) {
             const playBtn = document.querySelector(`[onclick="togglePlay('${audioId}')"] svg path`);
             const isPlaying = audioStates[audioId]?.isPlaying;
@@ -2389,6 +2367,12 @@
             const percentage = clickX / rect.width;
             
             audio.currentTime = percentage * audio.duration;
+            
+            // Update visual progress immediately
+            const progressBar = progressContainer.querySelector('.progress-bar');
+            if (progressBar) {
+                progressBar.style.width = `${percentage * 100}%`;
+            }
         }
         
         function toggleMute(audioId) {
@@ -2397,6 +2381,7 @@
             
             audio.muted = !audio.muted;
             updateVolumeIcon(audioId);
+            updateVolumeBar(audioId);
         }
         
         function setVolume(event, audioId) {
@@ -2411,7 +2396,34 @@
             audio.volume = percentage;
             audio.muted = percentage === 0;
             
+            // Update visual volume bar
+            const volumeProgress = slider.querySelector('.volume-progress');
+            if (volumeProgress) {
+                volumeProgress.style.width = `${percentage * 100}%`;
+            }
+            
+            // Store volume in state
+            if (audioStates[audioId]) {
+                audioStates[audioId].volume = percentage;
+            }
+            
             updateVolumeIcon(audioId);
+        }
+        
+        function updateVolumeBar(audioId) {
+            const audio = document.getElementById(audioId);
+            if (!audio) return;
+            
+            const audioPlayer = document.querySelector(`[onclick*="${audioId}"]`).closest('.audio-player');
+            const volumeProgress = audioPlayer.querySelector('.volume-progress');
+            
+            if (volumeProgress) {
+                if (audio.muted) {
+                    volumeProgress.style.width = '0%';
+                } else {
+                    volumeProgress.style.width = `${audio.volume * 100}%`;
+                }
+            }
         }
         
         function updateVolumeIcon(audioId) {
@@ -2551,7 +2563,6 @@
             // Initialize audio states when projects overlay opens
             setTimeout(() => {
                 initAudioState('audio1');
-                initAudioState('audio2');
             }, 100);
         }
         
@@ -2605,7 +2616,7 @@
             initVideoHover();
             
             // Initialize audio elements
-            ['audio1', 'audio2'].forEach(audioId => {
+            ['audio1'].forEach(audioId => {
                 const audio = document.getElementById(audioId);
                 if (audio) {
                     audio.addEventListener('timeupdate', () => {
@@ -2620,9 +2631,14 @@
                     audio.addEventListener('loadedmetadata', () => {
                         updateTimeDisplay(audioId);
                     });
+                    
+                    audio.addEventListener('volumechange', () => {
+                        updateVolumeBar(audioId);
+                        updateVolumeIcon(audioId);
+                    });
                 }
             });
         });
     </script>
-<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'994ae561240ef974',t:'MTc2MTQ5MTU4OS4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'994afe82e63e579f',t:'MTc2MTQ5MjYxOC4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
 </html>
