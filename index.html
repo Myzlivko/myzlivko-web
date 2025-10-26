@@ -4,15 +4,16 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Jakub Myslivec - Portfolio</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;700&family=Dancing+Script:wght@700&family=Permanent+Marker&family=Architects+Daughter&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;700&display=swap" rel="stylesheet">
     <style>
-        body {
-            box-sizing: border-box;
-        }
-        
+        /* Reset and Base Styles */
         * {
             margin: 0;
             padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
             box-sizing: border-box;
         }
         
@@ -22,6 +23,7 @@
             overflow: hidden;
         }
         
+        /* Container and Background */
         .container {
             height: 100%;
             position: relative;
@@ -29,7 +31,6 @@
             background-size: 400% 400%;
             animation: subtleGradient 20s ease-in-out infinite;
             transition: all 6s cubic-bezier(0.25, 0.1, 0.25, 1);
-            position: relative;
         }
         
         .container::before {
@@ -53,108 +54,12 @@
             background: rgba(255, 255, 255, 0.1);
         }
         
-        .first-name,
-        .last-name {
-            color: #E8E6E4;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
-            transition: all 6s cubic-bezier(0.25, 0.1, 0.25, 1);
-        }
-        
-        .container.light-theme .first-name,
-        .container.light-theme .last-name {
-            color: #555555;
-            text-shadow: 2px 2px 4px rgba(255,255,255,0.3);
-        }
-        
-        .nickname {
-            color: #BEBEBE;
-            transition: all 6s cubic-bezier(0.25, 0.1, 0.25, 1);
-        }
-        
-        .container.light-theme .nickname {
-            color: #666;
-        }
-        
-        .subtitle {
-            color: rgba(232, 230, 228, 0.8);
-            transition: all 6s cubic-bezier(0.25, 0.1, 0.25, 1);
-        }
-        
-        .container.light-theme .subtitle {
-            color: rgba(51, 51, 51, 0.8);
-        }
-        
-        .nav-btn {
-            border-color: rgba(255,255,255,0.8);
-            color: white;
-            transition: all 0.3s ease, border-color 6s cubic-bezier(0.25, 0.1, 0.25, 1), color 6s cubic-bezier(0.25, 0.1, 0.25, 1);
-        }
-        
-        .container.light-theme .nav-btn {
-            border-color: rgba(51,51,51,0.8);
-            color: #333333;
-        }
-        
-        .container.light-theme .nav-btn:hover {
-            background: #333333;
-            color: white;
-        }
-        
-        .nav-btn.active {
-            background: rgba(255,255,255,0.1);
-            border-color: white;
-            transition: all 0.3s ease, border-color 6s cubic-bezier(0.25, 0.1, 0.25, 1), color 6s cubic-bezier(0.25, 0.1, 0.25, 1), background 6s cubic-bezier(0.25, 0.1, 0.25, 1);
-        }
-        
-        .container.light-theme .nav-btn.active {
-            background: rgba(51,51,51,0.1);
-            border-color: #333333;
-        }
-        
-        .handwritten-note {
-            color: #E8E6E4;
-            transition: all 6s cubic-bezier(0.25, 0.1, 0.25, 1);
-        }
-        
-        .container.light-theme .handwritten-note {
-            color: #666;
-        }
-        
-        .socials-toggle {
-            border-color: rgba(255,255,255,0.6);
-            color: rgba(255,255,255,0.8);
-            transition: all 0.3s ease, border-color 6s cubic-bezier(0.25, 0.1, 0.25, 1), color 6s cubic-bezier(0.25, 0.1, 0.25, 1);
-        }
-        
-        .container.light-theme .socials-toggle {
-            border-color: rgba(51,51,51,0.6);
-            color: rgba(51,51,51,0.8);
-        }
-        
-        .container.light-theme .socials-toggle:hover {
-            background: #333333;
-            color: white;
-        }
-        
-        .social-link {
-            color: rgba(255,255,255,0.7);
-            transition: all 0.3s ease, color 6s cubic-bezier(0.25, 0.1, 0.25, 1);
-        }
-        
-        .container.light-theme .social-link {
-            color: rgba(51,51,51,0.7);
-        }
-        
-        .container.light-theme .social-link:hover {
-            color: #333333;
-            border-bottom-color: rgba(51,51,51,0.3);
-        }
-
         @keyframes subtleGradient {
             0%, 100% { background-position: 0% 50%; }
             50% { background-position: 100% 50%; }
         }
         
+        /* Background Effects */
         .background-overlay {
             position: absolute;
             top: 0;
@@ -204,16 +109,57 @@
                 );
         }
         
-        .decorative-elements {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: 2;
-            pointer-events: none;
+        /* Theme Colors */
+        .first-name,
+        .last-name {
+            color: #E8E6E4;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+            transition: all 6s cubic-bezier(0.25, 0.1, 0.25, 1);
         }
         
+        .container.light-theme .first-name,
+        .container.light-theme .last-name {
+            color: #555555;
+            text-shadow: 2px 2px 4px rgba(255,255,255,0.3);
+        }
+        
+        .nickname {
+            color: #BEBEBE;
+            transition: all 6s cubic-bezier(0.25, 0.1, 0.25, 1);
+        }
+        
+        .container.light-theme .nickname {
+            color: #666;
+        }
+        
+        .subtitle {
+            color: rgba(232, 230, 228, 0.8);
+            transition: all 6s cubic-bezier(0.25, 0.1, 0.25, 1);
+        }
+        
+        .container.light-theme .subtitle {
+            color: rgba(51, 51, 51, 0.8);
+        }
+        
+        .handwritten-note {
+            color: #E8E6E4;
+            transition: all 6s cubic-bezier(0.25, 0.1, 0.25, 1);
+        }
+        
+        .container.light-theme .handwritten-note {
+            color: #666;
+        }
+        
+        .copyright-footer {
+            color: rgba(255,255,255,0.6);
+            transition: color 6s cubic-bezier(0.25, 0.1, 0.25, 1);
+        }
+        
+        .container.light-theme .copyright-footer {
+            color: rgba(0,0,0,0.6);
+        }
+        
+        /* Navigation */
         .nav-top {
             position: absolute;
             top: 40px;
@@ -223,6 +169,63 @@
             justify-content: space-between;
             align-items: center;
             z-index: 10;
+        }
+        
+        .nav-left {
+            display: flex;
+            gap: 20px;
+        }
+        
+        .nav-btn {
+            padding: 12px 24px;
+            border: 2px solid rgba(255,255,255,0.8);
+            border-radius: 50px;
+            background: transparent;
+            color: white;
+            font-family: 'Inter', sans-serif;
+            font-weight: 400;
+            font-size: 14px;
+            letter-spacing: 0.5px;
+            cursor: pointer;
+            transition: all 0.3s ease, border-color 6s cubic-bezier(0.25, 0.1, 0.25, 1), color 6s cubic-bezier(0.25, 0.1, 0.25, 1);
+            text-decoration: none;
+            display: inline-block;
+        }
+        
+        .nav-btn:hover {
+            background: white;
+            color: #1a1a1a;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(255,255,255,0.2);
+        }
+        
+        .nav-btn.active {
+            background: rgba(255,255,255,0.1);
+            border-color: white;
+            transition: all 0.3s ease, border-color 6s cubic-bezier(0.25, 0.1, 0.25, 1), color 6s cubic-bezier(0.25, 0.1, 0.25, 1), background 6s cubic-bezier(0.25, 0.1, 0.25, 1);
+        }
+        
+        .container.light-theme .nav-btn {
+            border-color: rgba(51,51,51,0.8);
+            color: #333333;
+        }
+        
+        .container.light-theme .nav-btn:hover {
+            background: #333333;
+            color: white;
+        }
+        
+        .container.light-theme .nav-btn.active {
+            background: rgba(51,51,51,0.1);
+            border-color: #333333;
+        }
+        
+        /* Theme Toggle */
+        .theme-toggle-container {
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
         }
         
         .theme-toggle {
@@ -245,13 +248,24 @@
             position: relative;
         }
         
-        .theme-toggle-container {
-            position: relative;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
+        .theme-toggle:hover {
+            background: white;
+            color: #1a1a1a;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(255,255,255,0.2);
         }
         
+        .container.light-theme .theme-toggle {
+            border-color: rgba(51,51,51,0.8);
+            color: #333333;
+        }
+        
+        .container.light-theme .theme-toggle:hover {
+            background: #333333;
+            color: white;
+        }
+        
+        /* Coffee Animation */
         .coffee-animation-text {
             position: absolute;
             left: calc(100% - 40px);
@@ -285,40 +299,13 @@
             box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
         }
         
-        .container.light-theme .coffee-animation-text.show {
-            opacity: 1;
-            animation: coffeeTextSimpleFade 3.5s ease-in-out forwards;
-        }
-        
         @keyframes coffeeTextSimpleFade {
-            0% { 
-                opacity: 1; 
-            }
-            90% { 
-                opacity: 1; 
-            }
-            100% { 
-                opacity: 0; 
-            }
+            0% { opacity: 1; }
+            90% { opacity: 1; }
+            100% { opacity: 0; }
         }
         
-        .theme-toggle:hover {
-            background: white;
-            color: #1a1a1a;
-            transform: translateY(-2px);
-            box-shadow: 0 8px 25px rgba(255,255,255,0.2);
-        }
-        
-        .container.light-theme .theme-toggle {
-            border-color: rgba(51,51,51,0.8);
-            color: #333333;
-        }
-        
-        .container.light-theme .theme-toggle:hover {
-            background: #333333;
-            color: white;
-        }
-        
+        /* Coffee Cup SVG */
         .coffee-cup {
             width: 20px;
             height: 20px;
@@ -331,13 +318,13 @@
         }
         
         .coffee-cup .cup-handle {
-            stroke: white !important;
-            fill: none !important;
-            stroke-width: 2 !important;
-            transition: stroke 6s cubic-bezier(0.25, 0.1, 0.25, 1) !important;
-            stroke-linecap: round !important;
-            stroke-linejoin: round !important;
-            opacity: 1 !important;
+            stroke: white;
+            fill: none;
+            stroke-width: 2;
+            transition: stroke 6s cubic-bezier(0.25, 0.1, 0.25, 1);
+            stroke-linecap: round;
+            stroke-linejoin: round;
+            opacity: 1;
         }
         
         .coffee-cup .coffee-liquid {
@@ -350,51 +337,14 @@
         }
         
         .container.light-theme .coffee-cup .cup-handle {
-            stroke: #333333 !important;
-            fill: none !important;
-            stroke-width: 2 !important;
-            stroke-linecap: round !important;
-            stroke-linejoin: round !important;
-            opacity: 1 !important;
+            stroke: #333333;
         }
         
         .container.light-theme .coffee-cup .coffee-liquid {
             fill: #F5DEB3;
         }
         
-        .nav-left {
-            display: flex;
-            gap: 20px;
-        }
-        
-        .nav-btn {
-            padding: 12px 24px;
-            border: 2px solid rgba(255,255,255,0.8);
-            border-radius: 50px;
-            background: transparent;
-            color: white;
-            font-family: 'Inter', sans-serif;
-            font-weight: 400;
-            font-size: 14px;
-            letter-spacing: 0.5px;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            text-decoration: none;
-            display: inline-block;
-        }
-        
-        .nav-btn:hover {
-            background: white;
-            color: #1a1a1a;
-            transform: translateY(-2px);
-            box-shadow: 0 8px 25px rgba(255,255,255,0.2);
-        }
-        
-        .nav-btn.active {
-            background: rgba(255,255,255,0.1);
-            border-color: white;
-        }
-        
+        /* Contact Section */
         .contact-section {
             position: relative;
             display: flex;
@@ -408,7 +358,6 @@
             right: 50px;
             font-family: 'Inter', sans-serif;
             font-size: 14px;
-            color: #E8E6E4;
             opacity: 0.85;
             transform: rotate(0deg);
             text-shadow: 0 0 6px rgba(0, 0, 0, 0.3);
@@ -422,6 +371,7 @@
             letter-spacing: 0.5px;
         }
         
+        /* Main Content */
         .main-content {
             position: absolute;
             top: 50%;
@@ -438,22 +388,14 @@
             filter: blur(8px);
         }
         
-        .nav-top.blurred {
-            filter: blur(8px);
-        }
-        
-        .socials-section.blurred {
-            filter: blur(8px);
-        }
-        
-        .copyright-footer.blurred {
-            filter: blur(8px);
-        }
-        
+        .nav-top.blurred,
+        .socials-section.blurred,
+        .copyright-footer.blurred,
         .floating-video.blurred {
             filter: blur(8px);
         }
         
+        /* Name Section */
         .name-section {
             margin-bottom: 30px;
         }
@@ -466,27 +408,17 @@
             gap: 40px;
         }
         
-        .first-name {
-            font-size: clamp(3.2rem, 9.6vw, 6.4rem);
-            font-weight: 300;
-            color: white;
-            letter-spacing: 0.1em;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
-        }
-        
+        .first-name,
         .last-name {
             font-size: clamp(3.2rem, 9.6vw, 6.4rem);
             font-weight: 300;
-            color: white;
             letter-spacing: 0.1em;
-            position: relative;
         }
         
         .nickname {
             font-size: clamp(2.08rem, 6.24vw, 4.16rem);
             font-weight: 500;
             font-style: italic;
-            color: #BEBEBE;
             letter-spacing: 0.18em;
             margin-top: -15px;
             text-align: left;
@@ -514,7 +446,6 @@
             top: 50%;
             transform: translateY(-50%);
             font-size: 14px;
-            color: rgba(255,255,255,0.8);
             font-weight: 400;
             letter-spacing: 1px;
             line-height: 1.6;
@@ -522,24 +453,20 @@
             max-width: 300px;
         }
         
+        /* Footer */
         .copyright-footer {
             position: absolute;
             bottom: 50px;
             left: 50%;
             transform: translateX(-50%);
             font-size: 13px;
-            color: rgba(255,255,255,0.6);
             font-family: 'Inter', sans-serif;
             font-weight: 300;
             z-index: 10;
             text-align: center;
-            transition: color 6s cubic-bezier(0.25, 0.1, 0.25, 1);
         }
         
-        .container.light-theme .copyright-footer {
-            color: rgba(0,0,0,0.6);
-        }
-        
+        /* Socials Section */
         .socials-section {
             position: absolute;
             bottom: 40px;
@@ -547,6 +474,99 @@
             z-index: 10;
         }
         
+        .socials-toggle {
+            padding: 10px 20px;
+            border: 2px solid rgba(255,255,255,0.6);
+            border-radius: 25px;
+            background: transparent;
+            color: rgba(255,255,255,0.8);
+            font-family: 'Inter', sans-serif;
+            font-size: 12px;
+            letter-spacing: 1px;
+            cursor: pointer;
+            transition: all 0.3s ease, border-color 6s cubic-bezier(0.25, 0.1, 0.25, 1), color 6s cubic-bezier(0.25, 0.1, 0.25, 1);
+            margin-bottom: 15px;
+            height: 44px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .socials-toggle:hover {
+            background: white;
+            color: #1a1a1a;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(255,255,255,0.2);
+        }
+        
+        .container.light-theme .socials-toggle {
+            border-color: rgba(51,51,51,0.6);
+            color: rgba(51,51,51,0.8);
+        }
+        
+        .container.light-theme .socials-toggle:hover {
+            background: #333333;
+            color: white;
+        }
+        
+        .socials-links {
+            display: none;
+            flex-direction: column;
+            gap: 10px;
+        }
+        
+        .socials-links.active {
+            display: flex;
+            animation: fadeInUp 0.3s ease;
+        }
+        
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .social-link {
+            color: rgba(255,255,255,0.7);
+            text-decoration: none;
+            font-size: 13px;
+            padding: 8px 0;
+            transition: all 0.3s ease, color 6s cubic-bezier(0.25, 0.1, 0.25, 1);
+            border-bottom: 1px solid transparent;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .social-link:hover {
+            color: white;
+            border-bottom-color: rgba(255,255,255,0.3);
+            transform: translateX(5px);
+        }
+        
+        .container.light-theme .social-link {
+            color: rgba(51,51,51,0.7);
+        }
+        
+        .container.light-theme .social-link:hover {
+            color: #333333;
+            border-bottom-color: rgba(51,51,51,0.3);
+        }
+        
+        .social-link svg {
+            transition: all 0.3s ease;
+        }
+        
+        .social-link:hover svg {
+            transform: scale(1.1);
+        }
+        
+        /* Floating Video */
         .floating-video {
             position: absolute;
             bottom: 55px;
@@ -651,79 +671,7 @@
             pointer-events: none;
         }
         
-        .socials-toggle {
-            padding: 10px 20px;
-            border: 2px solid rgba(255,255,255,0.6);
-            border-radius: 25px;
-            background: transparent;
-            color: rgba(255,255,255,0.8);
-            font-family: 'Inter', sans-serif;
-            font-size: 12px;
-            letter-spacing: 1px;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            margin-bottom: 15px;
-            height: 44px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-        
-        .socials-toggle:hover {
-            background: white;
-            color: #1a1a1a;
-            transform: translateY(-2px);
-            box-shadow: 0 8px 25px rgba(255,255,255,0.2);
-        }
-        
-        .socials-links {
-            display: none;
-            flex-direction: column;
-            gap: 10px;
-        }
-        
-        .socials-links.active {
-            display: flex;
-            animation: fadeInUp 0.3s ease;
-        }
-        
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(10px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-        
-        .social-link {
-            color: rgba(255,255,255,0.7);
-            text-decoration: none;
-            font-size: 13px;
-            padding: 8px 0;
-            transition: all 0.3s ease;
-            border-bottom: 1px solid transparent;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
-        
-        .social-link:hover {
-            color: white;
-            border-bottom-color: rgba(255,255,255,0.3);
-            transform: translateX(5px);
-        }
-        
-        .social-link svg {
-            transition: all 0.3s ease;
-        }
-        
-        .social-link:hover svg {
-            transform: scale(1.1);
-        }
-        
+        /* Content Overlays */
         .content-overlay {
             position: absolute;
             top: 0;
@@ -748,7 +696,7 @@
         }
         
         .overlay-content {
-            max-width: 800px;
+            max-width: 1200px;
             margin: 0 auto;
             color: white;
         }
@@ -760,6 +708,27 @@
             letter-spacing: 0.1em;
         }
         
+        .close-btn {
+            position: absolute;
+            top: 40px;
+            right: 40px;
+            background: none;
+            border: 2px solid rgba(255,255,255,0.6);
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            color: white;
+            font-size: 20px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .close-btn:hover {
+            border-color: white;
+            background: rgba(255,255,255,0.1);
+        }
+        
+        /* About Section */
         .about-content {
             display: grid;
             grid-template-columns: 1fr 200px;
@@ -795,6 +764,7 @@
             border-radius: 10px;
         }
         
+        /* Portfolio Grid */
         .portfolio-grid {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
@@ -912,27 +882,7 @@
             margin: 0;
         }
         
-        .close-btn {
-            position: absolute;
-            top: 40px;
-            right: 40px;
-            background: none;
-            border: 2px solid rgba(255,255,255,0.6);
-            border-radius: 50%;
-            width: 50px;
-            height: 50px;
-            color: white;
-            font-size: 20px;
-            cursor: pointer;
-            transition: all 0.3s ease;
-        }
-        
-        .close-btn:hover {
-            border-color: white;
-            background: rgba(255,255,255,0.1);
-        }
-        
-        /* Projects Section Styles */
+        /* Projects Section */
         .projects-section {
             margin-bottom: 50px;
         }
@@ -956,8 +906,8 @@
         
         .dabing-grid {
             display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 40px;
+            grid-template-columns: 1.2fr 0.8fr;
+            gap: 50px;
             align-items: start;
         }
         
@@ -977,8 +927,9 @@
             background: rgba(255,255,255,0.05);
             border: 1px solid rgba(255,255,255,0.1);
             border-radius: 10px;
-            padding: 20px;
+            padding: 25px;
             transition: all 0.3s ease;
+            min-width: 500px;
         }
         
         .audio-player:hover {
@@ -1008,7 +959,7 @@
         .audio-controls {
             display: flex;
             align-items: center;
-            gap: 15px;
+            gap: 8px;
         }
         
         .play-btn {
@@ -1042,9 +993,120 @@
         
         .progress-bar {
             height: 100%;
-            background: linear-gradient(90deg, #4CAF50, #45a049);
+            background: linear-gradient(90deg, white, rgba(255,255,255,0.9));
             width: 0%;
             transition: width 0.1s ease;
+            position: relative;
+            box-shadow: 0 0 8px rgba(255,255,255,0.5);
+        }
+        
+        .progress-handle {
+            position: absolute;
+            top: 50%;
+            right: -6px;
+            transform: translateY(-50%);
+            width: 14px;
+            height: 14px;
+            background: white;
+            border-radius: 50%;
+            box-shadow: 0 0 12px rgba(255,255,255,0.8), 0 0 4px rgba(255,255,255,1);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            border: 2px solid rgba(255,255,255,0.9);
+        }
+        
+        .audio-progress:hover .progress-handle {
+            opacity: 1;
+        }
+        
+        .audio-time {
+            font-size: 12px;
+            color: rgba(255,255,255,0.6);
+            font-family: monospace;
+            min-width: 35px;
+        }
+        
+        .volume-control {
+            position: relative;
+            display: flex;
+            align-items: center;
+        }
+        
+        .volume-btn {
+            width: 40px;
+            height: 40px;
+            border: 2px solid rgba(255,255,255,0.6);
+            border-radius: 50%;
+            background: transparent;
+            color: white;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+            flex-shrink: 0;
+        }
+        
+        .volume-btn:hover {
+            background: rgba(255,255,255,0.1);
+            border-color: white;
+            transform: scale(1.05);
+        }
+        
+        .volume-slider-container {
+            position: absolute;
+            left: 50px;
+            top: 50%;
+            transform: translateY(-50%);
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+            z-index: 10;
+            background: rgba(0,0,0,0.9);
+            padding: 8px 12px;
+            border-radius: 8px;
+            border: 1px solid rgba(255,255,255,0.2);
+        }
+        
+        .volume-control:hover .volume-slider-container {
+            opacity: 1;
+            visibility: visible;
+        }
+        
+        .volume-slider {
+            width: 80px;
+            height: 6px;
+            background: rgba(255,255,255,0.2);
+            border-radius: 3px;
+            position: relative;
+            cursor: pointer;
+        }
+        
+        .volume-progress {
+            height: 100%;
+            background: linear-gradient(90deg, rgba(255,255,255,0.9), rgba(255,255,255,0.7));
+            border-radius: 3px;
+            width: 100%;
+            position: relative;
+            box-shadow: 0 0 8px rgba(255,255,255,0.3);
+        }
+        
+        .volume-handle {
+            position: absolute;
+            top: 50%;
+            right: -6px;
+            transform: translateY(-50%);
+            width: 12px;
+            height: 12px;
+            background: white;
+            border-radius: 50%;
+            box-shadow: 0 0 8px rgba(255,255,255,0.5);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        
+        .volume-control:hover .volume-handle {
+            opacity: 1;
         }
         
         .project-video {
@@ -1158,6 +1220,7 @@
             margin: 0;
         }
         
+        /* Responsive Design */
         @media (max-width: 768px) {
             .nav-top {
                 top: 10px;
@@ -1592,11 +1655,6 @@
 <body>
     <div class="container">
         <div class="background-overlay"></div>
-        
-        <!-- Decorative Elements -->
-        <div class="decorative-elements">
-        </div>
-        
         <div class="grain-effect"></div>
 
         <nav class="nav-top">
@@ -1619,8 +1677,7 @@
             </div>
             <div class="contact-section">
                 <div class="handwritten-note">Hledáte hlas pro svůj projekt?</div>
-
-                <a href="mailto:Myzlivko@gmail.com" class="nav-btn" onclick="return true;">NAPIŠTE MI</a>
+                <a href="mailto:Myzlivko@gmail.com" class="nav-btn">NAPIŠTE MI</a>
             </div>
         </nav>
         
@@ -1628,9 +1685,7 @@
             <div class="name-section">
                 <div class="name-container">
                     <div class="first-name">JAKUB</div>
-                    <div class="last-name">
-                        MYSLIVEC
-                    </div>
+                    <div class="last-name">MYSLIVEC</div>
                     <div class="nickname">MYZLIVKO</div>
                 </div>
             </div>
@@ -1677,12 +1732,10 @@
             </div>
         </div>
         
-        <!-- Copyright Footer -->
         <div class="copyright-footer">
             © 2025 Jakub Myslivec
         </div>
         
-        <!-- Floating Video Preview -->
         <div class="floating-video">
             <div class="video-preview" id="videoPreview" onclick="toggleVideo()">
                 <div class="video-placeholder">
@@ -1816,7 +1869,6 @@
             <div class="overlay-content">
                 <h2 class="overlay-title">PROJEKTY A REFERENCE</h2>
                 
-                <!-- Dabing & Voice-overy Section -->
                 <div class="projects-section">
                     <h3 class="section-title">DABING & VOICE-OVERY</h3>
                     <div class="dabing-grid">
@@ -1830,21 +1882,33 @@
                                             <span class="audio-duration">0:32</span>
                                         </div>
                                         <div class="audio-controls">
-                                            <button class="play-btn" onclick="toggleAudio('audio1')">
+                                            <button class="play-btn" onclick="showAudioDemo('audio1')">
                                                 <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
                                                     <path d="M8 5v14l11-7z"/>
                                                 </svg>
                                             </button>
+                                            <div class="volume-control">
+                                                <button class="volume-btn" onclick="toggleMute('audio1')">
+                                                    <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" class="volume-icon">
+                                                        <path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/>
+                                                    </svg>
+                                                </button>
+                                                <div class="volume-slider-container">
+                                                    <div class="volume-slider" onclick="setVolume(event, 'audio1')">
+                                                        <div class="volume-progress"></div>
+                                                        <div class="volume-handle"></div>
+                                                    </div>
+                                                </div>
+                                            </div>
                                             <div class="audio-time">0:00</div>
                                             <div class="audio-progress" onclick="seekAudio(event, 'audio1')">
-                                                <div class="progress-bar"></div>
+                                                <div class="progress-bar">
+                                                    <div class="progress-handle"></div>
+                                                </div>
                                             </div>
                                             <div class="audio-time">0:32</div>
                                         </div>
-                                        <audio id="audio1" preload="metadata">
-                                            <source src="https://github.com/Myzlivko/myzlivko-web/blob/main/cdn/assets/audio/dabing-1428-shadows-over-silesia-dabel.mp3.mp3?raw=true" type="audio/mpeg">
-                                            Váš prohlížeč nepodporuje přehrávání audia.
-                                        </audio>
+
                                     </div>
                                     
                                     <div class="audio-player">
@@ -1853,21 +1917,33 @@
                                             <span class="audio-duration">1:12</span>
                                         </div>
                                         <div class="audio-controls">
-                                            <button class="play-btn" onclick="toggleAudio('audio2')">
+                                            <button class="play-btn" onclick="showAudioDemo('audio2')">
                                                 <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
                                                     <path d="M8 5v14l11-7z"/>
                                                 </svg>
                                             </button>
+                                            <div class="volume-control">
+                                                <button class="volume-btn" onclick="toggleMute('audio2')">
+                                                    <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" class="volume-icon">
+                                                        <path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/>
+                                                    </svg>
+                                                </button>
+                                                <div class="volume-slider-container">
+                                                    <div class="volume-slider" onclick="setVolume(event, 'audio2')">
+                                                        <div class="volume-progress"></div>
+                                                        <div class="volume-handle"></div>
+                                                    </div>
+                                                </div>
+                                            </div>
                                             <div class="audio-time">0:00</div>
                                             <div class="audio-progress" onclick="seekAudio(event, 'audio2')">
-                                                <div class="progress-bar"></div>
+                                                <div class="progress-bar">
+                                                    <div class="progress-handle"></div>
+                                                </div>
                                             </div>
                                             <div class="audio-time">1:12</div>
                                         </div>
-                                        <audio id="audio2" preload="metadata">
-                                            <source src="#" type="audio/mpeg">
-                                            Váš prohlížeč nepodporuje přehrávání audia.
-                                        </audio>
+
                                     </div>
                                 </div>
                             </div>
@@ -1892,7 +1968,6 @@
                     </div>
                 </div>
                 
-                <!-- Produkce Section -->
                 <div class="projects-section">
                     <h3 class="section-title">PRODUKCE</h3>
                     <div class="production-grid">
@@ -1953,52 +2028,40 @@
     </div>
     
     <script>
+        // Global variables
         let socialsOpen = false;
         let videoExpanded = false;
         let isLightTheme = false;
+        let currentAudio = null;
         
-        function toggleSocials() {
-            const links = document.getElementById('socialsLinks');
-            socialsOpen = !socialsOpen;
-            
-            if (socialsOpen) {
-                links.classList.add('active');
-            } else {
-                links.classList.remove('active');
-            }
-        }
-        
-        function toggleVideo() {
-            const videoPreview = document.getElementById('videoPreview');
-            videoExpanded = !videoExpanded;
-            
-            if (videoExpanded) {
-                videoPreview.classList.add('expanded');
-                // Simulace načítání videa
-                setTimeout(() => {
-                    // Po kliknutí na rozbalené video přesměruje na YouTube
-                    videoPreview.onclick = function() {
-                        openExternal('https://www.youtube.com/watch?v=PyEV_ulp2q4');
-                    };
-                }, 500);
-            } else {
-                videoPreview.classList.remove('expanded');
-                videoPreview.onclick = toggleVideo;
-            }
+        // Utility functions
+        function formatTime(seconds) {
+            const mins = Math.floor(seconds / 60);
+            const secs = Math.floor(seconds % 60);
+            return `${mins}:${secs.toString().padStart(2, '0')}`;
         }
         
         function openExternal(url) {
             window.open(url, '_blank', 'noopener,noreferrer');
         }
         
+        function updateActiveNav(activeSection) {
+            const buttons = document.querySelectorAll('.nav-btn');
+            buttons.forEach(btn => {
+                btn.classList.remove('active');
+                if (btn.textContent === activeSection) {
+                    btn.classList.add('active');
+                }
+            });
+        }
+        
+        // Theme functions
         function toggleTheme() {
             const container = document.querySelector('.container');
             const coffeeText = document.getElementById('coffeeText');
             
-            // Show coffee animation text
             coffeeText.classList.add('show');
             
-            // Remove the animation class after animation completes
             setTimeout(() => {
                 coffeeText.classList.remove('show');
             }, 3500);
@@ -2012,6 +2075,37 @@
             }
         }
         
+        // Social functions
+        function toggleSocials() {
+            const links = document.getElementById('socialsLinks');
+            socialsOpen = !socialsOpen;
+            
+            if (socialsOpen) {
+                links.classList.add('active');
+            } else {
+                links.classList.remove('active');
+            }
+        }
+        
+        // Video functions
+        function toggleVideo() {
+            const videoPreview = document.getElementById('videoPreview');
+            videoExpanded = !videoExpanded;
+            
+            if (videoExpanded) {
+                videoPreview.classList.add('expanded');
+                setTimeout(() => {
+                    videoPreview.onclick = function() {
+                        openExternal('https://www.youtube.com/watch?v=PyEV_ulp2q4');
+                    };
+                }, 500);
+            } else {
+                videoPreview.classList.remove('expanded');
+                videoPreview.onclick = toggleVideo;
+            }
+        }
+        
+        // Navigation functions
         function showHome() {
             closeOverlay();
             updateActiveNav('DOMOVSKÁ STRÁNKA');
@@ -2020,33 +2114,21 @@
         function showAbout() {
             closeOverlay();
             document.getElementById('aboutOverlay').classList.add('active');
-            document.querySelector('.main-content').classList.add('blurred');
-            document.querySelector('.nav-top').classList.add('blurred');
-            document.querySelector('.socials-section').classList.add('blurred');
-            document.querySelector('.copyright-footer').classList.add('blurred');
-            document.querySelector('.floating-video').classList.add('blurred');
+            addBlurEffect();
             updateActiveNav('O MNĚ');
         }
         
         function showPortfolio() {
             closeOverlay();
             document.getElementById('portfolioOverlay').classList.add('active');
-            document.querySelector('.main-content').classList.add('blurred');
-            document.querySelector('.nav-top').classList.add('blurred');
-            document.querySelector('.socials-section').classList.add('blurred');
-            document.querySelector('.copyright-footer').classList.add('blurred');
-            document.querySelector('.floating-video').classList.add('blurred');
+            addBlurEffect();
             updateActiveNav('MÁ KARIÉRA');
         }
         
         function showProjects() {
             closeOverlay();
             document.getElementById('projectsOverlay').classList.add('active');
-            document.querySelector('.main-content').classList.add('blurred');
-            document.querySelector('.nav-top').classList.add('blurred');
-            document.querySelector('.socials-section').classList.add('blurred');
-            document.querySelector('.copyright-footer').classList.add('blurred');
-            document.querySelector('.floating-video').classList.add('blurred');
+            addBlurEffect();
             updateActiveNav('PROJEKTY A REFERENCE');
         }
         
@@ -2054,94 +2136,48 @@
             document.getElementById('aboutOverlay').classList.remove('active');
             document.getElementById('portfolioOverlay').classList.remove('active');
             document.getElementById('projectsOverlay').classList.remove('active');
+            removeBlurEffect();
+            updateActiveNav('DOMOVSKÁ STRÁNKA');
+        }
+        
+        function addBlurEffect() {
+            document.querySelector('.main-content').classList.add('blurred');
+            document.querySelector('.nav-top').classList.add('blurred');
+            document.querySelector('.socials-section').classList.add('blurred');
+            document.querySelector('.copyright-footer').classList.add('blurred');
+            document.querySelector('.floating-video').classList.add('blurred');
+        }
+        
+        function removeBlurEffect() {
             document.querySelector('.main-content').classList.remove('blurred');
             document.querySelector('.nav-top').classList.remove('blurred');
             document.querySelector('.socials-section').classList.remove('blurred');
             document.querySelector('.copyright-footer').classList.remove('blurred');
             document.querySelector('.floating-video').classList.remove('blurred');
-            updateActiveNav('DOMOVSKÁ STRÁNKA');
         }
         
-        function updateActiveNav(activeSection) {
-            const buttons = document.querySelectorAll('.nav-btn');
-            buttons.forEach(btn => {
-                btn.classList.remove('active');
-                if (btn.textContent === activeSection) {
-                    btn.classList.add('active');
-                }
-            });
-        }
-        
-        // Audio player functionality
-        let currentAudio = null;
-        
-        function formatTime(seconds) {
-            const mins = Math.floor(seconds / 60);
-            const secs = Math.floor(seconds % 60);
-            return `${mins}:${secs.toString().padStart(2, '0')}`;
+        // Audio functions
+        function showAudioDemo(audioId) {
+            // Audio functionality would go here
+            console.log('Audio demo for:', audioId);
         }
         
         function seekAudio(event, audioId) {
-            const audio = document.getElementById(audioId);
-            const progressContainer = event.currentTarget;
-            const rect = progressContainer.getBoundingClientRect();
-            const clickX = event.clientX - rect.left;
-            const width = rect.width;
-            const percentage = clickX / width;
-            
-            if (audio.duration) {
-                audio.currentTime = percentage * audio.duration;
-            }
+            // Audio seeking functionality would go here
+            console.log('Seek audio:', audioId);
         }
         
-        function toggleAudio(audioId) {
-            const audio = document.getElementById(audioId);
-            const playBtn = audio.parentElement.querySelector('.play-btn');
-            const progressBar = audio.parentElement.querySelector('.progress-bar');
-            const currentTimeDisplay = audio.parentElement.querySelector('.audio-time:first-of-type');
-            
-            // Stop other audio if playing
-            if (currentAudio && currentAudio !== audio) {
-                currentAudio.pause();
-                const otherBtn = currentAudio.parentElement.querySelector('.play-btn');
-                const otherProgress = currentAudio.parentElement.querySelector('.progress-bar');
-                const otherTimeDisplay = currentAudio.parentElement.querySelector('.audio-time:first-of-type');
-                otherBtn.innerHTML = '<svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>';
-                otherProgress.style.width = '0%';
-                otherTimeDisplay.textContent = '0:00';
-                // Remove event listeners
-                currentAudio.removeEventListener('timeupdate', currentAudio.timeUpdateHandler);
-                currentAudio.removeEventListener('ended', currentAudio.endedHandler);
-            }
-            
-            if (audio.paused) {
-                audio.play();
-                currentAudio = audio;
-                playBtn.innerHTML = '<svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M6 4h4v16H6V4zm8 0h4v16h-4V4z"/></svg>';
-                
-                // Update progress bar and time
-                audio.timeUpdateHandler = function() {
-                    const progress = (audio.currentTime / audio.duration) * 100;
-                    progressBar.style.width = progress + '%';
-                    currentTimeDisplay.textContent = formatTime(audio.currentTime);
-                };
-                audio.addEventListener('timeupdate', audio.timeUpdateHandler);
-                
-                // Reset when ended
-                audio.endedHandler = function() {
-                    playBtn.innerHTML = '<svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>';
-                    progressBar.style.width = '0%';
-                    currentTimeDisplay.textContent = '0:00';
-                    currentAudio = null;
-                };
-                audio.addEventListener('ended', audio.endedHandler);
-            } else {
-                audio.pause();
-                playBtn.innerHTML = '<svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>';
-                // Don't reset time when pausing, keep current position
-                currentAudio = null;
-            }
+        function toggleMute(audioId) {
+            // Mute toggle functionality would go here
+            console.log('Toggle mute:', audioId);
         }
+        
+        function setVolume(event, audioId) {
+            // Volume control functionality would go here
+            console.log('Set volume:', audioId);
+        }
+        
+
         
         // Keyboard navigation
         document.addEventListener('keydown', function(e) {
@@ -2150,5 +2186,5 @@
             }
         });
     </script>
-<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'994a2d54a069579f',t:'MTc2MTQ4NDA1MC4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'994a458f16aaf974',t:'MTc2MTQ4NTA0My4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
 </html>
