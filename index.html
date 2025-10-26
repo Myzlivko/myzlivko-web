@@ -2545,9 +2545,7 @@
         }
         
         // Video functions
-        let videoHoverTimeout;
         let isVideoExpanded = false;
-        let videoPreloaded = false;
         
         function resetVideo() {
             const videoPreview = document.getElementById('videoPreview');
@@ -2561,7 +2559,6 @@
             videoPlayer.style.display = 'none';
             videoIframe.src = '';
             isVideoExpanded = false;
-            videoPreloaded = false;
         }
         
         function initVideoHover() {
@@ -2571,52 +2568,21 @@
             const videoIframe = document.getElementById('videoIframe');
             
             videoPreview.addEventListener('mouseenter', () => {
-                clearTimeout(videoHoverTimeout);
-                
-                // Immediate expansion and video loading
-                videoPreview.classList.add('expanded');
-                
-                // Small delay to ensure smooth transition
-                setTimeout(() => {
-                    videoPlaceholder.style.display = 'none';
-                    videoPlayer.style.display = 'block';
+                // Only expand if not already expanded
+                if (!isVideoExpanded) {
+                    // Immediate expansion and video loading
+                    videoPreview.classList.add('expanded');
                     
-                    // Load video with autoplay muted
-                    videoIframe.src = 'https://www.youtube.com/embed/PyEV_ulp2q4?autoplay=1&mute=1&enablejsapi=1&controls=1&modestbranding=1&rel=0&loop=1&playlist=PyEV_ulp2q4';
-                    isVideoExpanded = true;
-                }, 150);
-            });
-            
-            videoPreview.addEventListener('mouseleave', () => {
-                clearTimeout(videoHoverTimeout);
-                
-                // Delay before collapsing to prevent flickering
-                videoHoverTimeout = setTimeout(() => {
-                    if (isVideoExpanded) {
-                        videoPreview.classList.remove('expanded');
-                        videoPlayer.style.display = 'none';
-                        videoPlaceholder.style.display = 'block';
-                        videoIframe.src = '';
-                        isVideoExpanded = false;
-                    }
-                }, 300);
-            });
-            
-            // Prevent collapse when hovering over the expanded video
-            videoPlayer.addEventListener('mouseenter', () => {
-                clearTimeout(videoHoverTimeout);
-            });
-            
-            videoPlayer.addEventListener('mouseleave', () => {
-                videoHoverTimeout = setTimeout(() => {
-                    if (isVideoExpanded) {
-                        videoPreview.classList.remove('expanded');
-                        videoPlayer.style.display = 'none';
-                        videoPlaceholder.style.display = 'block';
-                        videoIframe.src = '';
-                        isVideoExpanded = false;
-                    }
-                }, 300);
+                    // Small delay to ensure smooth transition
+                    setTimeout(() => {
+                        videoPlaceholder.style.display = 'none';
+                        videoPlayer.style.display = 'block';
+                        
+                        // Load video with autoplay muted
+                        videoIframe.src = 'https://www.youtube.com/embed/PyEV_ulp2q4?autoplay=1&mute=1&enablejsapi=1&controls=1&modestbranding=1&rel=0&loop=1&playlist=PyEV_ulp2q4';
+                        isVideoExpanded = true;
+                    }, 150);
+                }
             });
         }
         
@@ -2674,6 +2640,14 @@
                 }
             });
             currentAudio = null;
+            
+            // Stop all videos in overlays by clearing their src
+            const overlayIframes = document.querySelectorAll('.content-overlay iframe');
+            overlayIframes.forEach(iframe => {
+                if (iframe.src) {
+                    iframe.src = '';
+                }
+            });
         }
         
         function addBlurEffect() {
@@ -2729,5 +2703,5 @@
             });
         });
     </script>
-<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'994be308d2b3579f',t:'MTc2MTUwMTk3OS4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'994bf6b70175579f',t:'MTc2MTUwMjc4NS4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
 </html>
