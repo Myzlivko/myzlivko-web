@@ -2216,6 +2216,9 @@
                 };
                 
                 if (audio) {
+                    // Set volume to 100%
+                    audio.volume = 1.0;
+                    
                     audio.addEventListener('loadedmetadata', () => {
                         audioStates[audioId].duration = audio.duration;
                         updateTimeDisplay(audioId);
@@ -2232,12 +2235,16 @@
                         updatePlayButton(audioId);
                     });
                     
-                    audio.addEventListener('error', (e) => {
-                        console.log('Audio loading failed for', audioId, '- using demo mode');
-                        // Set demo duration
-                        audioStates[audioId].duration = audioId === 'audio1' ? 32 : 72;
-                        updateTimeDisplay(audioId);
+                    audio.addEventListener('canplay', () => {
+                        console.log('Audio ready to play:', audioId);
                     });
+                    
+                    audio.addEventListener('error', (e) => {
+                        console.log('Audio error for', audioId, ':', e);
+                    });
+                    
+                    // Try to load the audio
+                    audio.load();
                 }
             }
         }
@@ -2279,29 +2286,32 @@
                 }
             }
             
-            if (audio && audio.src) {
-                if (state.isPlaying) {
-                    audio.pause();
-                    state.isPlaying = false;
-                } else {
+            if (audio) {
+                if (audio.paused) {
                     audio.play().then(() => {
                         state.isPlaying = true;
                         currentAudio = audioId;
-                    }).catch(() => {
-                        console.log('Audio play failed for', audioId, '- using demo mode');
-                        startDemoPlayback(audioId);
+                        updatePlayButton(audioId);
+                    }).catch((error) => {
+                        console.log('Audio play failed:', error);
+                        // Fallback - try to load and play
+                        audio.load();
+                        setTimeout(() => {
+                            audio.play().then(() => {
+                                state.isPlaying = true;
+                                currentAudio = audioId;
+                                updatePlayButton(audioId);
+                            }).catch(() => {
+                                console.log('Audio completely failed for', audioId);
+                            });
+                        }, 100);
                     });
-                }
-            } else {
-                // Demo mode
-                if (state.isPlaying) {
-                    stopDemoPlayback(audioId);
                 } else {
-                    startDemoPlayback(audioId);
+                    audio.pause();
+                    state.isPlaying = false;
+                    updatePlayButton(audioId);
                 }
             }
-            
-            updatePlayButton(audioId);
         }
         
         function startDemoPlayback(audioId) {
@@ -2614,5 +2624,5 @@
             });
         });
     </script>
-<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'994ae10b56e5f974',t:'MTc2MTQ5MTQxMS4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'994ae561240ef974',t:'MTc2MTQ5MTU4OS4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
 </html>
