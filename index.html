@@ -598,7 +598,7 @@
             bottom: 55px;
             right: 40px;
             z-index: 10;
-            transition: all 0.4s ease;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
             display: flex;
             align-items: flex-end;
         }
@@ -606,18 +606,22 @@
         .video-preview {
             width: 120px;
             height: 80px;
-            background: rgba(0,0,0,0.8);
-            border-radius: 10px;
+            background: rgba(0,0,0,0.9);
+            border-radius: 12px;
             cursor: pointer;
             overflow: hidden;
             position: relative;
-            transition: all 0.4s ease;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+            border: 2px solid rgba(255,255,255,0.1);
         }
         
         .video-preview:hover {
             width: 320px;
             height: 180px;
             transform: none;
+            box-shadow: 0 8px 40px rgba(0,0,0,0.4);
+            border-color: rgba(255,255,255,0.2);
         }
         
         .video-preview.expanded {
@@ -628,7 +632,7 @@
         .video-placeholder {
             width: 100%;
             height: 100%;
-            background: linear-gradient(135deg, #333 0%, #555 50%, #333 100%);
+            background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 50%, #1a1a1a 100%);
             background-size: cover;
             background-position: center;
             background-repeat: no-repeat;
@@ -637,11 +641,11 @@
             justify-content: center;
             position: relative;
             background-image: url('https://img.youtube.com/vi/PyEV_ulp2q4/maxresdefault.jpg');
-            transition: all 0.3s ease;
+            transition: all 0.2s ease;
         }
         
         .video-placeholder:hover {
-            transform: scale(1.02);
+            transform: scale(1.01);
         }
         
         .video-placeholder::before {
@@ -651,19 +655,37 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: rgba(0,0,0,0.3);
-            transition: all 0.3s ease;
+            background: rgba(0,0,0,0.4);
+            transition: all 0.2s ease;
         }
         
         .video-placeholder:hover::before {
-            background: rgba(0,0,0,0.1);
+            background: rgba(0,0,0,0.2);
+        }
+        
+        .video-player {
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            top: 0;
+            left: 0;
+            background: #000;
+            border-radius: 12px;
+            overflow: hidden;
+        }
+        
+        .video-player iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+            border-radius: 12px;
         }
         
         .video-label {
             position: absolute;
             top: 50%;
             left: 50%;
-            transform: translate(-50%, calc(-50% + 18px));
+            transform: translate(-50%, calc(-50% + 25px));
             color: #FFFFFF;
             font-size: 12px;
             font-weight: 500;
@@ -671,15 +693,53 @@
             letter-spacing: 1px;
             white-space: nowrap;
             font-family: 'Inter', sans-serif;
-            text-shadow: 0 0 5px rgba(0, 0, 0, 0.4);
+            text-shadow: 0 0 8px rgba(0, 0, 0, 0.8);
             z-index: 3;
             pointer-events: none;
             transition: all 0.3s ease;
+            opacity: 1;
+        }
+        
+        .video-preview:hover .video-label {
+            opacity: 0;
+            transition: opacity 0.4s ease;
         }
         
         .video-preview.expanded .video-label {
             font-size: 14px;
-            transform: translate(-50%, calc(-50% + 18px));
+            transform: translate(-50%, calc(-50% + 25px));
+            opacity: 0;
+        }
+        
+        .video-play-button {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, calc(-50% - 15px));
+            width: 50px;
+            height: 50px;
+            background: rgba(255,255,255,0.9);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 4;
+            pointer-events: none;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+        }
+        
+        .video-preview:hover .video-play-button {
+            background: rgba(255,255,255,1);
+            transform: translate(-50%, calc(-50% - 15px)) scale(1.1);
+            box-shadow: 0 6px 30px rgba(0,0,0,0.4);
+        }
+        
+        .video-play-button svg {
+            width: 20px;
+            height: 20px;
+            fill: #333;
+            margin-left: 2px;
         }
         
         .video-overlay-effect {
@@ -1778,9 +1838,14 @@
             <div class="video-preview" id="videoPreview">
                 <div class="video-placeholder" id="videoPlaceholder">
                     <div class="video-overlay-effect"></div>
+                    <div class="video-play-button">
+                        <svg viewBox="0 0 24 24">
+                            <path d="M8 5v14l11-7z"/>
+                        </svg>
+                    </div>
                 </div>
                 <div class="video-player" id="videoPlayer" style="display: none;">
-                    <iframe src="" id="videoIframe" allowfullscreen style="width: 100%; height: 100%; border: none; border-radius: 10px;"></iframe>
+                    <iframe src="" id="videoIframe" allowfullscreen></iframe>
                 </div>
                 <div class="video-label">NOVÉ VIDEO</div>
             </div>
@@ -2420,6 +2485,17 @@
         // Video functions
         let videoHoverTimeout;
         let isVideoPlaying = false;
+        let videoPreloaded = false;
+        let videoStarted = false;
+        
+        function preloadVideo() {
+            if (!videoPreloaded) {
+                const videoIframe = document.getElementById('videoIframe');
+                // Preload the iframe in background
+                videoIframe.src = 'https://www.youtube.com/embed/PyEV_ulp2q4?enablejsapi=1&mute=1';
+                videoPreloaded = true;
+            }
+        }
         
         function initVideoHover() {
             const videoPreview = document.getElementById('videoPreview');
@@ -2427,28 +2503,32 @@
             const videoPlayer = document.getElementById('videoPlayer');
             const videoIframe = document.getElementById('videoIframe');
             
+            // Preload video on first hover
             videoPreview.addEventListener('mouseenter', () => {
+                preloadVideo();
                 clearTimeout(videoHoverTimeout);
                 videoHoverTimeout = setTimeout(() => {
                     if (!isVideoPlaying) {
                         videoPlaceholder.style.display = 'none';
                         videoPlayer.style.display = 'block';
-                        videoIframe.src = 'https://www.youtube.com/embed/PyEV_ulp2q4?autoplay=1&mute=1';
+                        // Start playing immediately since it's preloaded
+                        videoIframe.src = 'https://www.youtube.com/embed/PyEV_ulp2q4?autoplay=1&mute=1&enablejsapi=1';
                         isVideoPlaying = true;
+                        videoStarted = true;
                     }
-                }, 300);
+                }, 100);
             });
             
             videoPreview.addEventListener('mouseleave', () => {
                 clearTimeout(videoHoverTimeout);
-                videoHoverTimeout = setTimeout(() => {
-                    if (isVideoPlaying) {
-                        videoPlaceholder.style.display = 'block';
-                        videoPlayer.style.display = 'none';
-                        videoIframe.src = '';
-                        isVideoPlaying = false;
-                    }
-                }, 500);
+                // If video was started, keep it playing but minimize
+                if (videoStarted && isVideoPlaying) {
+                    // Don't stop the video, just hide the player and show placeholder
+                    videoPlaceholder.style.display = 'block';
+                    videoPlayer.style.display = 'none';
+                    // Keep the video playing in background
+                    isVideoPlaying = true;
+                }
             });
         }
         
@@ -2541,5 +2621,5 @@
             initVideoHover();
         });
     </script>
-<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'994aaa304614579f',t:'MTc2MTQ4OTE2NS4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'994aafb2912c579f',t:'MTc2MTQ4OTM5MC4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
 </html>
