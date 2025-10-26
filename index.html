@@ -1540,26 +1540,63 @@
             }
             
             .project-video .video-container {
-                height: 220px;
+                height: 180px;
             }
             
             .production-grid {
                 grid-template-columns: 1fr;
-                gap: 20px;
+                gap: 15px;
             }
             
             .production-video {
-                height: 200px;
+                height: 160px;
+            }
+            
+            .production-info {
+                padding: 12px;
+            }
+            
+            .production-title {
+                font-size: 14px;
+                margin-bottom: 6px;
+            }
+            
+            .production-description {
+                font-size: 11px;
+                line-height: 1.3;
             }
             
             .section-title {
-                font-size: 1.5rem;
-                margin-bottom: 20px;
+                font-size: 1.3rem;
+                margin-bottom: 15px;
             }
             
             .project-name {
-                font-size: 1.2rem;
-                margin-bottom: 15px;
+                font-size: 1.1rem;
+                margin-bottom: 12px;
+            }
+            
+            .audio-player {
+                padding: 12px;
+                min-width: auto;
+            }
+            
+            .audio-title {
+                font-size: 13px;
+            }
+            
+            .audio-duration {
+                font-size: 11px;
+            }
+            
+            .play-btn, .volume-btn {
+                width: 32px;
+                height: 32px;
+            }
+            
+            .audio-time {
+                font-size: 10px;
+                min-width: 28px;
             }
         }
         
@@ -2094,7 +2131,7 @@
                                             <iframe src="https://www.youtube.com/embed/Ze2F_qykTmA" allowfullscreen></iframe>
                                         </div>
                                         <div class="production-info">
-                                            <h4 class="production-title">Rozbor modifikace</h4>
+                                            <h4 class="production-title">Rozbor fanouškovské modifikace</h4>
                                             <p class="production-description">Popis bude doplněn později</p>
                                         </div>
                                     </div>
@@ -2114,7 +2151,7 @@
                                             <iframe src="https://www.youtube.com/embed/FfouWNjlk2I" allowfullscreen></iframe>
                                         </div>
                                         <div class="production-info">
-                                            <h4 class="production-title">90VTEŘIN</h4>
+                                            <h4 class="production-title">Novinkový souhrn 90VTEŘIN</h4>
                                             <p class="production-description">Popis bude doplněn později</p>
                                         </div>
                                     </div>
@@ -2499,35 +2536,49 @@
             const videoPlayer = document.getElementById('videoPlayer');
             const videoIframe = document.getElementById('videoIframe');
             
-            // Preload video immediately when page loads
-            setTimeout(() => {
-                if (!videoPreloaded) {
-                    videoIframe.src = 'https://www.youtube.com/embed/PyEV_ulp2q4?enablejsapi=1&controls=0&modestbranding=1&rel=0&mute=1&loop=1&playlist=PyEV_ulp2q4';
-                    videoPreloaded = true;
-                }
-            }, 1000);
-            
             videoPreview.addEventListener('mouseenter', () => {
-                if (!isVideoExpanded) {
-                    clearTimeout(videoHoverTimeout);
-                    videoHoverTimeout = setTimeout(() => {
-                        if (!isVideoExpanded) {
-                            // Expand video and start playing with sound
-                            videoPreview.classList.add('expanded');
-                            videoPlaceholder.style.display = 'none';
-                            videoPlayer.style.display = 'block';
-                            // Switch to autoplay version with sound
-                            videoIframe.src = 'https://www.youtube.com/embed/PyEV_ulp2q4?autoplay=1&enablejsapi=1&controls=0&modestbranding=1&rel=0&loop=1&playlist=PyEV_ulp2q4';
-                            isVideoExpanded = true;
-                        }
-                    }, 100);
-                }
+                clearTimeout(videoHoverTimeout);
+                
+                // Immediate expansion and video loading
+                videoPreview.classList.add('expanded');
+                videoPlaceholder.style.display = 'none';
+                videoPlayer.style.display = 'block';
+                
+                // Load and autoplay video with sound
+                videoIframe.src = 'https://www.youtube.com/embed/PyEV_ulp2q4?autoplay=1&enablejsapi=1&controls=1&modestbranding=1&rel=0&start=0';
+                isVideoExpanded = true;
             });
             
             videoPreview.addEventListener('mouseleave', () => {
-                if (!isVideoExpanded) {
-                    clearTimeout(videoHoverTimeout);
-                }
+                clearTimeout(videoHoverTimeout);
+                
+                // Delay before collapsing to prevent flickering
+                videoHoverTimeout = setTimeout(() => {
+                    if (isVideoExpanded) {
+                        videoPreview.classList.remove('expanded');
+                        videoPlaceholder.style.display = 'block';
+                        videoPlayer.style.display = 'none';
+                        videoIframe.src = '';
+                        isVideoExpanded = false;
+                    }
+                }, 300);
+            });
+            
+            // Prevent collapse when hovering over the expanded video
+            videoPlayer.addEventListener('mouseenter', () => {
+                clearTimeout(videoHoverTimeout);
+            });
+            
+            videoPlayer.addEventListener('mouseleave', () => {
+                videoHoverTimeout = setTimeout(() => {
+                    if (isVideoExpanded) {
+                        videoPreview.classList.remove('expanded');
+                        videoPlaceholder.style.display = 'block';
+                        videoPlayer.style.display = 'none';
+                        videoIframe.src = '';
+                        isVideoExpanded = false;
+                    }
+                }, 300);
             });
         }
         
@@ -2640,5 +2691,5 @@
             });
         });
     </script>
-<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'994b98f000d5f974',t:'MTc2MTQ5ODk0NC4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'994ba4a202bef974',t:'MTc2MTQ5OTQyMy4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
 </html>
