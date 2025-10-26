@@ -734,8 +734,8 @@
         
         .close-btn {
             position: absolute;
-            top: 40px;
-            right: 40px;
+            top: 20px;
+            right: 20px;
             background: none;
             border: 2px solid rgba(255,255,255,0.6);
             border-radius: 50%;
@@ -745,6 +745,7 @@
             font-size: 20px;
             cursor: pointer;
             transition: all 0.3s ease;
+            z-index: 20;
         }
         
         .close-btn:hover {
@@ -1399,8 +1400,8 @@
             }
             
             .close-btn {
-                top: 15px;
-                right: 15px;
+                top: 10px;
+                right: 10px;
                 width: 35px;
                 height: 35px;
                 font-size: 16px;
@@ -1593,8 +1594,8 @@
             }
             
             .close-btn {
-                top: 12px;
-                right: 12px;
+                top: 8px;
+                right: 8px;
                 width: 30px;
                 height: 30px;
                 font-size: 14px;
@@ -1930,8 +1931,8 @@
                                             </div>
                                             <div class="audio-time">0:32</div>
                                         </div>
-                                        <audio id="audio1" preload="metadata">
-                                            <source src="https://raw.githubusercontent.com/Myzlivko/myzlivko-web/main/cdn/assets/audio/dabing-1428-shadows-over-silesia-dabel.mp3.mp3" type="audio/mpeg">
+                                        <audio id="audio1" preload="metadata" crossorigin="anonymous">
+                                            <source src="https://github.com/Myzlivko/myzlivko-web/raw/main/cdn/assets/audio/dabing-1428-shadows-over-silesia-dabel.mp3" type="audio/mpeg">
                                             Váš prohlížeč nepodporuje přehrávání audia.
                                         </audio>
                                     </div>
@@ -1968,7 +1969,7 @@
                                             </div>
                                             <div class="audio-time">1:12</div>
                                         </div>
-                                        <audio id="audio2" preload="metadata">
+                                        <audio id="audio2" preload="metadata" crossorigin="anonymous">
                                             <source src="https://www.soundjay.com/misc/sounds/bell-ringing-05.wav" type="audio/wav">
                                             <source src="https://www.soundjay.com/misc/sounds/bell-ringing-05.mp3" type="audio/mpeg">
                                             Váš prohlížeč nepodporuje přehrávání audia.
@@ -2116,7 +2117,7 @@
                                     <div class="production-item">
                                         <div class="production-video">
                                             <div class="video-thumbnail" onclick="openExternal('https://www.youtube.com/watch?v=TThTlDGUG9Y')">
-                                                <img src="https://img.youtube.com/vi/TThTlDGUG9Y/maxresdefault.jpg" alt="TECHFEED Video" onerror="this.src='data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMzIwIiBoZWlnaHQ9IjE4MCIgdmlld0JveD0iMCAwIDMyMCAxODAiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjxyZWN0IHdpZHRoPSIzMjAiIGhlaWdodD0iMTgwIiBmaWxsPSIjMzMzIi8+Cjx0ZXh0IHg9IjE2MCIgeT0iOTAiIGZpbGw9IndoaXRlIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBkeT0iLjNlbSIgZm9udC1mYW1pbHk9IkFyaWFsIiBmb250LXNpemU9IjE0Ij5URUNIRkVFRCBWaWRlbzwvdGV4dD4KPC9zdmc+';">
+                                                <img src="https://img.youtube.com/vi/TThTlDGUG9Y/maxresdefault.jpg" alt="TECHFEED Video 1" onerror="this.src='data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMzIwIiBoZWlnaHQ9IjE4MCIgdmlld0JveD0iMCAwIDMyMCAxODAiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjxyZWN0IHdpZHRoPSIzMjAiIGhlaWdodD0iMTgwIiBmaWxsPSIjMzMzIi8+Cjx0ZXh0IHg9IjE2MCIgeT0iOTAiIGZpbGw9IndoaXRlIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBkeT0iLjNlbSIgZm9udC1mYW1pbHk9IkFyaWFsIiBmb250LXNpemU9IjE0Ij5URUNIRkVFRCBWaWRlbyAxPC90ZXh0Pgo8L3N2Zz4=';">
                                                 <div class="play-overlay">
                                                     <svg width="48" height="48" viewBox="0 0 24 24" fill="white">
                                                         <path d="M8 5v14l11-7z"/>
@@ -2125,7 +2126,41 @@
                                             </div>
                                         </div>
                                         <div class="production-info">
-                                            <h4 class="production-title">TECHFEED Video</h4>
+                                            <h4 class="production-title">TECHFEED Video 1</h4>
+                                            <p class="production-description">Popis bude doplněn později</p>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="production-item">
+                                        <div class="production-video">
+                                            <div class="video-thumbnail" onclick="openExternal('https://www.youtube.com/watch?v=ABmSUR75Jfk')">
+                                                <img src="https://img.youtube.com/vi/ABmSUR75Jfk/maxresdefault.jpg" alt="TECHFEED Video 2" onerror="this.src='data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMzIwIiBoZWlnaHQ9IjE4MCIgdmlld0JveD0iMCAwIDMyMCAxODAiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjxyZWN0IHdpZHRoPSIzMjAiIGhlaWdodD0iMTgwIiBmaWxsPSIjMzMzIi8+Cjx0ZXh0IHg9IjE2MCIgeT0iOTAiIGZpbGw9IndoaXRlIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBkeT0iLjNlbSIgZm9udC1mYW1pbHk9IkFyaWFsIiBmb250LXNpemU9IjE0Ij5URUNIRkVFRCBWaWRlbyAyPC90ZXh0Pgo8L3N2Zz4=';">
+                                                <div class="play-overlay">
+                                                    <svg width="48" height="48" viewBox="0 0 24 24" fill="white">
+                                                        <path d="M8 5v14l11-7z"/>
+                                                    </svg>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="production-info">
+                                            <h4 class="production-title">TECHFEED Video 2</h4>
+                                            <p class="production-description">Popis bude doplněn později</p>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="production-item">
+                                        <div class="production-video">
+                                            <div class="video-thumbnail" onclick="openExternal('https://www.youtube.com/watch?v=ABmSUR75Jfk')">
+                                                <img src="https://img.youtube.com/vi/ABmSUR75Jfk/maxresdefault.jpg" alt="TECHFEED Video 3" onerror="this.src='data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMzIwIiBoZWlnaHQ9IjE4MCIgdmlld0JveD0iMCAwIDMyMCAxODAiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjxyZWN0IHdpZHRoPSIzMjAiIGhlaWdodD0iMTgwIiBmaWxsPSIjMzMzIi8+Cjx0ZXh0IHg9IjE2MCIgeT0iOTAiIGZpbGw9IndoaXRlIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBkeT0iLjNlbSIgZm9udC1mYW1pbHk9IkFyaWFsIiBmb250LXNpemU9IjE0Ij5URUNIRkVFRCBWaWRlbyAzPC90ZXh0Pgo8L3N2Zz4=';">
+                                                <div class="play-overlay">
+                                                    <svg width="48" height="48" viewBox="0 0 24 24" fill="white">
+                                                        <path d="M8 5v14l11-7z"/>
+                                                    </svg>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="production-info">
+                                            <h4 class="production-title">TECHFEED Video 3</h4>
                                             <p class="production-description">Popis bude doplněn později</p>
                                         </div>
                                     </div>
@@ -2529,5 +2564,5 @@
             });
         });
     </script>
-<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'994a6c6a91b7f974',t:'MTc2MTQ4NjYzNC4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'994a7c6d544df974',t:'MTc2MTQ4NzI5MC4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
 </html>
