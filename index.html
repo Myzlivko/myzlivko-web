@@ -187,7 +187,7 @@
             font-size: 14px;
             letter-spacing: 0.5px;
             cursor: pointer;
-            transition: all 0.3s ease, border-color 6s cubic-bezier(0.25, 0.1, 0.25, 1), color 6s cubic-bezier(0.25, 0.1, 0.25, 1);
+            transition: background 0.1s ease, transform 0.1s ease, box-shadow 0.1s ease, border-color 6s cubic-bezier(0.25, 0.1, 0.25, 1), color 0.05s ease;
             text-decoration: none;
             display: inline-block;
         }
@@ -197,6 +197,7 @@
             color: #1a1a1a;
             transform: translateY(-2px);
             box-shadow: 0 8px 25px rgba(255,255,255,0.2);
+            transition: all 0.1s ease;
         }
         
         .nav-btn.active {
@@ -213,6 +214,7 @@
         .container.light-theme .nav-btn:hover {
             background: #333333;
             color: white;
+            transition: all 0.1s ease;
         }
         
         .container.light-theme .nav-btn.active {
@@ -255,6 +257,16 @@
             box-shadow: 0 8px 25px rgba(255,255,255,0.2);
         }
         
+        .theme-toggle:hover .coffee-cup .cup-body {
+            fill: #1a1a1a;
+            transition: fill 0.1s ease;
+        }
+        
+        .theme-toggle:hover .coffee-cup .cup-handle {
+            stroke: #1a1a1a;
+            transition: stroke 0.1s ease;
+        }
+        
         .container.light-theme .theme-toggle {
             border-color: rgba(51,51,51,0.8);
             color: #333333;
@@ -263,6 +275,16 @@
         .container.light-theme .theme-toggle:hover {
             background: #333333;
             color: white;
+        }
+        
+        .container.light-theme .theme-toggle:hover .coffee-cup .cup-body {
+            fill: white;
+            transition: fill 0.1s ease;
+        }
+        
+        .container.light-theme .theme-toggle:hover .coffee-cup .cup-handle {
+            stroke: white;
+            transition: stroke 0.1s ease;
         }
         
         /* Coffee Animation */
@@ -484,7 +506,7 @@
             font-size: 12px;
             letter-spacing: 1px;
             cursor: pointer;
-            transition: all 0.3s ease, border-color 6s cubic-bezier(0.25, 0.1, 0.25, 1), color 6s cubic-bezier(0.25, 0.1, 0.25, 1);
+            transition: background 0.1s ease, transform 0.1s ease, box-shadow 0.1s ease, border-color 6s cubic-bezier(0.25, 0.1, 0.25, 1), color 0.05s ease;
             margin-bottom: 15px;
             height: 44px;
             display: flex;
@@ -497,6 +519,7 @@
             color: #1a1a1a;
             transform: translateY(-2px);
             box-shadow: 0 8px 25px rgba(255,255,255,0.2);
+            transition: all 0.1s ease;
         }
         
         .container.light-theme .socials-toggle {
@@ -507,6 +530,7 @@
         .container.light-theme .socials-toggle:hover {
             background: #333333;
             color: white;
+            transition: all 0.1s ease;
         }
         
         .socials-links {
@@ -989,6 +1013,7 @@
             background: rgba(255,255,255,0.2);
             border-radius: 3px;
             overflow: hidden;
+            transition: all 0.3s ease;
         }
         
         .progress-bar {
@@ -1030,6 +1055,7 @@
             position: relative;
             display: flex;
             align-items: center;
+            transition: all 0.3s ease;
         }
         
         .volume-btn {
@@ -1054,23 +1080,22 @@
         }
         
         .volume-slider-container {
-            position: absolute;
-            left: 50px;
-            top: 50%;
-            transform: translateY(-50%);
+            width: 0;
+            overflow: hidden;
             opacity: 0;
-            visibility: hidden;
             transition: all 0.3s ease;
-            z-index: 10;
-            background: rgba(0,0,0,0.9);
-            padding: 8px 12px;
-            border-radius: 8px;
-            border: 1px solid rgba(255,255,255,0.2);
+            display: flex;
+            align-items: center;
+            margin-left: 8px;
         }
         
         .volume-control:hover .volume-slider-container {
+            width: 80px;
             opacity: 1;
-            visibility: visible;
+        }
+        
+        .volume-control:hover .audio-progress {
+            flex: calc(1 - 88px);
         }
         
         .volume-slider {
@@ -1080,6 +1105,7 @@
             border-radius: 3px;
             position: relative;
             cursor: pointer;
+            flex-shrink: 0;
         }
         
         .volume-progress {
@@ -1825,7 +1851,7 @@
                             <div class="project-info">
                                 <h3 class="project-title">Twitch</h3>
                                 <div class="project-position">Variety streamer</div>
-                                <p class="project-description">Živá vysílání zaměřená primárně na videohry. Důraz na originální a interaktivní prvky streamu, tvorbu vlastních overlayů, alert systémů a automatizovaných funkcí v OBS a Discordu, včetně lokalizovaného tisku účtenek v češtině.</p>
+                                <p class="project-description">Živá vysílání zaměřená primárně na videohry. Důraz na originální a interaktivní prvky streamu, tvorba vlastních overlayů, alert systémů a automatizovaných funkcí v OBS a Discordu, včetně lokalizovaného tisku účtenek v češtině.</p>
                             </div>
                         </div>
                     </div>
@@ -1882,11 +1908,18 @@
                                             <span class="audio-duration">0:32</span>
                                         </div>
                                         <div class="audio-controls">
-                                            <button class="play-btn" onclick="showAudioDemo('audio1')">
+                                            <button class="play-btn" onclick="togglePlay('audio1')">
                                                 <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
                                                     <path d="M8 5v14l11-7z"/>
                                                 </svg>
                                             </button>
+                                            <div class="audio-time">0:00</div>
+                                            <div class="audio-progress" onclick="seekAudio(event, 'audio1')">
+                                                <div class="progress-bar">
+                                                    <div class="progress-handle"></div>
+                                                </div>
+                                            </div>
+                                            <div class="audio-time">0:32</div>
                                             <div class="volume-control">
                                                 <button class="volume-btn" onclick="toggleMute('audio1')">
                                                     <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" class="volume-icon">
@@ -1900,15 +1933,12 @@
                                                     </div>
                                                 </div>
                                             </div>
-                                            <div class="audio-time">0:00</div>
-                                            <div class="audio-progress" onclick="seekAudio(event, 'audio1')">
-                                                <div class="progress-bar">
-                                                    <div class="progress-handle"></div>
-                                                </div>
-                                            </div>
-                                            <div class="audio-time">0:32</div>
                                         </div>
-
+                                        <audio id="audio1" preload="metadata">
+                                            <source src="https://www.soundjay.com/misc/sounds/bell-ringing-05.wav" type="audio/wav">
+                                            <source src="https://www.soundjay.com/misc/sounds/bell-ringing-05.mp3" type="audio/mpeg">
+                                            Váš prohlížeč nepodporuje přehrávání audia.
+                                        </audio>
                                     </div>
                                     
                                     <div class="audio-player">
@@ -1917,11 +1947,18 @@
                                             <span class="audio-duration">1:12</span>
                                         </div>
                                         <div class="audio-controls">
-                                            <button class="play-btn" onclick="showAudioDemo('audio2')">
+                                            <button class="play-btn" onclick="togglePlay('audio2')">
                                                 <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
                                                     <path d="M8 5v14l11-7z"/>
                                                 </svg>
                                             </button>
+                                            <div class="audio-time">0:00</div>
+                                            <div class="audio-progress" onclick="seekAudio(event, 'audio2')">
+                                                <div class="progress-bar">
+                                                    <div class="progress-handle"></div>
+                                                </div>
+                                            </div>
+                                            <div class="audio-time">1:12</div>
                                             <div class="volume-control">
                                                 <button class="volume-btn" onclick="toggleMute('audio2')">
                                                     <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" class="volume-icon">
@@ -1935,15 +1972,12 @@
                                                     </div>
                                                 </div>
                                             </div>
-                                            <div class="audio-time">0:00</div>
-                                            <div class="audio-progress" onclick="seekAudio(event, 'audio2')">
-                                                <div class="progress-bar">
-                                                    <div class="progress-handle"></div>
-                                                </div>
-                                            </div>
-                                            <div class="audio-time">1:12</div>
                                         </div>
-
+                                        <audio id="audio2" preload="metadata">
+                                            <source src="https://www.soundjay.com/misc/sounds/bell-ringing-05.wav" type="audio/wav">
+                                            <source src="https://www.soundjay.com/misc/sounds/bell-ringing-05.mp3" type="audio/mpeg">
+                                            Váš prohlížeč nepodporuje přehrávání audia.
+                                        </audio>
                                     </div>
                                 </div>
                             </div>
@@ -2033,6 +2067,46 @@
         let videoExpanded = false;
         let isLightTheme = false;
         let currentAudio = null;
+        let audioStates = {};
+        
+        // Initialize audio states
+        function initAudioState(audioId) {
+            if (!audioStates[audioId]) {
+                const audio = document.getElementById(audioId);
+                audioStates[audioId] = {
+                    isPlaying: false,
+                    isMuted: false,
+                    volume: 1,
+                    currentTime: 0,
+                    duration: 0
+                };
+                
+                if (audio) {
+                    audio.addEventListener('loadedmetadata', () => {
+                        audioStates[audioId].duration = audio.duration;
+                        updateTimeDisplay(audioId);
+                    });
+                    
+                    audio.addEventListener('timeupdate', () => {
+                        audioStates[audioId].currentTime = audio.currentTime;
+                        updateProgressBar(audioId);
+                        updateTimeDisplay(audioId);
+                    });
+                    
+                    audio.addEventListener('ended', () => {
+                        audioStates[audioId].isPlaying = false;
+                        updatePlayButton(audioId);
+                    });
+                    
+                    audio.addEventListener('error', (e) => {
+                        console.log('Audio loading failed for', audioId, '- using demo mode');
+                        // Set demo duration
+                        audioStates[audioId].duration = audioId === 'audio1' ? 32 : 72;
+                        updateTimeDisplay(audioId);
+                    });
+                }
+            }
+        }
         
         // Utility functions
         function formatTime(seconds) {
@@ -2053,6 +2127,193 @@
                     btn.classList.add('active');
                 }
             });
+        }
+        
+        // Audio functions
+        function togglePlay(audioId) {
+            initAudioState(audioId);
+            const audio = document.getElementById(audioId);
+            const state = audioStates[audioId];
+            
+            // Stop other audio if playing
+            if (currentAudio && currentAudio !== audioId) {
+                const otherAudio = document.getElementById(currentAudio);
+                if (otherAudio && !otherAudio.paused) {
+                    otherAudio.pause();
+                    audioStates[currentAudio].isPlaying = false;
+                    updatePlayButton(currentAudio);
+                }
+            }
+            
+            if (audio && audio.src) {
+                if (state.isPlaying) {
+                    audio.pause();
+                    state.isPlaying = false;
+                } else {
+                    audio.play().then(() => {
+                        state.isPlaying = true;
+                        currentAudio = audioId;
+                    }).catch(() => {
+                        console.log('Audio play failed for', audioId, '- using demo mode');
+                        startDemoPlayback(audioId);
+                    });
+                }
+            } else {
+                // Demo mode
+                if (state.isPlaying) {
+                    stopDemoPlayback(audioId);
+                } else {
+                    startDemoPlayback(audioId);
+                }
+            }
+            
+            updatePlayButton(audioId);
+        }
+        
+        function startDemoPlayback(audioId) {
+            const state = audioStates[audioId];
+            state.isPlaying = true;
+            currentAudio = audioId;
+            
+            const interval = setInterval(() => {
+                if (!state.isPlaying) {
+                    clearInterval(interval);
+                    return;
+                }
+                
+                state.currentTime += 0.1;
+                if (state.currentTime >= state.duration) {
+                    state.currentTime = state.duration;
+                    state.isPlaying = false;
+                    clearInterval(interval);
+                    updatePlayButton(audioId);
+                }
+                
+                updateProgressBar(audioId);
+                updateTimeDisplay(audioId);
+            }, 100);
+        }
+        
+        function stopDemoPlayback(audioId) {
+            audioStates[audioId].isPlaying = false;
+        }
+        
+        function updatePlayButton(audioId) {
+            const playBtn = document.querySelector(`[onclick="togglePlay('${audioId}')"] svg path`);
+            const isPlaying = audioStates[audioId]?.isPlaying;
+            
+            if (playBtn) {
+                if (isPlaying) {
+                    playBtn.setAttribute('d', 'M6 19h4V5H6v14zm8-14v14h4V5h-4z'); // Pause icon
+                } else {
+                    playBtn.setAttribute('d', 'M8 5v14l11-7z'); // Play icon
+                }
+            }
+        }
+        
+        function updateProgressBar(audioId) {
+            const state = audioStates[audioId];
+            if (!state) return;
+            
+            const progressBar = document.querySelector(`[onclick*="${audioId}"] .progress-bar`);
+            if (progressBar && state.duration > 0) {
+                const percentage = (state.currentTime / state.duration) * 100;
+                progressBar.style.width = `${percentage}%`;
+            }
+        }
+        
+        function updateTimeDisplay(audioId) {
+            const state = audioStates[audioId];
+            if (!state) return;
+            
+            const audioPlayer = document.querySelector(`[onclick*="${audioId}"]`).closest('.audio-player');
+            const timeElements = audioPlayer.querySelectorAll('.audio-time');
+            
+            if (timeElements.length >= 2) {
+                timeElements[0].textContent = formatTime(state.currentTime);
+                timeElements[1].textContent = formatTime(state.duration);
+            }
+        }
+        
+        function seekAudio(event, audioId) {
+            initAudioState(audioId);
+            const progressContainer = event.currentTarget;
+            const rect = progressContainer.getBoundingClientRect();
+            const clickX = event.clientX - rect.left;
+            const percentage = clickX / rect.width;
+            
+            const state = audioStates[audioId];
+            const newTime = percentage * state.duration;
+            
+            const audio = document.getElementById(audioId);
+            if (audio && audio.src) {
+                audio.currentTime = newTime;
+            } else {
+                state.currentTime = newTime;
+                updateProgressBar(audioId);
+                updateTimeDisplay(audioId);
+            }
+        }
+        
+        function toggleMute(audioId) {
+            initAudioState(audioId);
+            const state = audioStates[audioId];
+            const audio = document.getElementById(audioId);
+            
+            state.isMuted = !state.isMuted;
+            
+            if (audio && audio.src) {
+                audio.muted = state.isMuted;
+            }
+            
+            updateVolumeIcon(audioId);
+            updateVolumeProgress(audioId);
+        }
+        
+        function setVolume(event, audioId) {
+            initAudioState(audioId);
+            const slider = event.currentTarget;
+            const rect = slider.getBoundingClientRect();
+            const clickX = event.clientX - rect.left;
+            const percentage = Math.max(0, Math.min(1, clickX / rect.width));
+            
+            const state = audioStates[audioId];
+            state.volume = percentage;
+            state.isMuted = percentage === 0;
+            
+            const audio = document.getElementById(audioId);
+            if (audio && audio.src) {
+                audio.volume = percentage;
+                audio.muted = state.isMuted;
+            }
+            
+            updateVolumeIcon(audioId);
+            updateVolumeProgress(audioId);
+        }
+        
+        function updateVolumeIcon(audioId) {
+            const state = audioStates[audioId];
+            const volumeIcon = document.querySelector(`[onclick="toggleMute('${audioId}')"] .volume-icon path`);
+            
+            if (volumeIcon) {
+                if (state.isMuted || state.volume === 0) {
+                    volumeIcon.setAttribute('d', 'M16.5 12c0-1.77-1.02-3.29-2.5-4.03v2.21l2.45 2.45c.03-.2.05-.41.05-.63zm2.5 0c0 .94-.2 1.82-.54 2.64l1.51 1.51C20.63 14.91 21 13.5 21 12c0-4.28-2.99-7.86-7-8.77v2.06c2.89.86 5 3.54 5 6.71zM4.27 3L3 4.27 7.73 9H3v6h4l5 5v-6.73l4.25 4.25c-.67.52-1.42.93-2.25 1.18v2.06c1.38-.31 2.63-.95 3.69-1.81L19.73 21 21 19.73l-9-9L4.27 3zM12 4L9.91 6.09 12 8.18V4z'); // Muted icon
+                } else if (state.volume < 0.5) {
+                    volumeIcon.setAttribute('d', 'M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02z'); // Low volume icon
+                } else {
+                    volumeIcon.setAttribute('d', 'M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z'); // High volume icon
+                }
+            }
+        }
+        
+        function updateVolumeProgress(audioId) {
+            const state = audioStates[audioId];
+            const volumeProgress = document.querySelector(`[onclick*="${audioId}"] .volume-progress`);
+            
+            if (volumeProgress) {
+                const width = state.isMuted ? 0 : state.volume * 100;
+                volumeProgress.style.width = `${width}%`;
+            }
         }
         
         // Theme functions
@@ -2130,6 +2391,12 @@
             document.getElementById('projectsOverlay').classList.add('active');
             addBlurEffect();
             updateActiveNav('PROJEKTY A REFERENCE');
+            
+            // Initialize audio states when projects overlay opens
+            setTimeout(() => {
+                initAudioState('audio1');
+                initAudioState('audio2');
+            }, 100);
         }
         
         function closeOverlay() {
@@ -2138,6 +2405,19 @@
             document.getElementById('projectsOverlay').classList.remove('active');
             removeBlurEffect();
             updateActiveNav('DOMOVSKÁ STRÁNKA');
+            
+            // Stop all audio when closing overlay
+            Object.keys(audioStates).forEach(audioId => {
+                const audio = document.getElementById(audioId);
+                if (audio && !audio.paused) {
+                    audio.pause();
+                }
+                if (audioStates[audioId]) {
+                    audioStates[audioId].isPlaying = false;
+                    updatePlayButton(audioId);
+                }
+            });
+            currentAudio = null;
         }
         
         function addBlurEffect() {
@@ -2156,35 +2436,21 @@
             document.querySelector('.floating-video').classList.remove('blurred');
         }
         
-        // Audio functions
-        function showAudioDemo(audioId) {
-            // Audio functionality would go here
-            console.log('Audio demo for:', audioId);
-        }
-        
-        function seekAudio(event, audioId) {
-            // Audio seeking functionality would go here
-            console.log('Seek audio:', audioId);
-        }
-        
-        function toggleMute(audioId) {
-            // Mute toggle functionality would go here
-            console.log('Toggle mute:', audioId);
-        }
-        
-        function setVolume(event, audioId) {
-            // Volume control functionality would go here
-            console.log('Set volume:', audioId);
-        }
-        
-
-        
         // Keyboard navigation
         document.addEventListener('keydown', function(e) {
             if (e.key === 'Escape') {
                 closeOverlay();
             }
         });
+        
+        // Initialize on page load
+        document.addEventListener('DOMContentLoaded', function() {
+            // Initialize volume displays
+            Object.keys(audioStates).forEach(audioId => {
+                updateVolumeIcon(audioId);
+                updateVolumeProgress(audioId);
+            });
+        });
     </script>
-<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'994a458f16aaf974',t:'MTc2MTQ4NTA0My4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'994a58856350579f',t:'MTc2MTQ4NTgxOS4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
 </html>
