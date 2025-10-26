@@ -1153,6 +1153,8 @@
             width: 100%;
             height: 100%;
             border: none;
+            border-radius: 10px;
+            object-fit: cover;
         }
         
         .video-description {
@@ -1186,6 +1188,15 @@
             width: 100%;
             height: 200px;
             overflow: hidden;
+            border-radius: 10px 10px 0 0;
+            background: #000;
+        }
+        
+        .production-video iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+            object-fit: cover;
         }
         
         .video-thumbnail {
@@ -2011,9 +2022,7 @@
                                 <div class="production-grid">
                                     <div class="production-item">
                                         <div class="production-video">
-                                            <div class="video-container">
-                                                <iframe src="https://www.youtube.com/embed/Ze2F_qykTmA" allowfullscreen></iframe>
-                                            </div>
+                                            <iframe src="https://www.youtube.com/embed/Ze2F_qykTmA" allowfullscreen></iframe>
                                         </div>
                                         <div class="production-info">
                                             <h4 class="production-title">Video 1</h4>
@@ -2023,9 +2032,7 @@
                                     
                                     <div class="production-item">
                                         <div class="production-video">
-                                            <div class="video-container">
-                                                <iframe src="https://www.youtube.com/embed/NaT0LSBPBk4" allowfullscreen></iframe>
-                                            </div>
+                                            <iframe src="https://www.youtube.com/embed/NaT0LSBPBk4" allowfullscreen></iframe>
                                         </div>
                                         <div class="production-info">
                                             <h4 class="production-title">Video 2</h4>
@@ -2035,9 +2042,7 @@
                                     
                                     <div class="production-item">
                                         <div class="production-video">
-                                            <div class="video-container">
-                                                <iframe src="https://www.youtube.com/embed/FfouWNjlk2I" allowfullscreen></iframe>
-                                            </div>
+                                            <iframe src="https://www.youtube.com/embed/FfouWNjlk2I" allowfullscreen></iframe>
                                         </div>
                                         <div class="production-info">
                                             <h4 class="production-title">Video 3</h4>
@@ -2047,9 +2052,7 @@
                                     
                                     <div class="production-item">
                                         <div class="production-video">
-                                            <div class="video-container">
-                                                <iframe src="https://www.youtube.com/embed/k-Qz86rFcLQ" allowfullscreen></iframe>
-                                            </div>
+                                            <iframe src="https://www.youtube.com/embed/k-Qz86rFcLQ" allowfullscreen></iframe>
                                         </div>
                                         <div class="production-info">
                                             <h4 class="production-title">Video 4</h4>
@@ -2059,9 +2062,7 @@
                                     
                                     <div class="production-item">
                                         <div class="production-video">
-                                            <div class="video-container">
-                                                <iframe src="https://www.youtube.com/embed/JWCQAUizUA8" allowfullscreen></iframe>
-                                            </div>
+                                            <iframe src="https://www.youtube.com/embed/JWCQAUizUA8" allowfullscreen></iframe>
                                         </div>
                                         <div class="production-info">
                                             <h4 class="production-title">Video 5</h4>
@@ -2071,9 +2072,7 @@
                                     
                                     <div class="production-item">
                                         <div class="production-video">
-                                            <div class="video-container">
-                                                <iframe src="https://www.youtube.com/embed/aIJYKWrAsPQ" allowfullscreen></iframe>
-                                            </div>
+                                            <iframe src="https://www.youtube.com/embed/aIJYKWrAsPQ" allowfullscreen></iframe>
                                         </div>
                                         <div class="production-info">
                                             <h4 class="production-title">Video 6</h4>
@@ -2090,9 +2089,7 @@
                                 <div class="production-grid">
                                     <div class="production-item">
                                         <div class="production-video">
-                                            <div class="video-container">
-                                                <iframe src="https://www.youtube.com/embed/TThTlDGUG9Y" allowfullscreen></iframe>
-                                            </div>
+                                            <iframe src="https://www.youtube.com/embed/TThTlDGUG9Y" allowfullscreen></iframe>
                                         </div>
                                         <div class="production-info">
                                             <h4 class="production-title">TECHFEED Video 1</h4>
@@ -2102,9 +2099,7 @@
                                     
                                     <div class="production-item">
                                         <div class="production-video">
-                                            <div class="video-container">
-                                                <iframe src="https://www.youtube.com/embed/ow2FdrRBD0A" allowfullscreen></iframe>
-                                            </div>
+                                            <iframe src="https://www.youtube.com/embed/ow2FdrRBD0A" allowfullscreen></iframe>
                                         </div>
                                         <div class="production-info">
                                             <h4 class="production-title">TECHFEED Video 2</h4>
@@ -2114,9 +2109,7 @@
                                     
                                     <div class="production-item">
                                         <div class="production-video">
-                                            <div class="video-container">
-                                                <iframe src="https://www.youtube.com/embed/ABmSUR75Jfk" allowfullscreen></iframe>
-                                            </div>
+                                            <iframe src="https://www.youtube.com/embed/ABmSUR75Jfk" allowfullscreen></iframe>
                                         </div>
                                         <div class="production-info">
                                             <h4 class="production-title">TECHFEED Video 3</h4>
@@ -2523,5 +2516,5 @@
             });
         });
     </script>
-<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'994aa1ede529579f',t:'MTc2MTQ4ODgyNi4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'994aa7a6331d579f',t:'MTc2MTQ4OTA2MS4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
 </html>
