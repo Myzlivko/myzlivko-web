@@ -638,7 +638,7 @@
             align-items: center;
             justify-content: center;
             position: relative;
-            background-image: url('https://img.youtube.com/vi/BvQO7HDdR3k/maxresdefault.jpg');
+            background-image: url('https://img.youtube.com/vi/PyEV_ulp2q4/maxresdefault.jpg');
             transition: all 0.2s ease;
         }
         
@@ -985,7 +985,7 @@
         
         .project-achievement a:hover {
             color: rgba(255,255,255,1) !important;
-            text-decoration: underline;
+            text-decoration: none;
         }
         
         .container.light-theme .project-achievement a {
@@ -1348,6 +1348,8 @@
             border-radius: 10px;
             overflow: hidden;
             transition: all 0.3s ease;
+            max-height: 500px !important;
+            height: auto !important;
         }
         
         .making-of-video:hover {
@@ -1361,6 +1363,7 @@
             cursor: pointer;
             position: relative;
             overflow: hidden;
+            box-sizing: border-box;
         }
         
         .making-of-video .video-thumbnail img {
@@ -2141,7 +2144,7 @@
                                     <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor" style="margin-right: 5px; color: rgba(255, 215, 0, 0.85); flex-shrink: 0;">
                                         <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
                                     </svg>
-                                    <a href="#" onclick="openExternal('https://www.playzone.cz/clanky/207473-kdo-bude-novou-tvari-twitche-porotci-vybrali-deset-vyvolenych-streameru')" style="color: #CCCCCC; text-decoration: none; font-size: 13px; font-style: italic; font-weight: 400; transition: color 0.3s ease;">Finalista Tváře Twitche (TOP10)</a>
+                                    <a href="#" onclick="openExternal('https://www.playzone.cz/clanky/207473-kdo-bude-novou-tvari-twitche-porotci-vybrali-deset-vyvolenych-streameru')" style="color: #FFFFFF; text-decoration: none; font-size: 13px; font-style: italic; font-weight: 400; transition: color 0.3s ease; text-shadow: 0 0 8px rgba(255,255,255,0.6);">Finalista Tváře Twitche (TOP10)</a>
                                 </div>
                                 <p class="project-description">Živá vysílání zaměřená primárně na videohry. Důraz na originální a interaktivní prvky streamu, tvorba vlastních overlayů, alert systémů a automatizovaných funkcí v OBS a Discordu, včetně lokalizovaného tisku účtenek v češtině.</p>
                             </div>
@@ -2526,7 +2529,7 @@
                             </div>
                             <div class="making-of-video-info">
                                 <h4 class="making-of-title">Behind the Scenes: 90VTEŘIN 9s48</h4>
-                                <p class="making-of-description">Malý náhled do zákulisí. I takhle může některé dny vypadat natáčení se mnou, zvlášť když se den trochu protáhne a místo napětí přichází uvolněná energie. Finální epizoda pak vypadala <a href="#" onclick="openExternal('https://youtu.be/0UV3nalU1fY')" style="color: #FFFFFF; text-decoration: underline; font-weight: 500; text-shadow: 0 0 8px rgba(255,255,255,0.6); transition: all 0.3s ease;">takto</a>.</p>
+                                <p class="making-of-description">Malý náhled do zákulisí. I takhle může některé dny vypadat natáčení se mnou, zvlášť když se den trochu protáhne a místo napětí přichází uvolněná energie. Finální epizoda pak vypadala <a href="#" onclick="openExternal('https://youtu.be/0UV3nalU1fY')" style="color: #FFFFFF; text-decoration: none; font-weight: 500; text-shadow: 0 0 8px rgba(255,255,255,0.6); transition: all 0.3s ease;">takto</a>.</p>
                             </div>
                         </div>
                         
@@ -2535,7 +2538,7 @@
                                 <img src="https://github.com/Myzlivko/myzlivko-web/blob/main/cdn/assets/photos/making-of-studio.jpg?raw=true" alt="Ve studiu během nahrávání" onerror="this.style.display='none'; this.parentElement.innerHTML='<div class=\'photo-placeholder\'>Fotka z natáčení bude brzy k dispozici</div>';">
                             </div>
                             <div class="making-of-photo-info">
-                                <h4 class="making-of-title">Momentka s Luke Dalem</h4>
+                                <h4 class="making-of-title">Behind the Camera: Rozhovor s Lukem Dalem</h4>
                                 <p class="making-of-description">Popisek bude brzy k dispozici</p>
                             </div>
                         </div>
@@ -2961,14 +2964,19 @@
         function loadVideo(thumbnail, videoId) {
             const videoContainer = thumbnail.parentElement;
             
-            // Create iframe
+            // Set container height first
+            videoContainer.style.height = '320px !important';
+            videoContainer.style.minHeight = '320px !important';
+            videoContainer.style.maxHeight = '320px !important';
+            videoContainer.style.overflow = 'hidden';
+            
+            // Create iframe with explicit attributes
             const iframe = document.createElement('iframe');
             iframe.src = `https://www.youtube.com/embed/${videoId}?autoplay=1`;
             iframe.allowFullscreen = true;
-            iframe.style.width = '100%';
-            iframe.style.height = '100%';
-            iframe.style.border = 'none';
-            iframe.style.borderRadius = '10px 10px 0 0';
+            iframe.setAttribute('width', '100%');
+            iframe.setAttribute('height', '320');
+            iframe.style.cssText = 'width: 100% !important; height: 320px !important; min-height: 320px !important; max-height: 320px !important; border: none; border-radius: 10px; display: block;';
             
             // Replace thumbnail with iframe
             videoContainer.innerHTML = '';
@@ -3005,5 +3013,5 @@
             });
         });
     </script>
-<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'99541ccdb717579f',t:'MTc2MTU4ODIzMS4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'995592f16419579f',t:'MTc2MTYwMzU1Ni4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
 </html>
