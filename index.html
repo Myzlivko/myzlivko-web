@@ -376,7 +376,7 @@
         
         .handwritten-note {
             position: absolute;
-            top: 65px;
+            top: 85px;
             right: 50px;
             font-family: 'Inter', sans-serif;
             font-size: 14px;
@@ -391,6 +391,23 @@
             text-align: right;
             line-height: 1.2;
             letter-spacing: 0.5px;
+        }
+        
+        .email-address {
+            font-family: 'Inter', sans-serif;
+            font-size: 13px;
+            color: rgba(232, 230, 228, 0.7);
+            text-align: center;
+            margin-bottom: 11px;
+            letter-spacing: 0.5px;
+            font-weight: 300;
+            transition: color 6s cubic-bezier(0.25, 0.1, 0.25, 1);
+            width: 100%;
+            margin-left: 3px;
+        }
+        
+        .container.light-theme .email-address {
+            color: rgba(51, 51, 51, 0.7);
         }
         
         /* Main Content */
@@ -1770,6 +1787,11 @@
                 margin-bottom: 6px;
             }
             
+            .email-address {
+                font-size: 10px;
+                margin-bottom: 9px;
+            }
+            
             .main-content {
                 top: 58%;
             }
@@ -1988,6 +2010,7 @@
             </div>
             <div class="contact-section">
                 <div class="handwritten-note">Hledáte hlas pro svůj projekt?</div>
+                <div class="email-address" style="text-align: center;">spoluprace@myzlivko.cz</div>
                 <a href="mailto:spoluprace@myzlivko.cz" class="nav-btn">NAPIŠTE MI</a>
             </div>
         </nav>
@@ -2964,23 +2987,18 @@
         function loadVideo(thumbnail, videoId) {
             const videoContainer = thumbnail.parentElement;
             
-            // Set container height first
-            videoContainer.style.height = '320px !important';
-            videoContainer.style.minHeight = '320px !important';
-            videoContainer.style.maxHeight = '320px !important';
-            videoContainer.style.overflow = 'hidden';
-            
             // Create iframe with explicit attributes
             const iframe = document.createElement('iframe');
             iframe.src = `https://www.youtube.com/embed/${videoId}?autoplay=1`;
             iframe.allowFullscreen = true;
             iframe.setAttribute('width', '100%');
-            iframe.setAttribute('height', '320');
-            iframe.style.cssText = 'width: 100% !important; height: 320px !important; min-height: 320px !important; max-height: 320px !important; border: none; border-radius: 10px; display: block;';
+            iframe.setAttribute('height', '100%');
+            iframe.style.cssText = 'width: 100%; height: 100%; border: none; border-radius: 10px 10px 0 0;';
             
-            // Replace thumbnail with iframe
-            videoContainer.innerHTML = '';
-            videoContainer.appendChild(iframe);
+            // Replace only the thumbnail content, not the entire container
+            thumbnail.innerHTML = '';
+            thumbnail.appendChild(iframe);
+            thumbnail.style.cursor = 'default';
         }
         
         // Initialize on page load
@@ -3013,5 +3031,5 @@
             });
         });
     </script>
-<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'995592f16419579f',t:'MTc2MTYwMzU1Ni4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9955b90c63ea9829',t:'MTc2MTYwNTExNy4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
 </html>
