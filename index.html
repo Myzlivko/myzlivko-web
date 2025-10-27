@@ -638,7 +638,7 @@
             align-items: center;
             justify-content: center;
             position: relative;
-            background-image: url('https://img.youtube.com/vi/PyEV_ulp2q4/maxresdefault.jpg');
+            background-image: url('https://img.youtube.com/vi/BvQO7HDdR3k/maxresdefault.jpg');
             transition: all 0.2s ease;
         }
         
@@ -1334,6 +1334,130 @@
             margin: 0;
         }
         
+        /* Making Of Section */
+        .making-of-grid {
+            display: grid;
+            grid-template-columns: 1.2fr 0.8fr;
+            gap: 30px;
+            align-items: start;
+        }
+        
+        .making-of-video {
+            background: rgba(255,255,255,0.05);
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 10px;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+        
+        .making-of-video:hover {
+            background: rgba(255,255,255,0.08);
+            transform: translateY(-5px);
+        }
+        
+        .making-of-video .video-thumbnail {
+            width: 100%;
+            height: 320px;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .making-of-video .video-thumbnail img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.3s ease;
+        }
+        
+        .making-of-video .video-thumbnail:hover img {
+            transform: scale(1.05);
+        }
+        
+        .making-of-video .play-overlay {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: rgba(0,0,0,0.7);
+            border-radius: 50%;
+            width: 80px;
+            height: 80px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+        }
+        
+        .making-of-video .video-thumbnail:hover .play-overlay {
+            background: rgba(0,0,0,0.9);
+            transform: translate(-50%, -50%) scale(1.1);
+        }
+        
+        .making-of-video-info {
+            padding: 25px;
+        }
+        
+        .making-of-photo {
+            background: rgba(255,255,255,0.05);
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 10px;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+        
+        .making-of-photo:hover {
+            background: rgba(255,255,255,0.08);
+            transform: translateY(-5px);
+        }
+        
+        .photo-container {
+            width: 100%;
+            height: 280px;
+            overflow: hidden;
+            position: relative;
+            background: rgba(255,255,255,0.02);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .photo-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.3s ease;
+        }
+        
+        .making-of-photo:hover .photo-container img {
+            transform: scale(1.05);
+        }
+        
+        .photo-placeholder {
+            color: rgba(255,255,255,0.5);
+            font-size: 14px;
+            text-align: center;
+            padding: 20px;
+        }
+        
+        .making-of-photo-info {
+            padding: 25px;
+        }
+        
+        .making-of-title {
+            font-size: 20px;
+            font-weight: 500;
+            margin-bottom: 15px;
+            color: rgba(255,255,255,0.95);
+        }
+        
+        .making-of-description {
+            font-size: 14px;
+            color: rgba(255,255,255,0.7);
+            line-height: 1.5;
+            margin: 0;
+        }
+        
         /* Responsive Design */
         @media (max-width: 768px) {
             .nav-top {
@@ -1799,6 +1923,39 @@
             
             .production-info {
                 padding: 15px;
+            }
+            
+            .making-of-grid {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+            
+            .making-of-video .video-thumbnail {
+                height: 200px;
+            }
+            
+            .photo-container {
+                height: 200px;
+            }
+            
+            .making-of-video-info,
+            .making-of-photo-info {
+                padding: 15px;
+            }
+            
+            .making-of-title {
+                font-size: 16px;
+                margin-bottom: 10px;
+            }
+            
+            .making-of-description {
+                font-size: 12px;
+                line-height: 1.4;
+            }
+            
+            .making-of-video .play-overlay {
+                width: 60px;
+                height: 60px;
             }
         }
     </style>
@@ -2354,8 +2511,41 @@
                         </div>
                     </div>
                 </div>
+                
+                <div class="projects-section">
+                    <h3 class="section-title">MAKING OF</h3>
+                    <div class="making-of-grid">
+                        <div class="making-of-video">
+                            <div class="video-thumbnail" onclick="loadVideo(this, 'BvQO7HDdR3k')">
+                                <img src="https://img.youtube.com/vi/BvQO7HDdR3k/maxresdefault.jpg" alt="Making of - Jak vzniká dabing" onerror="this.src='https://img.youtube.com/vi/BvQO7HDdR3k/hqdefault.jpg';">
+                                <div class="play-overlay">
+                                    <svg width="32" height="32" viewBox="0 0 24 24" fill="white">
+                                        <path d="M8 5v14l11-7z"/>
+                                    </svg>
+                                </div>
+                            </div>
+                            <div class="making-of-video-info">
+                                <h4 class="making-of-title">Behind the Scenes: 90VTEŘIN 9s48</h4>
+                                <p class="making-of-description">Malý náhled do zákulisí. I takhle může některé dny vypadat natáčení se mnou, zvlášť když se den trochu protáhne a místo napětí přichází uvolněná energie. Finální epizoda pak vypadala <a href="#" onclick="openExternal('https://youtu.be/0UV3nalU1fY')" style="color: #FFFFFF; text-decoration: underline; font-weight: 500; text-shadow: 0 0 8px rgba(255,255,255,0.6); transition: all 0.3s ease;">takto</a>.</p>
+                            </div>
+                        </div>
+                        
+                        <div class="making-of-photo">
+                            <div class="photo-container">
+                                <img src="https://github.com/Myzlivko/myzlivko-web/blob/main/cdn/assets/photos/making-of-studio.jpg?raw=true" alt="Ve studiu během nahrávání" onerror="this.style.display='none'; this.parentElement.innerHTML='<div class=\'photo-placeholder\'>Fotka z natáčení bude brzy k dispozici</div>';">
+                            </div>
+                            <div class="making-of-photo-info">
+                                <h4 class="making-of-title">Momentka s Luke Dalem</h4>
+                                <p class="making-of-description">Popisek bude brzy k dispozici</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
             </div>
         </div>
+        
+
     </div>
     
     <script>
@@ -2815,5 +3005,5 @@
             });
         });
     </script>
-<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'99514916273a579f',t:'MTc2MTU1ODU4OC4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'99541ccdb717579f',t:'MTc2MTU4ODIzMS4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
 </html>
