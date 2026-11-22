@@ -127,6 +127,14 @@ document.querySelectorAll('.compare-handle').forEach((handle) => {
   });
 });
 
+const desktopEmailComposer = 'https://mail.google.com/mail/?view=cm&fs=1&to=spoluprace%40myzlivko.cz';
+if (window.matchMedia('(hover: hover) and (pointer: fine)').matches) {
+  document.querySelectorAll('a[href="mailto:spoluprace@myzlivko.cz"]').forEach((link) => {
+    link.href = desktopEmailComposer;
+    link.target = '_blank';
+    link.rel = 'noopener noreferrer';
+  });
+}
 function formatDuration(seconds) {
   const totalSeconds = Math.floor(seconds);
   const minutes = Math.floor(totalSeconds / 60);
